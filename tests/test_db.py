@@ -40,6 +40,14 @@ def test_snapshot_selection_by_as_of_date(db, offline_settings):
     assert service.snapshots()["epss_date"] == date(2026, 11, 20)
 
 
+def test_timestamps_are_reported_in_utc_regardless_of_server_timezone(db, offline_settings):
+    # 서버 기본 시간대와 상관없이 같은 문자열이 나와야 정답이 환경 간에 재현된다
+    assert db.execute("SHOW TimeZone").fetchone()["TimeZone"] == "UTC"
+    kev.load_snapshot(db, load("kev_sample.json"))
+    released = VulnService(db, offline_settings).snapshots(date(2026, 11, 20))["kev_released"]
+    assert released.startswith("2026-11-20T17:48") and released.endswith("+00:00")
+
+
 def test_kev_as_of_uses_utc_date(db, offline_settings):
     # 실제 카탈로그 2026.11.20의 dateReleased는 2026-11-20T17:48Z (KST로는 11-21 새벽)
     db.execute("SET TIME ZONE 'Asia/Seoul'")
