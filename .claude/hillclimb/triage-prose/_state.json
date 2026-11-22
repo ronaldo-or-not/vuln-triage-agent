@@ -1,0 +1,18 @@
+{
+  "flow": "triage-prose",
+  "description": "Factual accuracy of the triage report prose (summary / reasons / notes), graded by code against the run's own tool output",
+  "metrics": [
+    {"id": "prose_ok", "label": "prose ok", "kind": "binary"},
+    {"id": "counts_ok", "label": "counts", "kind": "binary"},
+    {"id": "ids_grounded", "label": "ids grounded", "kind": "binary"},
+    {"id": "kev_consistent", "label": "kev claims", "kind": "binary"},
+    {"id": "top1_named", "label": "top1 named", "kind": "binary"},
+    {"id": "korean_only", "label": "korean only", "kind": "binary"}
+  ],
+  "perf_fields": [
+    {"id": "tool_calls", "label": "tools"},
+    {"id": "latency_s", "label": "latency", "unit": "s"}
+  ],
+  "prices": {"claude-opus-5-5": {"in": 4.0, "out": 20.0}, "claude-sonnet-5-5": {"in": 2.0, "out": 10.0}, "claude-haiku-5-5": {"in": 0.1, "out": 0.5}},
+  "harness_paths": ["src/vulnagent", "eval/prose_grade.py"]
+}

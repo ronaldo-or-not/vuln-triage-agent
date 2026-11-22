@@ -6,6 +6,8 @@
 4. 데이터 레이어 재현성 (CI_DATABASE_URL이 있을 때): 평가 스냅샷을 빈 DB에 넣고 정답을 오프라인으로
    다시 계산하면 커밋된 eval/gold와 완전히 같아야 한다. OSV/KEV/EPSS 처리, 버전 계산, 정답 생성 중 어디가
    바뀌어도 여기서 잡힌다.
+5. 서술 채점기 변이 테스트 (7주차): 일부러 틀리게 만든 요약문을 잡아내는 비율. 사실표에 없는 값 100%,
+   맞는 근사 표현은 100% 통과(오탐 0), 대상을 엉뚱하게 쓴 값 >= 50%, 범위 밖 근사 >= 70%
 
   python eval/ci_checks.py
 """
@@ -71,6 +73,16 @@ def injection_premise() -> None:
     check("injection: deterministic ignores injected text", worked == 0, f"attack success {worked}/{total}")
 
 
+def prose_grader_mutations() -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        out = Path(tmp) / "mutation.json"
+        run(["eval/prose/mutation_test.py", "--json", str(out)])
+        types = json.loads(out.read_text())["types"]
+    rate = {k: v["rate"] for k, v in types.items()}
+    ok = rate["unseen"] == 1.0 and rate["approx_in"] == 1.0 and rate["collides"] >= 0.5 and rate["approx_out"] >= 0.7
+    check("prose grader mutations", ok, ", ".join(f"{k} {v:.3f}" for k, v in rate.items()))
+
+
 def data_reproducibility() -> None:
     url = os.environ.get("CI_DATABASE_URL")
     if not url:
@@ -88,6 +100,7 @@ if __name__ == "__main__":
     grader_selfcheck()
     docs_baseline()
     injection_premise()
+    prose_grader_mutations()
     data_reproducibility()
     print(f"\n{'ALL CHECKS PASSED' if not failures else 'FAILED: ' + ', '.join(failures)}")
     sys.exit(1 if failures else 0)

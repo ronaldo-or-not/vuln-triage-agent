@@ -1,0 +1,29 @@
+{
+ "base": {
+  "reports": 60,
+  "usable": 39,
+  "claims": 81
+ },
+ "types": {
+  "unseen": {
+   "n": 179,
+   "ok": 179,
+   "rate": 1.0
+  },
+  "collides": {
+   "n": 266,
+   "ok": 146,
+   "rate": 0.549
+  },
+  "approx_out": {
+   "n": 81,
+   "ok": 59,
+   "rate": 0.728
+  },
+  "approx_in": {
+   "n": 81,
+   "ok": 81,
+   "rate": 1.0
+  }
+ }
+}

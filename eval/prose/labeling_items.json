@@ -1,0 +1,102 @@
+[
+ {
+  "no": 1,
+  "case": "maven-spring4shell-poc",
+  "rep": 0
+ },
+ {
+  "no": 2,
+  "case": "maven-java-goof-core",
+  "rep": 1
+ },
+ {
+  "no": 3,
+  "case": "pypi-log4j-shell-poc",
+  "rep": 1
+ },
+ {
+  "no": 4,
+  "case": "npm-juice-shop-manifest",
+  "rep": 1
+ },
+ {
+  "no": 5,
+  "case": "maven-java-goof-struts",
+  "rep": 0
+ },
+ {
+  "no": 6,
+  "case": "pypi-lets-be-bad-guys",
+  "rep": 1
+ },
+ {
+  "no": 7,
+  "case": "pypi-vulpy",
+  "rep": 0
+ },
+ {
+  "no": 8,
+  "case": "npm-nodejs-goof-lock",
+  "rep": 2
+ },
+ {
+  "no": 9,
+  "case": "maven-webgoat",
+  "rep": 2
+ },
+ {
+  "no": 10,
+  "case": "pypi-tiredful-api",
+  "rep": 0
+ },
+ {
+  "no": 11,
+  "case": "npm-vulnerable-node-lock",
+  "rep": 0
+ },
+ {
+  "no": 12,
+  "case": "gradle-log4shell-app",
+  "rep": 1
+ },
+ {
+  "no": 13,
+  "case": "npm-nodegoat-lock",
+  "rep": 2
+ },
+ {
+  "no": 14,
+  "case": "pypi-dvpwa",
+  "rep": 0
+ },
+ {
+  "no": 15,
+  "case": "npm-nodegoat-manifest",
+  "rep": 0
+ },
+ {
+  "no": 16,
+  "case": "npm-dvna-manifest",
+  "rep": 0
+ },
+ {
+  "no": 17,
+  "case": "maven-java-goof-log4shell",
+  "rep": 2
+ },
+ {
+  "no": 18,
+  "case": "maven-benchmark-java",
+  "rep": 0
+ },
+ {
+  "no": 19,
+  "case": "pypi-django-nv",
+  "rep": 0
+ },
+ {
+  "no": 20,
+  "case": "pypi-pygoat",
+  "rep": 0
+ }
+]
