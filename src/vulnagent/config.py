@@ -23,6 +23,9 @@ class Settings:
 
 
 CWE_MODES = ("", "labels", "hidden")
+# 평가로 고른 제품 설정 (CLI와 PR 코멘트가 같이 쓴다): 검증 루프(3주차) + 결정적 계산 도구(4·5주차) + CWE 라벨 전달(8주차).
+# agent.run_triage의 인자 기본값은 실험 재현을 위해 v0 그대로 둔다.
+PRODUCT_SETTINGS = {"validate": True, "tool_hints": True, "cwe": "labels"}
 
 
 def load_settings() -> Settings:

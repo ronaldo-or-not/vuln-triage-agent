@@ -1,0 +1,4 @@
+# PR 코멘트 Action(.github/workflows/pr-triage.yml) 시연용 앱. 이 파일을 바꾸는 PR에 트리아지 댓글이 달린다.
+flask==2.2.5
+requests==2.31.0
+Django==4.2.0

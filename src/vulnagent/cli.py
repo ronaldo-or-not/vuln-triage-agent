@@ -18,7 +18,7 @@ import time
 from datetime import date
 from pathlib import Path
 
-from .config import load_settings
+from .config import PRODUCT_SETTINGS, load_settings
 from .db import apply_schema, connect
 from .errors import InvalidInput, SourceError
 from .runlog import log_extract, log_triage, summarize
@@ -35,7 +35,7 @@ def parse_package(spec: str) -> dict:
     return {"ecosystem": ecosystem, "name": name, "version": version}
 
 
-DEFAULT_CWE = "labels"
+DEFAULT_CWE = PRODUCT_SETTINGS["cwe"]
 
 
 def _warn_if_no_cwe_catalog() -> None:
