@@ -104,6 +104,23 @@ sudo 없는 서버에 PostgreSQL을 사용자 권한으로 올리는 방법은 [
 (모델, 토큰, 비용, 지연, 도구 호출·오류, 검증 교정 횟수, 모델 대체 여부, 인젝션 경고 수). 문서·보고서 내용은 남기지 않는다.
 `vulnagent runs`가 총비용, 지연 p50/p90, 교정·경고가 난 실행 수를 요약한다. `VULNAGENT_RUNLOG=off`로 끈다.
 
+## PR 코멘트 (GitHub Actions)
+
+의존성 파일(`requirements*.txt`, `package-lock.json`, `package.json`, `pom.xml`, `build.gradle`)이 바뀐 PR에 트리아지
+보고서를 댓글 하나로 단다 (`.github/workflows/pr-triage.yml`, `src/vulnagent/pr_comment.py`). 다시 푸시하면 같은 댓글을 고친다.
+
+- **이 PR에서 새로 생긴 취약점**을 따로 보여 준다. 기준 버전의 의존성은 데이터 레이어로만 검사한다 (LLM 비용 0)
+- CLI와 같은 제품 설정(검증 루프, 결정적 계산, CWE 라벨)으로 Haiku 5.5를 쓴다. 파일 하나에 약 $0.015, 1분 남짓 (5개 패키지 실측)
+- 정보 제공용이라 취약점이 있어도 검사를 실패시키지 않는다. 에이전트가 실패하면 데이터 레이어 결과만으로 표를 낸다
+- 의존성 파일과 모델 문장은 믿지 않는다: 패키지 이름은 코드 스팬(`@babel/core`가 사람을 호출하지 않게), `@`·표 구분자·이미지 문법은 무력화
+- `pull_request`만 쓴다. 포크 PR에는 비밀값이 없으므로 API 키 없이 조용히 끝난다. 평가 케이스(`eval/`)·테스트 픽스처(`tests/`)는 대상이 아니다
+
+켜는 법: 저장소 Settings → Secrets and variables → Actions에 `ANTHROPIC_API_KEY`를 등록한다. 로컬에서 미리 보기:
+
+```bash
+python -m vulnagent.pr_comment --file requirements.txt --base-file old-requirements.txt --dry-run comment.md
+```
+
 ## 평가 다시 돌리기
 
 ```bash

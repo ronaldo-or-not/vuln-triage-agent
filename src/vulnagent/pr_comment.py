@@ -227,7 +227,8 @@ def render_file(result: FileResult, compact: bool = False) -> str:
             vulns = pkg.get("vulnerabilities", [])
             new = sum(1 for v in vulns if result.is_new(pkg.get("package", ""), str(v.get("id", ""))))
             upgrade = _code(pkg["upgrade_to"]) if pkg.get("upgrade_to") else "없음 (아래 완화책)"
-            reason = "" if compact else _cell(pkg.get("reason"))[:300]
+            reason = "" if compact else _cell(pkg.get("reason"))
+            reason = reason if len(reason) <= 300 else reason[:299].rstrip("\\") + "…"
             lines.append(f"| {_code(pkg.get('package'))} | {upgrade} | {len(vulns)} | {new or ''} | {reason} |")
         lines.append("")
         workarounds = [p for p in packages if p.get("workaround")]
