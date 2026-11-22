@@ -187,6 +187,7 @@ class TriageRun:
     stop_reason: str | None = None
     corrections: int = 0  # v3: 검증 실패로 모델에게 다시 고치게 한 횟수
     validation_log: list[list[str]] = field(default_factory=list)  # 교정마다 발견한 문제
+    cwe: str | None = None  # 8주차: CWE 정보 출처 (None이면 보고서에 cwe/workaround 없음)
 
     def usage_total(self) -> dict:
         keys = ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
@@ -274,7 +275,7 @@ async def run_triage(
     client = client or anthropic.AsyncAnthropic()
     check_outputs: list[dict] = []
     user_message = build_user_message(parsed, file_label, context, counts=tool_hints)
-    run = TriageRun(status="max_turns", report=None, model_requested=model)
+    run = TriageRun(status="max_turns", report=None, model_requested=model, cwe=cwe)
     system = system_prompt(tool_hints, cwe)
     mcp_env = {**(mcp_env or {}), **({"VULNAGENT_TOOL_HINTS": "1"} if tool_hints else {}),
                **({"VULNAGENT_CWE_MODE": CWE_MODE_FOR_ARM[cwe]} if cwe else {})}

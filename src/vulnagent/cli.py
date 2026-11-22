@@ -5,7 +5,7 @@
   python -m vulnagent check PyPI/jinja2@2.10 npm/lodash@4.17.15
   python -m vulnagent show CVE-2021-44228
   python -m vulnagent status
-  python -m vulnagent triage requirements.txt  # 에이전트 실행 (Claude API 호출)
+  python -m vulnagent triage requirements.txt  # 에이전트 실행 (Claude API 호출). CWE·완화책 포함, --no-cwe로 끔
   python -m vulnagent extract report.pdf --llm --triage
   python -m vulnagent runs                     # 실행 기록 요약 (비용·지연·교정·경고)
 """
@@ -35,6 +35,23 @@ def parse_package(spec: str) -> dict:
     return {"ecosystem": ecosystem, "name": name, "version": version}
 
 
+DEFAULT_CWE = "labels"
+
+
+def _warn_if_no_cwe_catalog() -> None:
+    """CWE 라벨은 OSV/NVD 데이터만으로 붙지만, 이름과 완화책 조회(get_weakness)에는 CWE 카탈로그가 DB에 있어야 한다."""
+    try:
+        with connect(load_settings().database_url) as conn:
+            loaded = conn.execute("SELECT to_regclass('cwe_entry') IS NOT NULL AS t").fetchone()["t"] and \
+                conn.execute("SELECT EXISTS (SELECT 1 FROM cwe_entry) AS ok").fetchone()["ok"]
+    except Exception:  # DB에 못 붙으면 MCP 서버가 더 분명한 오류를 낸다
+        return
+    if not loaded:
+        print("WARNING: CWE catalog is not loaded (python -m vulnagent.kb.cwe, needs pgvector). CWE ids still come "
+              "from GHSA/NVD, but names and knowledge-base mitigations are unavailable. Use --no-cwe to skip CWE.",
+              file=sys.stderr)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="vulnagent")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -57,6 +74,9 @@ def main(argv: list[str] | None = None) -> int:
     # 3주차 결과(v4)를 기본값으로: 보고서 검증 루프 + 도구의 결정적 계산. 비교 실험용으로 끌 수 있다.
     p_triage.add_argument("--no-validate", action="store_true", help="disable the report validation loop (v3)")
     p_triage.add_argument("--no-tool-hints", action="store_true", help="disable safe_upgrade/policy_rank hints (v4)")
+    # 8주차 결과: CWE는 GHSA/NVD가 이미 붙인 라벨을 넘겨주는 방식(정답률 100%)을 기본으로. 검색 후보에서 고르기(44%)나
+    # 기억(64%)보다 정확하고, 완화책은 security-kb의 get_weakness로 MITRE 완화책을 조회해 근거를 댄다.
+    p_triage.add_argument("--no-cwe", action="store_true", help="leave out CWE ids and workarounds (week 8)")
     p_extract = sub.add_parser("extract", help="extract findings from a vulnerability report (PDF/DOCX/XLSX)")
     p_extract.add_argument("file")
     p_extract.add_argument("--llm", action="store_true", help="use Claude to read the document (needed for scans)")
@@ -94,7 +114,8 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         parsed = to_parse_result(extraction, Path(args.file).name)
         started = time.monotonic()
-        run = asyncio.run(run_triage(parsed, Path(args.file).name, validate=True, tool_hints=True))
+        _warn_if_no_cwe_catalog()
+        run = asyncio.run(run_triage(parsed, Path(args.file).name, validate=True, tool_hints=True, cwe=DEFAULT_CWE))
         log_triage(run, Path(args.file).name, time.monotonic() - started, source="extract")
         print(json.dumps(run.report, indent=2, ensure_ascii=False) if run.report else f"agent stopped: {run.status}")
         return 0 if run.status == "ok" else 1
@@ -105,10 +126,12 @@ def main(argv: list[str] | None = None) -> int:
         from .agent import triage_file
 
         logging.basicConfig(level=logging.WARNING, stream=sys.stderr)
+        if not args.no_cwe:
+            _warn_if_no_cwe_catalog()
         started = time.monotonic()
         _parsed, run = asyncio.run(triage_file(args.file, args.companion, model=args.model, effort=args.effort,
                                                context=args.context, validate=not args.no_validate,
-                                               tool_hints=not args.no_tool_hints))
+                                               tool_hints=not args.no_tool_hints, cwe=None if args.no_cwe else DEFAULT_CWE))
         log_triage(run, Path(args.file).name, time.monotonic() - started)
         print(json.dumps(run.report, indent=2, ensure_ascii=False) if run.report else f"agent stopped: {run.status}")
         print(f"status={run.status} turns={len(run.calls)} tools={len(run.tool_calls)} corrections={run.corrections} "

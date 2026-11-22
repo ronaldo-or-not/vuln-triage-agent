@@ -68,7 +68,9 @@ def log_triage(run, file_label: str, latency_s: float, source: str = "file") -> 
             cost_usd=round(sum(c for c in costs if c is not None), 6) if any(c is not None for c in costs) else None,
             latency_s=round(latency_s, 2),
             packages=len((run.report or {}).get("packages", [])),
-            vulnerabilities=sum(len(p.get("vulnerabilities", [])) for p in (run.report or {}).get("packages", [])))
+            vulnerabilities=sum(len(p.get("vulnerabilities", [])) for p in (run.report or {}).get("packages", [])),
+            cwe=getattr(run, "cwe", None),
+            workarounds=sum(1 for p in (run.report or {}).get("packages", []) if p.get("workaround")))
 
 
 def log_extract(extraction, file_label: str, latency_s: float, defended: bool) -> None:

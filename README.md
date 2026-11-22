@@ -25,7 +25,7 @@
          │  직접 구현한 도구 호출 루프 · JSON 스키마 출력 · 보고서 검증 루프(validate.py, 최대 2회 교정)
          ├──MCP(stdio)──▶ vuln-data   check_packages / get_vulnerability ─▶ PostgreSQL ◀─ OSV·NVD 캐시, KEV·EPSS 스냅샷
          └──MCP(stdio)──▶ security-kb get_weakness / search_weaknesses(_many) ─▶ CWE 1,352개 (BM25 기본, 임베딩·pgvector 선택)
-                          (8주차 실험 --cwe: 두 서버에 동시에 붙고 도구 이름으로 라우팅. 기본 실행은 vuln-data만)
+                          (두 서버에 동시에 붙고 도구 이름으로 라우팅. CWE는 GHSA/NVD 라벨 전달이 기본, --no-cwe로 끔)
 ```
 
 ## 결과
@@ -40,7 +40,7 @@
 | 5 | 문서 속 인젝션 | 방어 없음 20% 성공 → 프롬프트 강화 0% / 결정적 교차 검증 0% (오탐 2% / 0%) | [week5_injection.md](eval/analysis/week5_injection.md) |
 | 6 | 운영 | API 비용 0인 CI 회귀 검사, 평가 데이터 스냅샷(1.2MB)으로 어디서나 재현, 실행 기록 | 아래 |
 | 7 | 서술은 맞나? | 구조화 필드 60/60인 같은 보고서에서 요약문 사실 정확성 **63%** (개수 오류 35%) → 개수도 도구가 세게 해서 **98%**, 비용·지연 그대로. 채점기는 변이 테스트로 검증 | [week7_prose.md](eval/analysis/week7_prose.md) |
-| 8 | CWE 지식베이스를 연결하면? | 실험군 셋으로 비교 (취약점 545개): 기억만 64%, **검색 후보 안에서 고르기 44%**, 이미 있는 GHSA/NVD 라벨 전달 **100%**. 에이전트의 선택은 검색기 1위(26%)보다 낫지만 검색 재현율 43%가 상한. 완화책이 맞는 CWE와 지식베이스 조회 둘 다 7/7인 것은 라벨 전달뿐 | [week8_cwe.md](eval/analysis/week8_cwe.md) |
+| 8 | CWE 지식베이스를 연결하면? | 실험군 셋으로 비교 (취약점 545개): 기억만 64%, **검색 후보 안에서 고르기 44%**, 이미 있는 GHSA/NVD 라벨 전달 **100%**. 에이전트의 선택은 검색기 1위(26%)보다 낫지만 검색 재현율 43%가 상한. 완화책이 맞는 CWE와 지식베이스 조회 둘 다 7/7인 것은 라벨 전달뿐 → `triage` 기본값으로 반영 | [week8_cwe.md](eval/analysis/week8_cwe.md) |
 
 3주차 핵심 표 (같은 20 케이스, 데이터 2026-11-20 고정):
 
@@ -62,8 +62,10 @@ export DATABASE_URL=postgresql:///vulnagent TEST_DATABASE_URL=postgresql:///vuln
 .venv/bin/python -m vulnagent check PyPI/jinja2@2.10        # 데이터 레이어만 (API 키 불필요)
 .venv/bin/python -m vulnagent extract report.pdf            # 결정적 추출 (무료)
 
+.venv/bin/python -m vulnagent.kb.cwe                        # CWE 카탈로그 적재 (pgvector 필요, 보고서의 CWE 이름·완화책 근거)
+
 export ANTHROPIC_API_KEY=...                                # 아래부터 Claude API 호출
-.venv/bin/python -m vulnagent triage requirements.txt --model claude-haiku-5-5
+.venv/bin/python -m vulnagent triage requirements.txt --model claude-haiku-5-5   # 취약점마다 CWE, 못 고치는 패키지엔 완화책
 .venv/bin/python -m vulnagent extract scan.pdf --llm --triage
 .venv/bin/python -m vulnagent runs                          # 실행 기록 요약
 ```
@@ -77,7 +79,8 @@ MCP 클라이언트(Claude Code 등)에 데이터 서버만 붙일 수도 있다
     "env": { "DATABASE_URL": "postgresql:///vulnagent" } } } }
 ```
 
-CWE 검색 서버(`python -m vulnagent.kb_server`)는 `pip install -e ".[kb]"`와 `python -m vulnagent.kb.cwe` 적재가 필요하다.
+CWE 서버(`python -m vulnagent.kb_server`)는 `python -m vulnagent.kb.cwe` 적재가 필요하다 (임베딩 검색까지 쓰려면 `pip install -e ".[kb]"`).
+카탈로그가 없어도 `triage`는 돌고 CWE 번호는 GHSA/NVD에서 붙지만, 이름과 완화책 조회는 빠진다 (경고를 출력한다). `--no-cwe`로 끌 수 있다.
 sudo 없는 서버에 PostgreSQL을 사용자 권한으로 올리는 방법은 [data-layer.md](docs/data-layer.md)에 있다.
 
 ## 운영 (6주차)
