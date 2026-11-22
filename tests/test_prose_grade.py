@@ -161,3 +161,32 @@ def test_top1_package_named_without_suffix():
     # "Log4j 2.14.1"도 log4j-core를 가리킨다. 반대로 다른 패키지만 언급하면 실패
     assert grade_with(summary="직접 의존성 5개 중 2개 패키지에서 취약점 4건. 가장 시급한 것은 Log4j 2.14.1입니다.")[0]["top1_named"] == 1
     assert grade_with(summary="직접 의존성 5개 중 2개 패키지에서 취약점 4건. 가장 시급한 것은 snakeyaml입니다.")[0]["top1_named"] == 0
+
+
+def test_per_cwe_counts_from_the_report_are_allowed():
+    """8주차: 보고서에 cwe가 있으면 'XSS(CWE-79) 7건'도 사실이다. 보고서에 없는 개수는 여전히 틀린다."""
+    pkgs = copy.deepcopy(REPORT["packages"])
+    pkgs[0]["vulnerabilities"] = [{"id": f"CVE-2021-{i}", "cwe": "CWE-79"} for i in range(7)] + [{"id": "CVE-2021-9", "cwe": "CWE-20"}]
+    ok, why = grade_with(packages=pkgs, summary=REPORT["summary"] + " 그중 XSS(CWE-79)가 7건입니다.")
+    assert ok["counts_ok"] == 1, why
+    bad, _ = grade_with(packages=pkgs, summary=REPORT["summary"] + " 그중 XSS(CWE-79)가 9건입니다.")
+    assert bad["counts_ok"] == 0
+
+
+def test_load_trace_skips_tool_errors_and_kb_search_results(tmp_path):
+    import json
+
+    from prose_grade import load_trace
+
+    trace = [
+        {"role": "system", "content": "s"},
+        {"role": "user", "content": "Triage.\n\n```json\n" + json.dumps(PAYLOAD) + "\n```"},
+        {"role": "tool_result", "content": json.dumps({"method": "bm25", "results": [{"key": "x", "candidates": []}]})},
+        {"role": "tool_result", "content": "Tool call failed: CWE-1 is not in the catalog"},
+        {"role": "tool_result", "content": json.dumps({"as_of": {}, **CHECK})},
+        {"role": "assistant", "content": json.dumps(REPORT)},
+    ]
+    path = tmp_path / "t.json"
+    path.write_text(json.dumps(trace))
+    payload, check, report = load_trace(path)
+    assert check["results"] == CHECK["results"] and report == REPORT

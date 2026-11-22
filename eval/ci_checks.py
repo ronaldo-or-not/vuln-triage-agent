@@ -8,6 +8,8 @@
    바뀌어도 여기서 잡힌다.
 5. 서술 채점기 변이 테스트 (7주차): 일부러 틀리게 만든 요약문을 잡아내는 비율. 사실표에 없는 값 100%,
    맞는 근사 표현은 100% 통과(오탐 0), 대상을 엉뚱하게 쓴 값 >= 50%, 범위 밖 근사 >= 70%
+6. CWE 채점기 (8주차): 정답 라벨은 스냅샷에서 다시 만들어도 커밋된 것과 같고, 정답 라벨을 그대로 쓴 보고서는
+   전부 맞고, CWE를 비운 보고서는 하나도 맞지 않는다
 
   python eval/ci_checks.py
 """
@@ -83,6 +85,31 @@ def prose_grader_mutations() -> None:
     check("prose grader mutations", ok, ", ".join(f"{k} {v:.3f}" for k, v in rate.items()))
 
 
+def cwe_grader() -> None:
+    sys.path.insert(0, str(EVAL))
+    sys.path.insert(0, str(EVAL / "cwe"))
+    from build_labels import build
+    from casefiles import load_cases, load_gold
+    from cwe_grade import grade_cwe, load_reference, oracle_cwe_report
+
+    committed = json.loads((EVAL / "cwe" / "labels.json").read_text())["labels"]
+    labels, catalog = load_reference()
+    oracle, null = {}, {}
+    for case in load_cases():
+        gold = load_gold(case["id"])
+        report, trace = oracle_cwe_report(gold, labels)
+        for k, v in grade_cwe(report, trace, gold, labels, catalog)["counts"].items():
+            oracle[k] = oracle.get(k, 0) + v
+        empty = {"packages": [{**p, "vulnerabilities": [{**v, "cwe": None} for v in p["vulnerabilities"]], "workaround": None}
+                              for p in report["packages"]]}
+        for k, v in grade_cwe(empty, [], gold, labels, catalog)["counts"].items():
+            null[k] = null.get(k, 0) + v
+    ok = (build() == committed and oracle["hit"] == oracle["labeled"] > 0 and oracle["valid"] == oracle["answered"]
+          and oracle["wa_relevant"] == oracle["wa_grounded"] == oracle["wa_present"] > 0 and null["hit"] == null["answered"] == 0)
+    check("cwe grader", ok, f"labels reproducible {build() == committed}, oracle {oracle['hit']}/{oracle['labeled']} "
+          f"workarounds {oracle['wa_relevant']}/{oracle['wa_needed']}, null {null['hit']}/{null['labeled']}")
+
+
 def data_reproducibility() -> None:
     url = os.environ.get("CI_DATABASE_URL")
     if not url:
@@ -101,6 +128,7 @@ if __name__ == "__main__":
     docs_baseline()
     injection_premise()
     prose_grader_mutations()
+    cwe_grader()
     data_reproducibility()
     print(f"\n{'ALL CHECKS PASSED' if not failures else 'FAILED: ' + ', '.join(failures)}")
     sys.exit(1 if failures else 0)

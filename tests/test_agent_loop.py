@@ -125,3 +125,51 @@ def test_user_message_carries_input_counts_only_with_hints():
     assert "counts" not in payload(build_user_message(parsed, "requirements.txt"))
     assert payload(build_user_message(parsed, "requirements.txt", counts=True))["counts"] == \
         {"dependencies": 1, "unchecked": 2, "total_entries": 3}
+
+
+def test_report_schema_adds_cwe_fields_without_touching_the_base_schema():
+    from vulnagent.agent import report_schema
+
+    before = json.dumps(REPORT_SCHEMA, sort_keys=True)
+    schema = report_schema(cwe=True)
+    pkg = schema["properties"]["packages"]["items"]
+    vuln = pkg["properties"]["vulnerabilities"]["items"]
+    assert "workaround" in pkg["required"] and "cwe" in vuln["required"]
+    assert report_schema(cwe=False) is REPORT_SCHEMA and json.dumps(REPORT_SCHEMA, sort_keys=True) == before
+
+
+def test_cwe_arms_choose_tools_and_label_visibility(seeded_db):
+    """8주차 세 실험군: 같은 보고서 형식에 CWE 정보의 출처만 다르다.
+    labels는 security-kb 서버(두 번째 MCP 서버)의 get_weakness/search_weaknesses를 받고, check_packages 결과에
+    cwes가 붙는다. memory는 지식베이스 도구도 라벨도 없다. 없는 도구 이름은 오류 결과로 돌려준다."""
+    parsed = parse_requirements("Jinja2==2.10\n")
+    seen = {}
+
+    def turn1(_kwargs):
+        return _msg([
+            SimpleNamespace(type="tool_use", id="toolu_1", name="check_packages",
+                            input={"packages": [{"ecosystem": "PyPI", "name": "jinja2", "version": "2.10"}]}),
+            SimpleNamespace(type="tool_use", id="toolu_2", name="no_such_tool", input={}),
+        ], "tool_use")
+
+    def turn2(kwargs):
+        seen["results"] = kwargs["messages"][-1]["content"]
+        return _msg([SimpleNamespace(type="text", text=json.dumps({"summary": "s", "packages": [], "unchecked": [], "notes": []}))], "end_turn")
+
+    env = {"DATABASE_URL": TEST_DATABASE_URL, "VULNAGENT_OFFLINE": "1"}
+    labels = FakeClient([turn1, turn2])
+    run = asyncio.run(run_triage(parsed, "requirements.txt", client=labels, cwe="labels", mcp_env=env))
+    first = labels.requests[0]
+    assert {t["name"] for t in first["tools"]} == {"check_packages", "get_vulnerability", "get_weakness", "search_weaknesses"}
+    assert "cwe" in first["output_config"]["format"]["schema"]["properties"]["packages"]["items"]["properties"]["vulnerabilities"]["items"]["properties"]
+    assert "returns `cwes`" in first["system"]
+    check_result, unknown = seen["results"]
+    assert '"cwes":[{"id":"CWE-693"' in check_result["content"] and not check_result["is_error"]
+    assert unknown["is_error"] and "unknown tool" in unknown["content"]
+    assert [t["is_error"] for t in run.tool_calls] == [False, True]
+
+    memory = FakeClient([turn1, turn2])
+    asyncio.run(run_triage(parsed, "requirements.txt", client=memory, cwe="memory", mcp_env=env))
+    assert {t["name"] for t in memory.requests[0]["tools"]} == {"check_packages", "get_vulnerability"}
+    assert "own knowledge" in memory.requests[0]["system"]
+    assert '"cwes"' not in seen["results"][0]["content"]

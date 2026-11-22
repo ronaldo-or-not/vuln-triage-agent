@@ -87,6 +87,8 @@ def check_packages(packages: list[PackageRef], as_of: str | None = None) -> dict
     Also when present: `counts` at the top level (packages_checked, vulnerable_packages,
     no_known_vulns_packages, vulnerabilities, unique_vulnerabilities, kev_listed) and
     vulnerability_count per vulnerable package. Copy numbers from these instead of counting.
+    Also when present: `cwes` per vulnerability, the CWE labels GHSA and NVD assigned to it
+    (id and name; empty when neither assigned one).
     - "no_known_vulns": OSV knows no vulnerability. NOT proof of safety: a misspelled package
       name gives the same answer.
     Results are not sorted by priority. `as_of` (YYYY-MM-DD) replays older KEV/EPSS snapshots.

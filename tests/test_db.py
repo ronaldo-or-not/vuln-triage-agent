@@ -101,6 +101,31 @@ def test_tool_hints_compute_safe_upgrade_and_policy_rank(seeded_db, offline_sett
     assert "counts" not in plain
 
 
+def test_cwe_labels_mode_attaches_ghsa_and_nvd_labels_with_names(seeded_db, offline_settings):
+    plain = VulnService(seeded_db, offline_settings).check_packages([{"ecosystem": "PyPI", "name": "jinja2", "version": "2.10"}])
+    assert all("cwes" not in v for v in plain["results"][0]["vulnerabilities"])  # 기본 출력은 그대로
+
+    # 지식베이스 테이블이 없어도 라벨은 붙고 이름만 null이다 (CI DB에는 pgvector가 없다)
+    service = VulnService(seeded_db, replace(offline_settings, cwe_mode="labels"))
+    vulns = {v["id"]: v for v in service.check_packages([{"ecosystem": "PyPI", "name": "jinja2", "version": "2.10"}])
+             ["results"][0]["vulnerabilities"]}
+    assert vulns["CVE-2019-10906"]["cwes"] == [{"id": "CWE-693", "name": None}]  # GHSA 라벨
+
+    seeded_db.execute("CREATE TABLE cwe_entry (cwe_id text PRIMARY KEY, name text NOT NULL)")
+    seeded_db.execute("INSERT INTO cwe_entry VALUES ('CWE-79', 'Cross-site Scripting')")
+    vulns = {v["id"]: v for v in service.check_packages([{"ecosystem": "PyPI", "name": "jinja2", "version": "2.10"}])
+             ["results"][0]["vulnerabilities"]}
+    assert vulns["CVE-2024-22195"]["cwes"] == [{"id": "CWE-79", "name": "Cross-site Scripting"}]
+
+
+def test_cwe_hidden_mode_strips_labels_from_get_vulnerability(seeded_db, offline_settings):
+    shown = VulnService(seeded_db, offline_settings).get_vulnerability("CVE-2021-44228")
+    assert shown["nvd"]["cwes"] == ["CWE-20", "CWE-400", "CWE-502", "CWE-917"]
+    hidden = VulnService(seeded_db, replace(offline_settings, cwe_mode="hidden")).get_vulnerability("CVE-2021-44228")
+    assert "cwes" not in hidden["nvd"] and "CWE-" not in json.dumps(hidden)  # 기억/검색 실험군이 정답을 읽지 못하게
+    assert hidden["nvd"]["cvss"]["score"] == 10.0  # 나머지 정보는 그대로
+
+
 def test_kev_unknown_is_null_not_false(db, offline_settings):
     for record in load("osv_query_jinja2.json")["vulns"]:
         osv.store_vuln(db, record)

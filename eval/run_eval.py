@@ -21,6 +21,7 @@ import json
 import math
 import os
 import random
+import re
 import sys
 import time
 from pathlib import Path
@@ -141,7 +142,7 @@ async def run_case(case, rep, args, client, out_dir, sem, lock) -> None:
         started = time.monotonic()
         try:
             run = await asyncio.wait_for(
-                run_triage(parsed, file_label, model=args.model, effort=args.effort, client=client, validate=args.validate, tool_hints=args.tool_hints,
+                run_triage(parsed, file_label, model=args.model, effort=args.effort, client=client, validate=args.validate, tool_hints=args.tool_hints, cwe=args.cwe,
                            mcp_env={"VULNAGENT_OFFLINE": "1", "VULNAGENT_AS_OF": AS_OF.isoformat()}),
                 timeout=args.timeout_s,
             )
@@ -172,7 +173,7 @@ async def run_case(case, rep, args, client, out_dir, sem, lock) -> None:
         return
 
     meta = {"calls": run.calls, "tools": run.tool_calls, "agent_status": run.status,
-            "validate": args.validate, "tool_hints": args.tool_hints, "validation_log": run.validation_log}
+            "validate": args.validate, "tool_hints": args.tool_hints, "cwe": args.cwe, "validation_log": run.validation_log}
     if run.status == "ok":
         scores, why = grade(run.report, gold)
         row = {**base, **perf, "status": "ok", "stop_reason": run.stop_reason, "grade": scores, "explanation": why, "meta": meta}
@@ -217,10 +218,12 @@ async def main_async(args) -> int:
         check_harness(args.approve_harness)
         if args.variant == "pilot":
             out_dir = ROOT / "eval" / "pilot"  # 비용·형식 확인용. 기준 점수(baseline)와 섞지 않는다
-        elif args.variant == "baseline" or (args.variant.startswith("v") and args.variant[1:].isdigit()):
-            out_dir = FLOW / args.variant
+        elif args.variant == "baseline" or re.fullmatch(r"v\d+[a-z]?", args.variant):
+            out_dir = FLOW / args.variant  # v6a/v6b/v6c: 같은 버전의 실험군 (8주차 CWE 실험)
+        elif re.fullmatch(r"pilot-[a-z0-9-]+", args.variant):
+            out_dir = ROOT / "eval" / "pilot" / args.variant  # 실험군별 파일럿. 기준 점수와 섞지 않는다
         else:
-            print("--variant must be 'pilot', 'baseline' or v<N>", file=sys.stderr)
+            print("--variant must be 'pilot', 'pilot-<name>', 'baseline' or v<N>[a-z]", file=sys.stderr)
             return 2
         out_dir.mkdir(parents=True, exist_ok=True)
         client = anthropic.AsyncAnthropic(max_retries=4)  # SDK가 429/5xx를 지수 백오프로 재시도
@@ -244,6 +247,7 @@ def main() -> int:
     p.add_argument("--effort", default="medium")
     p.add_argument("--tool-hints", action="store_true", help="v4: tool returns safe_upgrade and policy_rank")
     p.add_argument("--validate", action="store_true", help="v3: check the report against tool results and ask for corrections")
+    p.add_argument("--cwe", choices=["memory", "labels", "search"], help="week 8: add CWE + workaround; where CWE info comes from")
     p.add_argument("--reps", type=int, default=1)
     p.add_argument("--timeout-s", type=float, default=900)
     p.add_argument("--concurrency", type=int, default=4)

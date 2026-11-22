@@ -218,7 +218,34 @@ class VulnService:
         if self.settings.tool_hints:
             self._add_tool_hints(results, keys, found)
             out["counts"] = self._result_counts(results)
+        if self.settings.cwe_mode == "labels":
+            self._add_cwe_labels(results, keys, found)
         return out
+
+    def _add_cwe_labels(self, results: list[dict], keys: list[osv.PackageKey], found: dict) -> None:
+        """8주차: 취약점마다 이미 매겨진 CWE 라벨(GHSA cwe_ids ∪ NVD cwes)과 이름을 붙인다.
+
+        평가 케이스 취약점의 98%에 라벨이 있어서, 검색(정답이 상위 5개에 드는 비율 45%)보다 라벨을 그대로
+        전달하는 편이 정확하다. 이름은 CWE 지식베이스(cwe_entry)에서 찾고, 테이블이 없으면 null로 둔다.
+        """
+        records = {r["id"]: r for key in set(keys) for r in (found[key]["records"] or [])}
+        cves = sorted({c for r in results for v in r.get("vulnerabilities", []) for c in v["cve_ids"]})
+        nvd_cwes = {row["cve_id"]: row["cwes"] for row in self.conn.execute(
+            "SELECT cve_id, cwes FROM nvd_cve WHERE found AND cve_id = ANY(%s)", (cves,))}
+        labeled: list[tuple[dict, set[str]]] = []
+        for r in results:
+            for v in r.get("vulnerabilities", []):
+                ids = {c for i in v["osv_ids"] for c in ((records.get(i) or {}).get("database_specific") or {}).get("cwe_ids") or []}
+                ids |= {c for cve in v["cve_ids"] for c in nvd_cwes.get(cve) or []}
+                labeled.append((v, ids))
+        wanted = sorted({c for _, ids in labeled for c in ids})
+        names = {}
+        if wanted and self.conn.execute("SELECT to_regclass('cwe_entry') AS t").fetchone()["t"]:
+            names = {row["cwe_id"]: row["name"] for row in self.conn.execute(
+                "SELECT cwe_id, name FROM cwe_entry WHERE cwe_id = ANY(%s)", (wanted,))}
+        number = lambda c: int(c.rsplit("-", 1)[-1]) if c.rsplit("-", 1)[-1].isdigit() else 0
+        for v, ids in labeled:
+            v["cwes"] = [{"id": c, "name": names.get(c)} for c in sorted(ids, key=number)]
 
     @staticmethod
     def _result_counts(results: list[dict]) -> dict:
@@ -321,6 +348,9 @@ class VulnService:
         result["osv"] = self._osv_detail(osv_records)
         result["as_of"] = {**snaps, "epss_date": _iso(snaps["epss_date"])}
         result["warnings"] = warnings
+        if self.settings.cwe_mode == "hidden":  # 8주차 실험: 기억/검색 실험군이 라벨을 읽어 정답을 베끼지 못하게
+            (result.get("nvd") or {}).pop("cwes", None)
+            (result.get("osv") or {}).pop("cwes_from_ghsa", None)
         return result
 
     def _nvd_detail(self, cve: str, warnings: list[str]) -> dict:

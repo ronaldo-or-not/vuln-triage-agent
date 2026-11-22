@@ -24,6 +24,7 @@ from typing import Any
 from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
+from pydantic import BaseModel, Field
 
 from .config import load_settings
 from .db import connect
@@ -31,12 +32,14 @@ from .kb.search import MODELS, CweIndex
 
 INSTRUCTIONS = """CWE (Common Weakness Enumeration) knowledge base. Use it to name the weakness class behind a
 vulnerability and to suggest mitigations, especially when NVD gives no CWE or only a generic one.
-search_weaknesses finds candidate CWEs for a free-text description; get_weakness returns one entry.
+search_weaknesses finds candidate CWEs for a free-text description (search_weaknesses_many does many at once);
+get_weakness returns one entry.
 Search results are candidates, not facts: confirm against the vulnerability description before citing them."""
 
 server = MCPServer(name="security-kb", instructions=INSTRUCTIONS)
 READ_ONLY = ToolAnnotations(read_only_hint=True, open_world_hint=False)
 CWE_RE = re.compile(r"^(?:CWE-)?(\d+)$", re.IGNORECASE)
+MAX_QUERIES = 200
 
 
 @cache
@@ -76,6 +79,32 @@ def search_weaknesses(query: str, k: int = 5) -> dict[str, Any]:
             for cid, _score in hits
         ],
     }
+
+
+class WeaknessQuery(BaseModel):
+    key: str = Field(description="your label for this query, echoed back (for example the vulnerability id)")
+    text: str = Field(description="description of the vulnerability")
+
+
+@server.tool(annotations=READ_ONLY)
+def search_weaknesses_many(queries: list[WeaknessQuery], k: int = 5) -> dict[str, Any]:
+    """Run search_weaknesses for many descriptions in one call (up to 200), for example one per
+    vulnerability. Returns up to k (max 5) candidate CWE ids and names per query, without summaries
+    to keep the response small; call get_weakness for the details of a candidate.
+    The same accuracy caveat applies: the right CWE is in the top 5 only about half the time.
+    """
+    if not queries:
+        raise ToolError("queries is empty; pass at least one {key, text}")
+    if len(queries) > MAX_QUERIES:
+        raise ToolError(f"Too many queries ({len(queries)}). Split into calls of at most {MAX_QUERIES}.")
+    method, model = _method()
+    index = _index()
+    k = max(1, min(k, 5))
+    results = []
+    for q in queries:
+        hits = index.search(q.text, k=k, method=method, model=model) if q.text.strip() else []
+        results.append({"key": q.key, "candidates": [{"cwe_id": cid, "name": index.rows[cid]["name"]} for cid, _ in hits]})
+    return {"method": method, "results": results}
 
 
 @server.tool(annotations=READ_ONLY)

@@ -22,6 +22,7 @@
 
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 # \b를 쓰면 "CVE-2021-44228은"처럼 한글 조사가 붙은 ID를 놓친다 (한글도 단어 문자라서). ASCII 기준으로 경계를 잡는다
@@ -39,8 +40,15 @@ def load_trace(path: Path) -> tuple[dict, dict, dict]:
     trace = json.loads(Path(path).read_text())
     user = next(t for t in trace if t["role"] == "user")["content"]
     payload = json.loads(user.split("```json\n", 1)[1].split("\n```", 1)[0])
-    results = [json.loads(t["content"]) for t in trace if t["role"] == "tool_result"]
-    check = next((r for r in results if isinstance(r, dict) and "results" in r), {"results": []})
+    results = []
+    for t in trace:
+        if t["role"] == "tool_result":
+            try:
+                results.append(json.loads(t["content"]))
+            except json.JSONDecodeError:  # 도구 오류 결과는 JSON이 아니다 ("Tool call failed: ...")
+                pass
+    # check_packages 결과만 "as_of"가 있다 (8주차의 search_weaknesses_many도 "results"를 돌려준다)
+    check = next((r for r in results if isinstance(r, dict) and "results" in r and "as_of" in r), {"results": []})
     report = json.loads([t for t in trace if t["role"] == "assistant"][-1]["content"])
     return payload, check, report
 
@@ -69,18 +77,27 @@ def facts(payload: dict, check: dict, report: dict) -> dict:
         # "1479 packages in total" 같은 패키지 수만. 버전 문자열(2.6.3)의 숫자까지 넣으면 작은 수가 모두 통과한다
         "parser_note_numbers": sorted({int(n) for n in re.findall(r"(\d+)\s*packages", " ".join(payload.get("parser_notes", [])))}),
         "top1": {"package": top[0], "id": top[1]["id"]} if top else None,
+        # 8주차: 보고서에 CWE가 있으면 "CWE 유형 12종", "역직렬화(CWE-502) 5건"도 사실이다
+        "report_distinct_cwes": len(_report_cwes(report)),
+        "per_cwe": dict(Counter(_report_cwes(report, distinct=False))),
     }
+
+
+def _report_cwes(report: dict, distinct: bool = True) -> list[str]:
+    cwes = [v["cwe"] for p in report.get("packages", []) for v in p.get("vulnerabilities", []) if v.get("cwe")]
+    return sorted(set(cwes)) if distinct else cwes
 
 
 def _allowed_numbers(f: dict) -> set[int]:
     nums = {v for k, v in f.items() if isinstance(v, int)}
-    return nums | set(f["per_package"].values()) | set(f["per_package_kev"].values()) | set(f["parser_note_numbers"])
+    return (nums | set(f["per_package"].values()) | set(f["per_package_kev"].values()) | set(f["parser_note_numbers"])
+            | set(f["per_cwe"].values()))
 
 
 def _allowed_by_category(f: dict) -> dict[str, set[int]]:
     """숫자가 가리키는 대상별 허용 값. 대상을 알 수 없으면 전체(any)와 비교한다."""
     vuln = {f["vulnerabilities"], f["report_vulnerabilities"], f["kev_vulnerabilities"], f["unique_vulnerabilities"],
-            f["unique_kev_vulnerabilities"], *f["per_package"].values(), *f["per_package_kev"].values()}
+            f["unique_kev_vulnerabilities"], *f["per_package"].values(), *f["per_package_kev"].values(), *f["per_cwe"].values()}
     pkg = {f[k] for k in ("dependencies", "unchecked", "dependencies_plus_unchecked", "vulnerable_packages",
                           "no_known_vuln_packages", "report_packages")} | set(f["parser_note_numbers"])
     vulnerable = {f["vulnerable_packages"], f["report_packages"]}

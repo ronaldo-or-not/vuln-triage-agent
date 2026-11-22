@@ -49,7 +49,10 @@ async def _calls():
         found = await client.call_tool("search_weaknesses", {"query": "attacker injects SQL through the login form", "k": 3})
         entry = await client.call_tool("get_weakness", {"cwe_id": "89"})
         bad = await client.call_tool("get_weakness", {"cwe_id": "XSS"})
-        return names, found, entry, bad
+        many = await client.call_tool("search_weaknesses_many", {"queries": [
+            {"key": "CVE-1", "text": "attacker injects SQL through the login form"},
+            {"key": "CVE-2", "text": "untrusted serialized object leads to code execution"}], "k": 2})
+        return names, found, entry, bad, many
 
 
 def test_kb_server_search_and_get(db):
@@ -58,8 +61,12 @@ def test_kb_server_search_and_get(db):
     load(db, version, entries)
     CweIndex(db).ensure_embeddings(MODELS["minilm"])
 
-    names, found, entry, bad = asyncio.run(_calls())
-    assert names == {"search_weaknesses", "get_weakness"}
+    names, found, entry, bad, many = asyncio.run(_calls())
+    assert names == {"search_weaknesses", "search_weaknesses_many", "get_weakness"}
     assert found.structured_content["results"][0]["cwe_id"] == "CWE-89"
     assert "parameterized queries" in entry.structured_content["mitigations"]
     assert bad.is_error and "CWE-79" in bad.content[0].text
+    batch = many.structured_content["results"]
+    assert [r["key"] for r in batch] == ["CVE-1", "CVE-2"]  # 질의 순서대로, key를 그대로 돌려준다
+    assert batch[0]["candidates"][0]["cwe_id"] == "CWE-89" and len(batch[0]["candidates"]) <= 2
+    assert batch[1]["candidates"][0]["cwe_id"] == "CWE-502" and "summary" not in batch[1]["candidates"][0]
