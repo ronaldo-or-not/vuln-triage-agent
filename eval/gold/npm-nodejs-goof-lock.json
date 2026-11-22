@@ -1,0 +1,4012 @@
+{
+ "id": "npm-nodejs-goof-lock",
+ "ecosystem": "npm",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 35,
+ "unchecked": [],
+ "vulns": [
+  {
+   "id": "CVE-2018-1002204",
+   "aliases": [
+    "CVE-2018-1002204",
+    "GHSA-3v6h-hqm4-2rg6"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.13454,
+   "fix_status": "fixed",
+   "fixed_version": "0.4.11"
+  },
+  {
+   "id": "CVE-2026-102282",
+   "aliases": [
+    "CVE-2026-102282",
+    "GHSA-j5f4-cc29-5x44"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00199,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.1"
+  },
+  {
+   "id": "CVE-2026-114102",
+   "aliases": [
+    "CVE-2026-114102",
+    "GHSA-8238-w5pm-2374"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00455,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.1"
+  },
+  {
+   "id": "CVE-2026-114103",
+   "aliases": [
+    "CVE-2026-114103",
+    "GHSA-c6fg-446q-cg94"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00404,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.1"
+  },
+  {
+   "id": "CVE-2026-114104",
+   "aliases": [
+    "CVE-2026-114104",
+    "GHSA-p634-w6r4-rjp2"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00331,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.1"
+  },
+  {
+   "id": "CVE-2026-39244",
+   "aliases": [
+    "CVE-2026-39244",
+    "GHSA-xcpc-8h2w-3j85"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00841,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.0"
+  },
+  {
+   "id": "CVE-2026-77301",
+   "aliases": [
+    "CVE-2026-77301",
+    "GHSA-7q85-xj36-vmfc"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00609,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.1"
+  },
+  {
+   "id": "CVE-2026-92000",
+   "aliases": [
+    "CVE-2026-92000",
+    "GHSA-rcw4-f5rp-g42v"
+   ],
+   "package": "npm/adm-zip@0.4.7",
+   "kev": false,
+   "epss": 0.00684,
+   "fix_status": "fixed",
+   "fixed_version": "0.6.1"
+  },
+  {
+   "id": "CVE-2024-45590",
+   "aliases": [
+    "CVE-2024-45590",
+    "GHSA-qwcr-r2fm-qrc7"
+   ],
+   "package": "npm/body-parser@1.9.0",
+   "kev": false,
+   "epss": 0.00824,
+   "fix_status": "fixed",
+   "fixed_version": "1.20.3"
+  },
+  {
+   "id": "CVE-2026-111181",
+   "aliases": [
+    "CVE-2026-111181",
+    "GHSA-27r3-jxmh-p828"
+   ],
+   "package": "npm/body-parser@1.9.0",
+   "kev": false,
+   "epss": 0.00388,
+   "fix_status": "fixed",
+   "fixed_version": "1.20.9"
+  },
+  {
+   "id": "CVE-2026-12590",
+   "aliases": [
+    "CVE-2026-12590",
+    "GHSA-v422-hmwv-36x6"
+   ],
+   "package": "npm/body-parser@1.9.0",
+   "kev": false,
+   "epss": 0.00412,
+   "fix_status": "fixed",
+   "fixed_version": "1.20.6"
+  },
+  {
+   "id": "CVE-2021-4264",
+   "aliases": [
+    "CVE-2021-4264",
+    "GHSA-c6rp-wrp9-qr4q"
+   ],
+   "package": "npm/dustjs-linkedin@2.5.0",
+   "kev": false,
+   "epss": 0.01153,
+   "fix_status": "fixed",
+   "fixed_version": "3.0.0"
+  },
+  {
+   "id": "CVE-2017-1000188",
+   "aliases": [
+    "CVE-2017-1000188",
+    "GHSA-hwcf-pp87-7x6p"
+   ],
+   "package": "npm/ejs@1.0.0",
+   "kev": false,
+   "epss": 0.01233,
+   "fix_status": "fixed",
+   "fixed_version": "2.5.5"
+  },
+  {
+   "id": "CVE-2017-1000189",
+   "aliases": [
+    "CVE-2017-1000189",
+    "GHSA-6x77-rpqf-j6mw"
+   ],
+   "package": "npm/ejs@1.0.0",
+   "kev": false,
+   "epss": 0.02267,
+   "fix_status": "fixed",
+   "fixed_version": "2.5.5"
+  },
+  {
+   "id": "CVE-2017-1000228",
+   "aliases": [
+    "CVE-2017-1000228",
+    "GHSA-3w5v-p54c-f74x"
+   ],
+   "package": "npm/ejs@1.0.0",
+   "kev": false,
+   "epss": 0.0638,
+   "fix_status": "fixed",
+   "fixed_version": "2.5.5"
+  },
+  {
+   "id": "CVE-2022-29078",
+   "aliases": [
+    "CVE-2022-29078",
+    "GHSA-phwq-j96m-2c2q"
+   ],
+   "package": "npm/ejs@1.0.0",
+   "kev": false,
+   "epss": 0.32808,
+   "fix_status": "fixed",
+   "fixed_version": "3.1.7"
+  },
+  {
+   "id": "CVE-2024-33883",
+   "aliases": [
+    "CVE-2024-33883",
+    "GHSA-ghr5-ch3p-vcr6"
+   ],
+   "package": "npm/ejs@1.0.0",
+   "kev": false,
+   "epss": 0.00614,
+   "fix_status": "fixed",
+   "fixed_version": "3.1.10"
+  },
+  {
+   "id": "CVE-2024-29041",
+   "aliases": [
+    "CVE-2024-29041",
+    "GHSA-rv95-896h-c2vc"
+   ],
+   "package": "npm/express@4.12.4",
+   "kev": false,
+   "epss": 0.00786,
+   "fix_status": "fixed",
+   "fixed_version": "4.19.2"
+  },
+  {
+   "id": "CVE-2024-43796",
+   "aliases": [
+    "CVE-2024-43796",
+    "GHSA-qw6h-vgh9-j6wx"
+   ],
+   "package": "npm/express@4.12.4",
+   "kev": false,
+   "epss": 0.00486,
+   "fix_status": "fixed",
+   "fixed_version": "4.20.0"
+  },
+  {
+   "id": "CVE-2020-7699",
+   "aliases": [
+    "CVE-2020-7699",
+    "GHSA-9wcg-jrwf-8gg7"
+   ],
+   "package": "npm/express-fileupload@0.0.5",
+   "kev": false,
+   "epss": 0.04762,
+   "fix_status": "fixed",
+   "fixed_version": "1.1.9"
+  },
+  {
+   "id": "CVE-2022-27261",
+   "aliases": [
+    "CVE-2022-27261",
+    "GHSA-w4m6-x6c2-j5c9"
+   ],
+   "package": "npm/express-fileupload@0.0.5",
+   "kev": false,
+   "epss": 0.01381,
+   "fix_status": "no_fix",
+   "fixed_version": null
+  },
+  {
+   "id": "GHSA-q3w9-g74q-vp5f",
+   "aliases": [
+    "GHSA-q3w9-g74q-vp5f"
+   ],
+   "package": "npm/express-fileupload@0.0.5",
+   "kev": null,
+   "epss": null,
+   "fix_status": "fixed",
+   "fixed_version": "1.1.6-alpha.6"
+  },
+  {
+   "id": "CVE-2021-32822",
+   "aliases": [
+    "CVE-2021-32822",
+    "GHSA-7f5c-rpf4-86p8"
+   ],
+   "package": "npm/hbs@4.0.4",
+   "kev": false,
+   "epss": 0.00982,
+   "fix_status": "no_fix",
+   "fixed_version": null
+  },
+  {
+   "id": "CVE-2015-9251",
+   "aliases": [
+    "CVE-2015-9251",
+    "GHSA-rmxg-73gg-4p98"
+   ],
+   "package": "npm/jquery@2.2.4",
+   "kev": false,
+   "epss": 0.29726,
+   "fix_status": "fixed",
+   "fixed_version": "3.0.0"
+  },
+  {
+   "id": "CVE-2019-11358",
+   "aliases": [
+    "CVE-2019-11358",
+    "GHSA-6c3j-c64m-qhgq"
+   ],
+   "package": "npm/jquery@2.2.4",
+   "kev": false,
+   "epss": 0.8682,
+   "fix_status": "fixed",
+   "fixed_version": "3.4.0"
+  },
+  {
+   "id": "CVE-2020-11022",
+   "aliases": [
+    "CVE-2020-11022",
+    "GHSA-gxr4-xjj5-5px2"
+   ],
+   "package": "npm/jquery@2.2.4",
+   "kev": false,
+   "epss": 0.99215,
+   "fix_status": "fixed",
+   "fixed_version": "3.5.0"
+  },
+  {
+   "id": "CVE-2020-11023",
+   "aliases": [
+    "CVE-2020-11023",
+    "GHSA-jpcq-cgw6-v4j6"
+   ],
+   "package": "npm/jquery@2.2.4",
+   "kev": true,
+   "epss": 0.84887,
+   "fix_status": "fixed",
+   "fixed_version": "3.5.0"
+  },
+  {
+   "id": "CVE-2018-16487",
+   "aliases": [
+    "CVE-2018-16487",
+    "GHSA-4xc9-xhrj-v574"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.01491,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.11"
+  },
+  {
+   "id": "CVE-2018-3721",
+   "aliases": [
+    "CVE-2018-3721",
+    "GHSA-fvqr-27wr-82fm"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.02332,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.5"
+  },
+  {
+   "id": "CVE-2019-1010266",
+   "aliases": [
+    "CVE-2019-1010266",
+    "GHSA-x5rq-j2xg-h7qm"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.02982,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.11"
+  },
+  {
+   "id": "CVE-2019-10744",
+   "aliases": [
+    "CVE-2019-10744",
+    "GHSA-jf85-cpcp-j695"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.05006,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.12"
+  },
+  {
+   "id": "CVE-2020-28500",
+   "aliases": [
+    "CVE-2020-28500",
+    "GHSA-29mw-wpgm-hmr9"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.07424,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.21"
+  },
+  {
+   "id": "CVE-2020-8203",
+   "aliases": [
+    "CVE-2020-8203",
+    "GHSA-p6mc-m468-83gw"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.05213,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.19"
+  },
+  {
+   "id": "CVE-2021-23337",
+   "aliases": [
+    "CVE-2021-23337",
+    "GHSA-35jh-r3h4-6jhm"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.20158,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.21"
+  },
+  {
+   "id": "CVE-2025-13465",
+   "aliases": [
+    "CVE-2025-13465",
+    "GHSA-xxjr-mmjv-4gpg"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.01823,
+   "fix_status": "fixed",
+   "fixed_version": "4.17.23"
+  },
+  {
+   "id": "CVE-2026-4800",
+   "aliases": [
+    "CVE-2026-4800",
+    "GHSA-r5fr-rjxr-66jc"
+   ],
+   "package": "npm/lodash@4.17.4",
+   "kev": false,
+   "epss": 0.0287,
+   "fix_status": "fixed",
+   "fixed_version": "4.18.0"
+  },
+  {
+   "id": "CVE-2016-10531",
+   "aliases": [
+    "CVE-2016-10531",
+    "GHSA-vfvf-mqq8-rwqc"
+   ],
+   "package": "npm/marked@0.3.5",
+   "kev": false,
+   "epss": 0.01413,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.6"
+  },
+  {
+   "id": "CVE-2017-1000427",
+   "aliases": [
+    "CVE-2017-1000427",
+    "GHSA-7px7-7xjx-hxm8"
+   ],
+   "package": "npm/marked@0.3.5",
+   "kev": false,
+   "epss": 0.01512,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.7"
+  },
+  {
+   "id": "CVE-2017-16114",
+   "aliases": [
+    "CVE-2017-16114",
+    "GHSA-x5pg-88wf-qq4p"
+   ],
+   "package": "npm/marked@0.3.5",
+   "kev": false,
+   "epss": 0.01698,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.9"
+  },
+  {
+   "id": "CVE-2018-25110",
+   "aliases": [
+    "CVE-2018-25110",
+    "GHSA-p9wx-2529-fp83"
+   ],
+   "package": "npm/marked@0.3.5",
+   "kev": false,
+   "epss": 0.0061,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.17"
+  },
+  {
+   "id": "CVE-2022-21680",
+   "aliases": [
+    "CVE-2022-21680",
+    "GHSA-rrrm-qjm4-v8hf"
+   ],
+   "package": "npm/marked@0.3.5",
+   "kev": false,
+   "epss": 0.02983,
+   "fix_status": "fixed",
+   "fixed_version": "4.0.10"
+  },
+  {
+   "id": "CVE-2022-21681",
+   "aliases": [
+    "CVE-2022-21681",
+    "GHSA-5v2h-r2cx-5xgj"
+   ],
+   "package": "npm/marked@0.3.5",
+   "kev": false,
+   "epss": 0.02893,
+   "fix_status": "fixed",
+   "fixed_version": "4.0.10"
+  },
+  {
+   "id": "CVE-2017-18214",
+   "aliases": [
+    "CVE-2017-18214",
+    "GHSA-446m-mv8f-q348"
+   ],
+   "package": "npm/moment@2.15.1",
+   "kev": false,
+   "epss": 0.03649,
+   "fix_status": "fixed",
+   "fixed_version": "2.19.3"
+  },
+  {
+   "id": "CVE-2022-24785",
+   "aliases": [
+    "CVE-2022-24785",
+    "GHSA-8hfj-j24r-96c4"
+   ],
+   "package": "npm/moment@2.15.1",
+   "kev": false,
+   "epss": 0.1384,
+   "fix_status": "fixed",
+   "fixed_version": "2.29.2"
+  },
+  {
+   "id": "CVE-2019-17426",
+   "aliases": [
+    "CVE-2019-17426",
+    "GHSA-8687-vv9j-hgph"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.01497,
+   "fix_status": "fixed",
+   "fixed_version": "4.13.21"
+  },
+  {
+   "id": "CVE-2022-24304",
+   "aliases": [
+    "CVE-2022-24304",
+    "GHSA-h8hf-x3f4-xwgp"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": null,
+   "fix_status": "fixed",
+   "fixed_version": "5.13.15"
+  },
+  {
+   "id": "CVE-2022-2564",
+   "aliases": [
+    "CVE-2022-2564",
+    "GHSA-f825-f98c-gj3g"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.31301,
+   "fix_status": "fixed",
+   "fixed_version": "5.13.15"
+  },
+  {
+   "id": "CVE-2023-3696",
+   "aliases": [
+    "CVE-2023-3696",
+    "GHSA-9m93-w8w6-76hh"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.01208,
+   "fix_status": "fixed",
+   "fixed_version": "5.13.20"
+  },
+  {
+   "id": "CVE-2024-53900",
+   "aliases": [
+    "CVE-2024-53900",
+    "GHSA-m7xq-9374-9rvx"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.03981,
+   "fix_status": "fixed",
+   "fixed_version": "5.13.23"
+  },
+  {
+   "id": "CVE-2025-23061",
+   "aliases": [
+    "CVE-2025-23061",
+    "GHSA-vg7j-7cwx-8wgw"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.07236,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.6"
+  },
+  {
+   "id": "CVE-2026-125116",
+   "aliases": [
+    "CVE-2026-125116",
+    "GHSA-wr5m-5jph-8m96"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.00339,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.12"
+  },
+  {
+   "id": "CVE-2026-125117",
+   "aliases": [
+    "CVE-2026-125117",
+    "GHSA-8332-j7wj-wjw4"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.00584,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.12"
+  },
+  {
+   "id": "CVE-2026-125118",
+   "aliases": [
+    "CVE-2026-125118",
+    "GHSA-6972-9mcm-vhwj"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.004,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.12"
+  },
+  {
+   "id": "CVE-2026-125120",
+   "aliases": [
+    "CVE-2026-125120",
+    "GHSA-pcrw-h46h-c93h"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.00566,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.11"
+  },
+  {
+   "id": "CVE-2026-42334",
+   "aliases": [
+    "CVE-2026-42334",
+    "GHSA-wpg9-53fq-2r8h"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.00274,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.9"
+  },
+  {
+   "id": "CVE-2026-73562",
+   "aliases": [
+    "CVE-2026-73562",
+    "GHSA-664h-wqgq-64gw"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": false,
+   "epss": 0.00503,
+   "fix_status": "fixed",
+   "fixed_version": "6.13.10"
+  },
+  {
+   "id": "GHSA-r5xw-q988-826m",
+   "aliases": [
+    "GHSA-r5xw-q988-826m"
+   ],
+   "package": "npm/mongoose@4.2.4",
+   "kev": null,
+   "epss": null,
+   "fix_status": "fixed",
+   "fixed_version": "4.3.6"
+  },
+  {
+   "id": "CVE-2026-15603",
+   "aliases": [
+    "CVE-2026-15603",
+    "GHSA-jxfw-x594-9x9m"
+   ],
+   "package": "npm/morgan@1.10.0",
+   "kev": false,
+   "epss": 0.00397,
+   "fix_status": "fixed",
+   "fixed_version": "1.12.0"
+  },
+  {
+   "id": "CVE-2026-5078",
+   "aliases": [
+    "CVE-2026-5078",
+    "GHSA-4vj7-5mj6-jm8m"
+   ],
+   "package": "npm/morgan@1.10.0",
+   "kev": false,
+   "epss": 0.00332,
+   "fix_status": "fixed",
+   "fixed_version": "1.11.0"
+  },
+  {
+   "id": "CVE-2026-87859",
+   "aliases": [
+    "CVE-2026-87859",
+    "GHSA-9f6g-j8ch-79g4"
+   ],
+   "package": "npm/morgan@1.10.0",
+   "kev": false,
+   "epss": 0.0041,
+   "fix_status": "fixed",
+   "fixed_version": "1.12.1"
+  },
+  {
+   "id": "CVE-2017-20162",
+   "aliases": [
+    "CVE-2017-20162",
+    "GHSA-w9mr-4mfr-499f"
+   ],
+   "package": "npm/ms@0.7.3",
+   "kev": false,
+   "epss": 0.01056,
+   "fix_status": "fixed",
+   "fixed_version": "2.0.0"
+  },
+  {
+   "id": "GHSA-57cf-349j-352g",
+   "aliases": [
+    "GHSA-57cf-349j-352g"
+   ],
+   "package": "npm/npmconf@0.0.24",
+   "kev": null,
+   "epss": null,
+   "fix_status": "fixed",
+   "fixed_version": "2.1.3"
+  },
+  {
+   "id": "CVE-2014-3744",
+   "aliases": [
+    "CVE-2014-3744",
+    "GHSA-69rr-wvh9-6c4q"
+   ],
+   "package": "npm/st@0.2.4",
+   "kev": false,
+   "epss": 0.34012,
+   "fix_status": "fixed",
+   "fixed_version": "0.2.5"
+  },
+  {
+   "id": "CVE-2017-16224",
+   "aliases": [
+    "CVE-2017-16224",
+    "GHSA-72fg-jqhx-c68p"
+   ],
+   "package": "npm/st@0.2.4",
+   "kev": false,
+   "epss": 0.00849,
+   "fix_status": "fixed",
+   "fixed_version": "1.2.2"
+  },
+  {
+   "id": "CVE-2020-8158",
+   "aliases": [
+    "CVE-2020-8158",
+    "GHSA-pf2j-9qmp-jqr2"
+   ],
+   "package": "npm/typeorm@0.2.24",
+   "kev": false,
+   "epss": 0.0212,
+   "fix_status": "fixed",
+   "fixed_version": "0.2.25"
+  },
+  {
+   "id": "CVE-2022-33171",
+   "aliases": [
+    "CVE-2022-33171",
+    "GHSA-fx4w-v43j-vc45"
+   ],
+   "package": "npm/typeorm@0.2.24",
+   "kev": false,
+   "epss": 0.21393,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.0"
+  },
+  {
+   "id": "CVE-2025-60542",
+   "aliases": [
+    "CVE-2025-60542",
+    "GHSA-q2pj-6v73-8rgj"
+   ],
+   "package": "npm/typeorm@0.2.24",
+   "kev": false,
+   "epss": 0.00265,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.26"
+  },
+  {
+   "id": "CVE-2026-73651",
+   "aliases": [
+    "CVE-2026-73651",
+    "GHSA-2rp8-mm9q-fp49"
+   ],
+   "package": "npm/typeorm@0.2.24",
+   "kev": false,
+   "epss": 0.00392,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.31"
+  },
+  {
+   "id": "GHSA-9ggv-8w38-r7pm",
+   "aliases": [
+    "GHSA-9ggv-8w38-r7pm"
+   ],
+   "package": "npm/typeorm@0.2.24",
+   "kev": null,
+   "epss": null,
+   "fix_status": "fixed",
+   "fixed_version": "0.3.29"
+  },
+  {
+   "id": "CVE-2021-3765",
+   "aliases": [
+    "CVE-2021-3765",
+    "GHSA-qgmg-gppg-76g5"
+   ],
+   "package": "npm/validator@13.5.2",
+   "kev": false,
+   "epss": 0.01792,
+   "fix_status": "fixed",
+   "fixed_version": "13.7.0"
+  },
+  {
+   "id": "CVE-2025-12758",
+   "aliases": [
+    "CVE-2025-12758",
+    "GHSA-vghf-hv5q-vc2g"
+   ],
+   "package": "npm/validator@13.5.2",
+   "kev": false,
+   "epss": 0.00554,
+   "fix_status": "fixed",
+   "fixed_version": "13.15.22"
+  },
+  {
+   "id": "CVE-2025-56200",
+   "aliases": [
+    "CVE-2025-56200",
+    "GHSA-9965-vmph-33xx"
+   ],
+   "package": "npm/validator@13.5.2",
+   "kev": false,
+   "epss": 0.00324,
+   "fix_status": "fixed",
+   "fixed_version": "13.15.20"
+  },
+  {
+   "id": "GHSA-xx4c-jj58-r7x6",
+   "aliases": [
+    "GHSA-xx4c-jj58-r7x6"
+   ],
+   "package": "npm/validator@13.5.2",
+   "kev": null,
+   "epss": null,
+   "fix_status": "fixed",
+   "fixed_version": "13.7.0"
+  },
+  {
+   "id": "CVE-2022-22984",
+   "aliases": [
+    "CVE-2022-22984",
+    "GHSA-4x6g-3cmx-w76r"
+   ],
+   "package": "npm/snyk@1.278.1",
+   "kev": false,
+   "epss": 0.03225,
+   "fix_status": "fixed",
+   "fixed_version": "1.1064.0"
+  },
+  {
+   "id": "CVE-2022-24441",
+   "aliases": [
+    "CVE-2022-24441",
+    "GHSA-4vrv-93c7-m92j"
+   ],
+   "package": "npm/snyk@1.278.1",
+   "kev": false,
+   "epss": 0.00791,
+   "fix_status": "fixed",
+   "fixed_version": "1.1064.0"
+  },
+  {
+   "id": "CVE-2022-40764",
+   "aliases": [
+    "CVE-2022-40764",
+    "GHSA-hpqj-7cj6-hfj8"
+   ],
+   "package": "npm/snyk@1.278.1",
+   "kev": false,
+   "epss": 0.00612,
+   "fix_status": "fixed",
+   "fixed_version": "1.996.0"
+  },
+  {
+   "id": "CVE-2025-6624",
+   "aliases": [
+    "CVE-2025-6624",
+    "GHSA-6hwc-9h8r-3vmf"
+   ],
+   "package": "npm/snyk@1.278.1",
+   "kev": false,
+   "epss": 0.00179,
+   "fix_status": "fixed",
+   "fixed_version": "1.1297.3"
+  }
+ ],
+ "packages": [
+  {
+   "package": "npm/adm-zip@0.4.7",
+   "ecosystem": "npm",
+   "name": "adm-zip",
+   "installed": "0.4.7",
+   "min_safe_upgrade": "0.6.1",
+   "records": [
+    {
+     "id": "GHSA-3v6h-hqm4-2rg6",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.4.11"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-j5f4-cc29-5x44",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-8238-w5pm-2374",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-c6fg-446q-cg94",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-p634-w6r4-rjp2",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-xcpc-8h2w-3j85",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-7q85-xj36-vmfc",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-rcw4-f5rp-g42v",
+     "affected": [
+      {
+       "package": {
+        "name": "adm-zip",
+        "purl": "pkg:npm/adm-zip",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.6.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/body-parser@1.9.0",
+   "ecosystem": "npm",
+   "name": "body-parser",
+   "installed": "1.9.0",
+   "min_safe_upgrade": "1.20.9",
+   "records": [
+    {
+     "id": "GHSA-qwcr-r2fm-qrc7",
+     "affected": [
+      {
+       "package": {
+        "name": "body-parser",
+        "purl": "pkg:npm/body-parser",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.20.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-27r3-jxmh-p828",
+     "affected": [
+      {
+       "package": {
+        "name": "body-parser",
+        "purl": "pkg:npm/body-parser",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "2.0.0"
+          },
+          {
+           "fixed": "2.4.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "body-parser",
+        "purl": "pkg:npm/body-parser",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.20.9"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-v422-hmwv-36x6",
+     "affected": [
+      {
+       "package": {
+        "name": "body-parser",
+        "purl": "pkg:npm/body-parser",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.20.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "body-parser",
+        "purl": "pkg:npm/body-parser",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "2.0.0"
+          },
+          {
+           "fixed": "2.3.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/dustjs-linkedin@2.5.0",
+   "ecosystem": "npm",
+   "name": "dustjs-linkedin",
+   "installed": "2.5.0",
+   "min_safe_upgrade": "3.0.0",
+   "records": [
+    {
+     "id": "GHSA-c6rp-wrp9-qr4q",
+     "affected": [
+      {
+       "package": {
+        "name": "dustjs-linkedin",
+        "purl": "pkg:npm/dustjs-linkedin",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "3.0.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/ejs@1.0.0",
+   "ecosystem": "npm",
+   "name": "ejs",
+   "installed": "1.0.0",
+   "min_safe_upgrade": "3.1.10",
+   "records": [
+    {
+     "id": "GHSA-hwcf-pp87-7x6p",
+     "affected": [
+      {
+       "package": {
+        "name": "ejs",
+        "purl": "pkg:npm/ejs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.5.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-6x77-rpqf-j6mw",
+     "affected": [
+      {
+       "package": {
+        "name": "ejs",
+        "purl": "pkg:npm/ejs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.5.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-3w5v-p54c-f74x",
+     "affected": [
+      {
+       "package": {
+        "name": "ejs",
+        "purl": "pkg:npm/ejs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.5.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-phwq-j96m-2c2q",
+     "affected": [
+      {
+       "package": {
+        "name": "ejs",
+        "purl": "pkg:npm/ejs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "3.1.7"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-ghr5-ch3p-vcr6",
+     "affected": [
+      {
+       "package": {
+        "name": "ejs",
+        "purl": "pkg:npm/ejs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "3.1.10"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/express@4.12.4",
+   "ecosystem": "npm",
+   "name": "express",
+   "installed": "4.12.4",
+   "min_safe_upgrade": "4.20.0",
+   "records": [
+    {
+     "id": "GHSA-rv95-896h-c2vc",
+     "affected": [
+      {
+       "package": {
+        "name": "express",
+        "purl": "pkg:npm/express",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.19.2"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "express",
+        "purl": "pkg:npm/express",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "5.0.0-alpha.1"
+          },
+          {
+           "fixed": "5.0.0-beta.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-qw6h-vgh9-j6wx",
+     "affected": [
+      {
+       "package": {
+        "name": "express",
+        "purl": "pkg:npm/express",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.20.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "express",
+        "purl": "pkg:npm/express",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "5.0.0-alpha.1"
+          },
+          {
+           "fixed": "5.0.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/express-fileupload@0.0.5",
+   "ecosystem": "npm",
+   "name": "express-fileupload",
+   "installed": "0.0.5",
+   "min_safe_upgrade": null,
+   "records": [
+    {
+     "id": "GHSA-9wcg-jrwf-8gg7",
+     "affected": [
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1.9"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-w4m6-x6c2-j5c9",
+     "affected": [
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "last_affected": "1.3.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-q3w9-g74q-vp5f",
+     "affected": [
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1.6-alpha.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1.6-alpha.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1.6-alpha.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1.6-alpha.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "express-fileupload",
+        "purl": "pkg:npm/express-fileupload",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1.6-alpha.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/hbs@4.0.4",
+   "ecosystem": "npm",
+   "name": "hbs",
+   "installed": "4.0.4",
+   "min_safe_upgrade": null,
+   "records": [
+    {
+     "id": "GHSA-7f5c-rpf4-86p8",
+     "affected": [
+      {
+       "package": {
+        "name": "hbs",
+        "purl": "pkg:npm/hbs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "last_affected": "4.4.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/jquery@2.2.4",
+   "ecosystem": "npm",
+   "name": "jquery",
+   "installed": "2.2.4",
+   "min_safe_upgrade": "3.5.0",
+   "records": [
+    {
+     "id": "GHSA-rmxg-73gg-4p98",
+     "affected": [
+      {
+       "package": {
+        "name": "jquery",
+        "purl": "pkg:npm/jquery",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.12.2"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "jquery",
+        "purl": "pkg:npm/jquery",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "1.12.3"
+          },
+          {
+           "fixed": "3.0.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-6c3j-c64m-qhgq",
+     "affected": [
+      {
+       "package": {
+        "name": "jquery",
+        "purl": "pkg:npm/jquery",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "1.1.4"
+          },
+          {
+           "fixed": "3.4.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-gxr4-xjj5-5px2",
+     "affected": [
+      {
+       "package": {
+        "name": "jquery",
+        "purl": "pkg:npm/jquery",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "1.12.0"
+          },
+          {
+           "fixed": "3.5.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-jpcq-cgw6-v4j6",
+     "affected": [
+      {
+       "package": {
+        "name": "jquery",
+        "purl": "pkg:npm/jquery",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "1.0.3"
+          },
+          {
+           "fixed": "3.5.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/lodash@4.17.4",
+   "ecosystem": "npm",
+   "name": "lodash",
+   "installed": "4.17.4",
+   "min_safe_upgrade": "4.18.0",
+   "records": [
+    {
+     "id": "GHSA-4xc9-xhrj-v574",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.17.11"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-fvqr-27wr-82fm",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.17.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-x5rq-j2xg-h7qm",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "4.7.0"
+          },
+          {
+           "fixed": "4.17.11"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-jf85-cpcp-j695",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.17.12"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-29mw-wpgm-hmr9",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "4.0.0"
+          },
+          {
+           "fixed": "4.17.21"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-p6mc-m468-83gw",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "3.7.0"
+          },
+          {
+           "fixed": "4.17.19"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-35jh-r3h4-6jhm",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.17.21"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-xxjr-mmjv-4gpg",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "4.0.0"
+          },
+          {
+           "fixed": "4.17.23"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-r5fr-rjxr-66jc",
+     "affected": [
+      {
+       "package": {
+        "name": "lodash",
+        "purl": "pkg:npm/lodash",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "4.0.0"
+          },
+          {
+           "fixed": "4.18.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/marked@0.3.5",
+   "ecosystem": "npm",
+   "name": "marked",
+   "installed": "0.3.5",
+   "min_safe_upgrade": "4.0.10",
+   "records": [
+    {
+     "id": "GHSA-vfvf-mqq8-rwqc",
+     "affected": [
+      {
+       "package": {
+        "name": "marked",
+        "purl": "pkg:npm/marked",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-7px7-7xjx-hxm8",
+     "affected": [
+      {
+       "package": {
+        "name": "marked",
+        "purl": "pkg:npm/marked",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.7"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-x5pg-88wf-qq4p",
+     "affected": [
+      {
+       "package": {
+        "name": "marked",
+        "purl": "pkg:npm/marked",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.9"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-p9wx-2529-fp83",
+     "affected": [
+      {
+       "package": {
+        "name": "marked",
+        "purl": "pkg:npm/marked",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.17"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-rrrm-qjm4-v8hf",
+     "affected": [
+      {
+       "package": {
+        "name": "marked",
+        "purl": "pkg:npm/marked",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.0.10"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-5v2h-r2cx-5xgj",
+     "affected": [
+      {
+       "package": {
+        "name": "marked",
+        "purl": "pkg:npm/marked",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.0.10"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/moment@2.15.1",
+   "ecosystem": "npm",
+   "name": "moment",
+   "installed": "2.15.1",
+   "min_safe_upgrade": "2.29.2",
+   "records": [
+    {
+     "id": "GHSA-446m-mv8f-q348",
+     "affected": [
+      {
+       "package": {
+        "name": "moment",
+        "purl": "pkg:npm/moment",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.19.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-8hfj-j24r-96c4",
+     "affected": [
+      {
+       "package": {
+        "name": "moment",
+        "purl": "pkg:npm/moment",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.29.2"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/mongoose@4.2.4",
+   "ecosystem": "npm",
+   "name": "mongoose",
+   "installed": "4.2.4",
+   "min_safe_upgrade": "6.13.12",
+   "records": [
+    {
+     "id": "GHSA-8687-vv9j-hgph",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "5.0.0"
+          },
+          {
+           "fixed": "5.7.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "4.13.21"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-h8hf-x3f4-xwgp",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "6.0.0"
+          },
+          {
+           "fixed": "6.4.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "5.13.15"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-f825-f98c-gj3g",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "6.0.0"
+          },
+          {
+           "fixed": "6.4.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "5.13.15"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-9m93-w8w6-76hh",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.3.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "6.0.0"
+          },
+          {
+           "fixed": "6.11.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "5.13.20"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-m7xq-9374-9rvx",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0-rc0"
+          },
+          {
+           "fixed": "8.8.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0-rc0"
+          },
+          {
+           "fixed": "7.8.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "6.0.0-rc0"
+          },
+          {
+           "fixed": "6.13.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "3.6.0-rc0"
+          },
+          {
+           "fixed": "5.13.23"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-vg7j-7cwx-8wgw",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0-rc0"
+          },
+          {
+           "fixed": "8.9.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0-rc0"
+          },
+          {
+           "fixed": "7.8.4"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-wr5m-5jph-8m96",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.12"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.8.13"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0"
+          },
+          {
+           "fixed": "8.24.7"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "9.0.0"
+          },
+          {
+           "fixed": "9.11.4"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-8332-j7wj-wjw4",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.12"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.8.13"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0"
+          },
+          {
+           "fixed": "8.24.7"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "9.0.0"
+          },
+          {
+           "fixed": "9.11.4"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-6972-9mcm-vhwj",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.12"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.8.13"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0"
+          },
+          {
+           "fixed": "8.24.7"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "9.0.0"
+          },
+          {
+           "fixed": "9.11.4"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-pcrw-h46h-c93h",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.11"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.8.12"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0"
+          },
+          {
+           "fixed": "8.24.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "9.0.0"
+          },
+          {
+           "fixed": "9.9.2"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-wpg9-53fq-2r8h",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.9"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.8.9"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0"
+          },
+          {
+           "fixed": "8.22.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "9.0.0"
+          },
+          {
+           "fixed": "9.1.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-664h-wqgq-64gw",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "6.13.10"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "7.0.0"
+          },
+          {
+           "fixed": "7.8.10"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "8.0.0"
+          },
+          {
+           "fixed": "8.24.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "9.0.0"
+          },
+          {
+           "fixed": "9.7.2"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-r5xw-q988-826m",
+     "affected": [
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "3.5.5"
+          },
+          {
+           "fixed": "3.8.39"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "mongoose",
+        "purl": "pkg:npm/mongoose",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "4.0.0"
+          },
+          {
+           "fixed": "4.3.6"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/morgan@1.10.0",
+   "ecosystem": "npm",
+   "name": "morgan",
+   "installed": "1.10.0",
+   "min_safe_upgrade": "1.12.1",
+   "records": [
+    {
+     "id": "GHSA-jxfw-x594-9x9m",
+     "affected": [
+      {
+       "package": {
+        "name": "morgan",
+        "purl": "pkg:npm/morgan",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.12.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-4vj7-5mj6-jm8m",
+     "affected": [
+      {
+       "package": {
+        "name": "morgan",
+        "purl": "pkg:npm/morgan",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "1.2.0"
+          },
+          {
+           "fixed": "1.11.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-9f6g-j8ch-79g4",
+     "affected": [
+      {
+       "package": {
+        "name": "morgan",
+        "purl": "pkg:npm/morgan",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.12.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/ms@0.7.3",
+   "ecosystem": "npm",
+   "name": "ms",
+   "installed": "0.7.3",
+   "min_safe_upgrade": "2.0.0",
+   "records": [
+    {
+     "id": "GHSA-w9mr-4mfr-499f",
+     "affected": [
+      {
+       "package": {
+        "name": "ms",
+        "purl": "pkg:npm/ms",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.0.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/npmconf@0.0.24",
+   "ecosystem": "npm",
+   "name": "npmconf",
+   "installed": "0.0.24",
+   "min_safe_upgrade": "2.1.3",
+   "records": [
+    {
+     "id": "GHSA-57cf-349j-352g",
+     "affected": [
+      {
+       "package": {
+        "name": "npmconf",
+        "purl": "pkg:npm/npmconf",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.1.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/st@0.2.4",
+   "ecosystem": "npm",
+   "name": "st",
+   "installed": "0.2.4",
+   "min_safe_upgrade": "1.2.2",
+   "records": [
+    {
+     "id": "GHSA-69rr-wvh9-6c4q",
+     "affected": [
+      {
+       "package": {
+        "name": "st",
+        "purl": "pkg:npm/st",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.2.5"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-72fg-jqhx-c68p",
+     "affected": [
+      {
+       "package": {
+        "name": "st",
+        "purl": "pkg:npm/st",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.2.2"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/typeorm@0.2.24",
+   "ecosystem": "npm",
+   "name": "typeorm",
+   "installed": "0.2.24",
+   "min_safe_upgrade": "0.3.31",
+   "records": [
+    {
+     "id": "GHSA-pf2j-9qmp-jqr2",
+     "affected": [
+      {
+       "package": {
+        "name": "typeorm",
+        "purl": "pkg:npm/typeorm",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.2.25"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-fx4w-v43j-vc45",
+     "affected": [
+      {
+       "package": {
+        "name": "typeorm",
+        "purl": "pkg:npm/typeorm",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-q2pj-6v73-8rgj",
+     "affected": [
+      {
+       "package": {
+        "name": "typeorm",
+        "purl": "pkg:npm/typeorm",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.26"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-2rp8-mm9q-fp49",
+     "affected": [
+      {
+       "package": {
+        "name": "typeorm",
+        "purl": "pkg:npm/typeorm",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "0.3.31"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      },
+      {
+       "package": {
+        "name": "typeorm",
+        "purl": "pkg:npm/typeorm",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "1.0.0"
+          },
+          {
+           "fixed": "1.1.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-9ggv-8w38-r7pm",
+     "affected": [
+      {
+       "package": {
+        "name": "typeorm",
+        "purl": "pkg:npm/typeorm",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0.1.12"
+          },
+          {
+           "fixed": "0.3.29"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/validator@13.5.2",
+   "ecosystem": "npm",
+   "name": "validator",
+   "installed": "13.5.2",
+   "min_safe_upgrade": "13.15.22",
+   "records": [
+    {
+     "id": "GHSA-qgmg-gppg-76g5",
+     "affected": [
+      {
+       "package": {
+        "name": "validator",
+        "purl": "pkg:npm/validator",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "13.7.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-vghf-hv5q-vc2g",
+     "affected": [
+      {
+       "package": {
+        "name": "validator",
+        "purl": "pkg:npm/validator",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "13.15.22"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-9965-vmph-33xx",
+     "affected": [
+      {
+       "package": {
+        "name": "validator",
+        "purl": "pkg:npm/validator",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "13.15.20"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-xx4c-jj58-r7x6",
+     "affected": [
+      {
+       "package": {
+        "name": "validator",
+        "purl": "pkg:npm/validator",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "11.1.0"
+          },
+          {
+           "fixed": "13.7.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/snyk@1.278.1",
+   "ecosystem": "npm",
+   "name": "snyk",
+   "installed": "1.278.1",
+   "min_safe_upgrade": "1.1297.3",
+   "records": [
+    {
+     "id": "GHSA-4x6g-3cmx-w76r",
+     "affected": [
+      {
+       "package": {
+        "name": "snyk",
+        "purl": "pkg:npm/snyk",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1064.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-4vrv-93c7-m92j",
+     "affected": [
+      {
+       "package": {
+        "name": "snyk",
+        "purl": "pkg:npm/snyk",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1064.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-hpqj-7cj6-hfj8",
+     "affected": [
+      {
+       "package": {
+        "name": "snyk",
+        "purl": "pkg:npm/snyk",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.996.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-6hwc-9h8r-3vmf",
+     "affected": [
+      {
+       "package": {
+        "name": "snyk",
+        "purl": "pkg:npm/snyk",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.1297.3"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "expected_order": [
+  "CVE-2020-11023",
+  "CVE-2020-11022",
+  "CVE-2019-11358",
+  "CVE-2014-3744",
+  "CVE-2022-29078",
+  "CVE-2022-2564",
+  "CVE-2015-9251",
+  "CVE-2022-33171",
+  "CVE-2021-23337",
+  "CVE-2022-24785",
+  "CVE-2018-1002204",
+  "CVE-2020-28500",
+  "CVE-2025-23061",
+  "CVE-2017-1000228",
+  "CVE-2020-8203",
+  "CVE-2019-10744",
+  "CVE-2020-7699",
+  "CVE-2024-53900",
+  "CVE-2017-18214",
+  "CVE-2022-22984",
+  "CVE-2022-21680",
+  "CVE-2019-1010266",
+  "CVE-2022-21681",
+  "CVE-2026-4800",
+  "CVE-2018-3721",
+  "CVE-2017-1000189",
+  "CVE-2020-8158",
+  "CVE-2025-13465",
+  "CVE-2021-3765",
+  "CVE-2017-16114",
+  "CVE-2017-1000427",
+  "CVE-2019-17426",
+  "CVE-2018-16487",
+  "CVE-2016-10531",
+  "CVE-2022-27261",
+  "CVE-2017-1000188",
+  "CVE-2023-3696",
+  "CVE-2021-4264",
+  "CVE-2017-20162",
+  "CVE-2021-32822",
+  "CVE-2017-16224",
+  "CVE-2026-39244",
+  "CVE-2024-45590",
+  "CVE-2022-24441",
+  "CVE-2024-29041",
+  "CVE-2026-92000",
+  "CVE-2024-33883",
+  "CVE-2022-40764",
+  "CVE-2018-25110",
+  "CVE-2026-77301",
+  "CVE-2026-125117",
+  "CVE-2026-125120",
+  "CVE-2025-12758",
+  "CVE-2026-73562",
+  "CVE-2024-43796",
+  "CVE-2026-114102",
+  "CVE-2026-12590",
+  "CVE-2026-87859",
+  "CVE-2026-114103",
+  "CVE-2026-125118",
+  "CVE-2026-15603",
+  "CVE-2026-73651",
+  "CVE-2026-111181",
+  "CVE-2026-125116",
+  "CVE-2026-5078",
+  "CVE-2026-114104",
+  "CVE-2025-56200",
+  "CVE-2026-42334",
+  "CVE-2025-60542",
+  "CVE-2026-102282",
+  "CVE-2025-6624",
+  "CVE-2022-24304",
+  "GHSA-57cf-349j-352g",
+  "GHSA-9ggv-8w38-r7pm",
+  "GHSA-q3w9-g74q-vp5f",
+  "GHSA-r5xw-q988-826m",
+  "GHSA-xx4c-jj58-r7x6"
+ ],
+ "source": {
+  "repo": "snyk-labs/nodejs-goof",
+  "commit": "add14ba59e98240d9e00a235dd7d42cd61ae9912",
+  "path": "package-lock.json",
+  "companion": null
+ }
+}

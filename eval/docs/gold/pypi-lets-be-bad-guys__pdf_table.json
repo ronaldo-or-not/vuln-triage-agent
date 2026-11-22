@@ -1,0 +1,46 @@
+{
+ "doc": "pypi-lets-be-bad-guys__pdf_table.pdf",
+ "case": "pypi-lets-be-bad-guys",
+ "layout": "pdf_table",
+ "findings": [
+  {
+   "ecosystem": "PyPI",
+   "package": "django",
+   "version": "1.9.6",
+   "ids": [
+    "CVE-2016-6186",
+    "CVE-2016-7401",
+    "CVE-2016-9013",
+    "CVE-2016-9014",
+    "CVE-2017-7233",
+    "CVE-2017-7234",
+    "CVE-2019-19844",
+    "CVE-2020-7471",
+    "CVE-2021-33203",
+    "CVE-2022-36359",
+    "CVE-2024-45231",
+    "CVE-2025-48432",
+    "CVE-2025-57833",
+    "CVE-2025-64458",
+    "CVE-2025-64459",
+    "CVE-2026-15307",
+    "CVE-2026-15830",
+    "CVE-2026-48587",
+    "CVE-2026-48588",
+    "CVE-2026-53877",
+    "CVE-2026-53878",
+    "CVE-2026-6873",
+    "CVE-2026-8404"
+   ]
+  },
+  {
+   "ecosystem": "PyPI",
+   "package": "django-debug-toolbar",
+   "version": "1.4",
+   "ids": [
+    "CVE-2021-30459"
+   ]
+  }
+ ],
+ "distractors": []
+}

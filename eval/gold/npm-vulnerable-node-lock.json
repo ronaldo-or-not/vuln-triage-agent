@@ -1,0 +1,72 @@
+{
+ "id": "npm-vulnerable-node-lock",
+ "ecosystem": "npm",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 8,
+ "unchecked": [],
+ "vulns": [
+  {
+   "id": "CVE-2026-87859",
+   "aliases": [
+    "CVE-2026-87859",
+    "GHSA-9f6g-j8ch-79g4"
+   ],
+   "package": "npm/morgan@1.12.0",
+   "kev": false,
+   "epss": 0.0041,
+   "fix_status": "fixed",
+   "fixed_version": "1.12.1"
+  }
+ ],
+ "packages": [
+  {
+   "package": "npm/morgan@1.12.0",
+   "ecosystem": "npm",
+   "name": "morgan",
+   "installed": "1.12.0",
+   "min_safe_upgrade": "1.12.1",
+   "records": [
+    {
+     "id": "GHSA-9f6g-j8ch-79g4",
+     "affected": [
+      {
+       "package": {
+        "name": "morgan",
+        "purl": "pkg:npm/morgan",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.12.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "expected_order": [
+  "CVE-2026-87859"
+ ],
+ "source": {
+  "repo": "cr0hn/vulnerable-node",
+  "commit": "d68f2a3c9277ece2c2feb9976052033bdecd7fbe",
+  "path": "package-lock.json",
+  "companion": null
+ }
+}

@@ -1,0 +1,2958 @@
+{
+ "id": "maven-webgoat",
+ "ecosystem": "Maven",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 24,
+ "unchecked": [
+  "org.springframework.boot:spring-boot-starter-validation",
+  "org.springframework.boot:spring-boot-starter-webmvc",
+  "com.fasterxml.jackson.core:jackson-databind",
+  "com.fasterxml.jackson.datatype:jackson-datatype-jsr310",
+  "org.springframework.boot:spring-boot-starter-actuator",
+  "org.flywaydb:flyway-core",
+  "org.flywaydb:flyway-database-hsqldb",
+  "org.springframework.boot:spring-boot-starter-data-jpa",
+  "org.springframework.boot:spring-boot-starter-security",
+  "org.springframework.boot:spring-boot-starter-thymeleaf",
+  "org.springframework.boot:spring-boot-starter-security-oauth2-client",
+  "org.thymeleaf.extras:thymeleaf-extras-springsecurity6",
+  "jakarta.servlet:jakarta.servlet-api",
+  "org.hsqldb:hsqldb",
+  "org.apache.commons:commons-lang3",
+  "jakarta.xml.bind:jakarta.xml.bind-api",
+  "com.sun.xml.bind:jaxb-impl",
+  "org.springframework.boot:spring-boot-starter-test",
+  "org.springframework.boot:spring-boot-starter-webmvc-test",
+  "org.springframework.boot:spring-boot-starter-data-jpa-test",
+  "org.springframework.boot:spring-boot-starter-security-test",
+  "org.springframework.security:spring-security-test",
+  "org.springframework.boot:spring-boot-properties-migrator"
+ ],
+ "vulns": [
+  {
+   "id": "CVE-2013-7285",
+   "aliases": [
+    "CVE-2013-7285",
+    "GHSA-f554-x222-wgf7"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.84362,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.7"
+  },
+  {
+   "id": "CVE-2016-3674",
+   "aliases": [
+    "CVE-2016-3674",
+    "GHSA-rgh3-987h-wpmw"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.08179,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.9"
+  },
+  {
+   "id": "CVE-2017-7957",
+   "aliases": [
+    "CVE-2017-7957",
+    "GHSA-7hwc-46rm-65jh"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04928,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.10"
+  },
+  {
+   "id": "CVE-2020-26217",
+   "aliases": [
+    "CVE-2020-26217",
+    "GHSA-mw36-7c6c-q4q2"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.84968,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.14-java7"
+  },
+  {
+   "id": "CVE-2020-26258",
+   "aliases": [
+    "CVE-2020-26258",
+    "GHSA-4cch-wxpw-8p28"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.81817,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.15"
+  },
+  {
+   "id": "CVE-2020-26259",
+   "aliases": [
+    "CVE-2020-26259",
+    "GHSA-jfvx-7wrx-43fh"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.82392,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.15"
+  },
+  {
+   "id": "CVE-2021-21341",
+   "aliases": [
+    "CVE-2021-21341",
+    "GHSA-2p3x-qw9c-25hh"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.77801,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21342",
+   "aliases": [
+    "CVE-2021-21342",
+    "GHSA-hvv8-336g-rx3m"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.4999,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21343",
+   "aliases": [
+    "CVE-2021-21343",
+    "GHSA-74cv-f58x-f9wf"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.46666,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21344",
+   "aliases": [
+    "CVE-2021-21344",
+    "GHSA-59jw-jqf4-3wq3"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.7598,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21345",
+   "aliases": [
+    "CVE-2021-21345",
+    "GHSA-hwpc-8xqv-jvj4"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.72324,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21346",
+   "aliases": [
+    "CVE-2021-21346",
+    "GHSA-4hrm-m67v-5cxr"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.76367,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21347",
+   "aliases": [
+    "CVE-2021-21347",
+    "GHSA-qpfq-ph7r-qv6f"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.14301,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21348",
+   "aliases": [
+    "CVE-2021-21348",
+    "GHSA-56p8-3fh9-4cvq"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.13832,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21349",
+   "aliases": [
+    "CVE-2021-21349",
+    "GHSA-f6hm-88x3-mfjv"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.46826,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21350",
+   "aliases": [
+    "CVE-2021-21350",
+    "GHSA-43gc-mjxg-gvrq"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.15234,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-21351",
+   "aliases": [
+    "CVE-2021-21351",
+    "GHSA-hrcp-8f3q-4w2c"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.82136,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.16"
+  },
+  {
+   "id": "CVE-2021-29505",
+   "aliases": [
+    "CVE-2021-29505",
+    "GHSA-7chv-rrw6-w6fc"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.77232,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.17"
+  },
+  {
+   "id": "CVE-2021-39139",
+   "aliases": [
+    "CVE-2021-39139",
+    "GHSA-64xx-cq4q-mf44"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.0454,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39140",
+   "aliases": [
+    "CVE-2021-39140",
+    "GHSA-6wf9-jmg9-vxcc"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.05918,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39141",
+   "aliases": [
+    "CVE-2021-39141",
+    "GHSA-g5w6-mrj7-75h2"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.16118,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39144",
+   "aliases": [
+    "CVE-2021-39144",
+    "GHSA-j9h8-phrw-h4fh"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": true,
+   "epss": 0.98124,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39145",
+   "aliases": [
+    "CVE-2021-39145",
+    "GHSA-8jrj-525p-826v"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04065,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39146",
+   "aliases": [
+    "CVE-2021-39146",
+    "GHSA-p8pq-r894-fm8f"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.143,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39147",
+   "aliases": [
+    "CVE-2021-39147",
+    "GHSA-h7v4-7xg3-hxcc"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04735,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39148",
+   "aliases": [
+    "CVE-2021-39148",
+    "GHSA-qrx8-8545-4wg2"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04735,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39149",
+   "aliases": [
+    "CVE-2021-39149",
+    "GHSA-3ccq-5vw3-2p6x"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04735,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39150",
+   "aliases": [
+    "CVE-2021-39150",
+    "GHSA-cxfm-5m4g-x7xp"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.03437,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39151",
+   "aliases": [
+    "CVE-2021-39151",
+    "GHSA-hph2-m3g5-xxv4"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04735,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39152",
+   "aliases": [
+    "CVE-2021-39152",
+    "GHSA-xw4p-crpj-vjx2"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.11377,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39153",
+   "aliases": [
+    "CVE-2021-39153",
+    "GHSA-2q8x-2p7f-574v"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04457,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-39154",
+   "aliases": [
+    "CVE-2021-39154",
+    "GHSA-6w62-hx7r-mw68"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.04735,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.18"
+  },
+  {
+   "id": "CVE-2021-43859",
+   "aliases": [
+    "CVE-2021-43859",
+    "GHSA-rmr5-cpv2-vgjf"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.07934,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.19"
+  },
+  {
+   "id": "CVE-2022-40151",
+   "aliases": [
+    "CVE-2022-40151",
+    "GHSA-f8cc-g7j8-xxpm"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.0237,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.20"
+  },
+  {
+   "id": "CVE-2022-41966",
+   "aliases": [
+    "CVE-2022-41966",
+    "GHSA-j563-grx4-pjpv"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.09347,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.20"
+  },
+  {
+   "id": "CVE-2024-47072",
+   "aliases": [
+    "CVE-2024-47072",
+    "GHSA-hfq9-hggm-c56q"
+   ],
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "kev": false,
+   "epss": 0.02001,
+   "fix_status": "fixed",
+   "fixed_version": "1.4.21"
+  }
+ ],
+ "packages": [
+  {
+   "package": "Maven/com.thoughtworks.xstream:xstream@1.4.5",
+   "ecosystem": "Maven",
+   "name": "com.thoughtworks.xstream:xstream",
+   "installed": "1.4.5",
+   "min_safe_upgrade": "1.4.21",
+   "records": [
+    {
+     "id": "GHSA-f554-x222-wgf7",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.7"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6"
+       ]
+      },
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "1.4.10"
+          },
+          {
+           "fixed": "1.4.11"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "1.4.10",
+        "1.4.10-java7"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-rgh3-987h-wpmw",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.9"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-7hwc-46rm-65jh",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.10"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-mw36-7c6c-q4q2",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.14-java7"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-4cch-wxpw-8p28",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.15"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-jfvx-7wrx-43fh",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.15"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-2p3x-qw9c-25hh",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-hvv8-336g-rx3m",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-74cv-f58x-f9wf",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-59jw-jqf4-3wq3",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-hwpc-8xqv-jvj4",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-4hrm-m67v-5cxr",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-qpfq-ph7r-qv6f",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-56p8-3fh9-4cvq",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-f6hm-88x3-mfjv",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-43gc-mjxg-gvrq",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-hrcp-8f3q-4w2c",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.16"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-7chv-rrw6-w6fc",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.17"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-64xx-cq4q-mf44",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-6wf9-jmg9-vxcc",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-g5w6-mrj7-75h2",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-j9h8-phrw-h4fh",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-8jrj-525p-826v",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-p8pq-r894-fm8f",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-h7v4-7xg3-hxcc",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-qrx8-8545-4wg2",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-3ccq-5vw3-2p6x",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-cxfm-5m4g-x7xp",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-hph2-m3g5-xxv4",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-xw4p-crpj-vjx2",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-2q8x-2p7f-574v",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-6w62-hx7r-mw68",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.18"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-rmr5-cpv2-vgjf",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.19"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.18",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-f8cc-g7j8-xxpm",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.20"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.18",
+        "1.4.19",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-j563-grx4-pjpv",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.20"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.18",
+        "1.4.19",
+        "1.4.2",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GHSA-hfq9-hggm-c56q",
+     "affected": [
+      {
+       "package": {
+        "name": "com.thoughtworks.xstream:xstream",
+        "purl": "pkg:maven/com.thoughtworks.xstream/xstream",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "1.4.21"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.5",
+        "0.6",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.3",
+        "1.3.1",
+        "1.4",
+        "1.4.1",
+        "1.4.10",
+        "1.4.10-java7",
+        "1.4.11",
+        "1.4.11-java7",
+        "1.4.11.1",
+        "1.4.12",
+        "1.4.12-java7",
+        "1.4.13",
+        "1.4.13-java7",
+        "1.4.14",
+        "1.4.14-java7",
+        "1.4.14-jdk7",
+        "1.4.15",
+        "1.4.16",
+        "1.4.17",
+        "1.4.18",
+        "1.4.19",
+        "1.4.2",
+        "1.4.20",
+        "1.4.3",
+        "1.4.4",
+        "1.4.5",
+        "1.4.6",
+        "1.4.7",
+        "1.4.8",
+        "1.4.9"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "expected_order": [
+  "CVE-2021-39144",
+  "CVE-2020-26217",
+  "CVE-2013-7285",
+  "CVE-2020-26259",
+  "CVE-2021-21351",
+  "CVE-2020-26258",
+  "CVE-2021-21341",
+  "CVE-2021-29505",
+  "CVE-2021-21346",
+  "CVE-2021-21344",
+  "CVE-2021-21345",
+  "CVE-2021-21342",
+  "CVE-2021-21349",
+  "CVE-2021-21343",
+  "CVE-2021-39141",
+  "CVE-2021-21350",
+  "CVE-2021-21347",
+  "CVE-2021-39146",
+  "CVE-2021-21348",
+  "CVE-2021-39152",
+  "CVE-2022-41966",
+  "CVE-2016-3674",
+  "CVE-2021-43859",
+  "CVE-2021-39140",
+  "CVE-2017-7957",
+  "CVE-2021-39147",
+  "CVE-2021-39148",
+  "CVE-2021-39149",
+  "CVE-2021-39151",
+  "CVE-2021-39154",
+  "CVE-2021-39139",
+  "CVE-2021-39153",
+  "CVE-2021-39145",
+  "CVE-2021-39150",
+  "CVE-2022-40151",
+  "CVE-2024-47072"
+ ],
+ "source": {
+  "repo": "WebGoat/WebGoat",
+  "commit": "4e98f1cbbf896fdd06edcc9930515ebe0ade7c69",
+  "path": "pom.xml",
+  "companion": null
+ }
+}

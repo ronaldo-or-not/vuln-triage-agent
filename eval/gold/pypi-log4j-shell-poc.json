@@ -1,0 +1,24 @@
+{
+ "id": "pypi-log4j-shell-poc",
+ "ecosystem": "PyPI",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 0,
+ "unchecked": [
+  "colorama",
+  "argparse"
+ ],
+ "vulns": [],
+ "packages": [],
+ "expected_order": [],
+ "source": {
+  "repo": "kozmer/log4j-shell-poc",
+  "commit": "7861abc92e862bba1cf938b4c79a248e994fee07",
+  "path": "requirements.txt",
+  "companion": null
+ }
+}

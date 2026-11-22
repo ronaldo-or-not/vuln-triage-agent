@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>triage - eval report</title><style>:root{color-scheme:light dark;--fg:#1a1a1a;--bg:#fff;--muted:#666;--line:#ddd;--pill:#eee;--warn:#b45309;--best:#ecfdf5}@media(prefers-color-scheme:dark){:root{--fg:#e6e6e6;--bg:#121212;--muted:#9a9a9a;--line:#333;--pill:#2a2a2a;--warn:#f59e0b;--best:#0f2a1f}}body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--fg);background:var(--bg);margin:0;padding:24px;max-width:1400px}h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 8px}.meta,.hint{color:var(--muted);margin:0 0 8px}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{cursor:pointer;user-select:none;white-space:nowrap}th.asc:after{content:" \25B4"}th.desc:after{content:" \25BE"}td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}td.id{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}.pill{display:inline-block;background:var(--pill);border-radius:10px;padding:0 8px;font-size:12px}.pill.warn{color:var(--warn)}tr.best td{background:var(--best)}.links{font-size:12px}.links a{margin-right:6px}td.prompt{max-width:520px}details summary{cursor:pointer;color:var(--muted)}pre{white-space:pre-wrap;font-size:12px;margin:6px 0 0}.warnings{color:var(--warn)}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}</style></head><body><header><h1>triage</h1><p class="meta">5 variants &middot; 20 cases &middot; primary metric <code>pass</code> (also: recall, no_halluc, kev_order, kev_facts, upgrade_ok, unchecked_ok, order_tau) &middot; generated 2026-11-21 17:52:29 UTC &middot; lite report (no transcripts inlined; click rep links)</p></header><section><h2>Variants</h2><table><thead><tr><th data-k="s">variant</th><th data-k="s">change</th><th data-k="s">model</th><th data-k="n">mean pass</th><th data-k="n">cases</th><th data-k="n">truncated</th><th data-k="s">failed attempts</th></tr></thead><tbody><tr><td>baseline</td><td></td><td>claude-opus-5-5</td><td class="num">1.000</td><td class="num">20</td><td class="num">0</td><td>0</td></tr>
+<tr><td>v1</td><td>Model swap: claude-haiku-5-5 (same prompt, tools, effort medium; no server-side fallback)</td><td>claude-haiku-5-5</td><td class="num">0.950</td><td class="num">20</td><td class="num">0</td><td>0</td></tr>
+<tr><td>v2</td><td>Model swap: claude-sonnet-5-5 (same prompt, tools, effort medium; server-side fallback on)</td><td>claude-sonnet-5-5</td><td class="num">1.000</td><td class="num">20</td><td class="num">0</td><td>0</td></tr>
+<tr><td>v3</td><td>Haiku 5.5 + report validation loop (--validate)</td><td>claude-haiku-5-5</td><td class="num">1.000</td><td class="num">20</td><td class="num">0</td><td>0</td></tr>
+<tr><td>v4</td><td>Haiku 5.5 + validation loop + deterministic tool hints (--validate --tool-hints)</td><td>claude-haiku-5-5</td><td class="num">1.000</td><td class="num">20</td><td class="num">0</td><td>0</td></tr></tbody></table></section><section><h2>Cases</h2><p class="hint">Click a column header to sort. Per-case values are the mean of <code>pass</code> over status-ok reps.</p><table id="cases"><thead><tr><th data-k="s">id</th><th data-k="s">tags</th><th data-k="n">baseline</th><th data-k="n">v1</th><th data-k="n">v2</th><th data-k="n">v3</th><th data-k="n">v4</th><th data-k="s">prompt</th></tr></thead><tbody><tr><td class="id">maven-spring4shell-poc</td><td><span class="pill">maven</span> <span class="pill">starters</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/maven-spring4shell-poc_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/maven-spring4shell-poc_rep0.json">rep0</a> <a href="v1/traces/maven-spring4shell-poc_rep2.json">rep2</a> <a href="v1/traces/maven-spring4shell-poc_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/maven-spring4shell-poc_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/maven-spring4shell-poc_rep1.json">rep1</a> <a href="v3/traces/maven-spring4shell-poc_rep0.json">rep0</a> <a href="v3/traces/maven-spring4shell-poc_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/maven-spring4shell-poc_rep1.json">rep1</a> <a href="v4/traces/maven-spring4shell-poc_rep0.json">rep0</a> <a href="v4/traces/maven-spring4shell-poc_rep2.json">rep2</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;pom.xml&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework.boot:spring-boot-starter-thymeleaf&quot;,
+   &quot;version&quot;: &quot;2.6.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework.boot:spring-boot-starter-web&quot;,
+   &quot;version&quot;: &quot;2.6.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework.boot:spring-boot-starter-test&quot;,
+   &quot;version&quot;: &quot;2.6.3&quot;,
+   &quot;scope&quot;: &quot;test&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework.boot:spring-boot-starter-tomcat&quot;,
+   &quot;version&quot;: &quot;2.6....</pre></details></td></tr>
+<tr><td class="id">pypi-lets-be-bad-guys</td><td><span class="pill">pypi</span> <span class="pill">pinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-lets-be-bad-guys_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/pypi-lets-be-bad-guys_rep0.json">rep0</a> <a href="v1/traces/pypi-lets-be-bad-guys_rep1.json">rep1</a> <a href="v1/traces/pypi-lets-be-bad-guys_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-lets-be-bad-guys_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-lets-be-bad-guys_rep2.json">rep2</a> <a href="v3/traces/pypi-lets-be-bad-guys_rep0.json">rep0</a> <a href="v3/traces/pypi-lets-be-bad-guys_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-lets-be-bad-guys_rep2.json">rep2</a> <a href="v4/traces/pypi-lets-be-bad-guys_rep0.json">rep0</a> <a href="v4/traces/pypi-lets-be-bad-guys_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;Django&quot;,
+   &quot;version&quot;: &quot;1.9.6&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;django-debug-toolbar&quot;,
+   &quot;version&quot;: &quot;1.4&quot;
+  }
+ ],
+ &quot;unchecked&quot;: [],
+ &quot;parser_notes&quot;: []
+}
+```</pre></details></td></tr>
+<tr><td class="id">maven-java-goof-struts</td><td><span class="pill">maven</span> <span class="pill">parent-provided</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/maven-java-goof-struts_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/maven-java-goof-struts_rep0.json">rep0</a> <a href="v1/traces/maven-java-goof-struts_rep2.json">rep2</a> <a href="v1/traces/maven-java-goof-struts_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/maven-java-goof-struts_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/maven-java-goof-struts_rep2.json">rep2</a> <a href="v3/traces/maven-java-goof-struts_rep1.json">rep1</a> <a href="v3/traces/maven-java-goof-struts_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/maven-java-goof-struts_rep2.json">rep2</a> <a href="v4/traces/maven-java-goof-struts_rep1.json">rep1</a> <a href="v4/traces/maven-java-goof-struts_rep0.json">rep0</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;pom.xml&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;io.github.snyk:todolist-web-common&quot;,
+   &quot;version&quot;: &quot;0.0.1-SNAPSHOT&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.apache.logging.log4j:log4j-core&quot;,
+   &quot;version&quot;: &quot;2.7&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.apache.logging.log4j:log4j-api&quot;,
+   &quot;version&quot;: &quot;2.7&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;javax:javaee-web-api&quot;,
+   &quot;version&quot;: &quot;7.0&quot;,
+   &quot;scope&quot;: &quot;provided&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework:spr...</pre></details></td></tr>
+<tr><td class="id">maven-webgoat</td><td><span class="pill">maven</span> <span class="pill">parent-managed</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/maven-webgoat_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/maven-webgoat_rep0.json">rep0</a> <a href="v1/traces/maven-webgoat_rep2.json">rep2</a> <a href="v1/traces/maven-webgoat_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/maven-webgoat_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/maven-webgoat_rep0.json">rep0</a> <a href="v3/traces/maven-webgoat_rep1.json">rep1</a> <a href="v3/traces/maven-webgoat_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/maven-webgoat_rep0.json">rep0</a> <a href="v4/traces/maven-webgoat_rep1.json">rep1</a> <a href="v4/traces/maven-webgoat_rep2.json">rep2</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;pom.xml&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.apache.commons:commons-exec&quot;,
+   &quot;version&quot;: &quot;1.6.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.projectlombok:lombok&quot;,
+   &quot;version&quot;: &quot;1.18.48&quot;,
+   &quot;scope&quot;: &quot;provided&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;javax.xml.bind:jaxb-api&quot;,
+   &quot;version&quot;: &quot;2.3.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.asciidoctor:asciidoctorj&quot;,
+   &quot;version&quot;: &quot;3.0.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.bouncycastle:bcprov-jdk18on&quot;,
+   &quot;ver...</pre></details></td></tr>
+<tr><td class="id">npm-nodegoat-lock</td><td><span class="pill">npm</span> <span class="pill">lockfile</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/npm-nodegoat-lock_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/npm-nodegoat-lock_rep0.json">rep0</a> <a href="v1/traces/npm-nodegoat-lock_rep1.json">rep1</a> <a href="v1/traces/npm-nodegoat-lock_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/npm-nodegoat-lock_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/npm-nodegoat-lock_rep0.json">rep0</a> <a href="v3/traces/npm-nodegoat-lock_rep1.json">rep1</a> <a href="v3/traces/npm-nodegoat-lock_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/npm-nodegoat-lock_rep0.json">rep0</a> <a href="v4/traces/npm-nodegoat-lock_rep1.json">rep1</a> <a href="v4/traces/npm-nodegoat-lock_rep2.json">rep2</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;package-lock.json&quot;,
+ &quot;ecosystem&quot;: &quot;npm&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;bcrypt-nodejs&quot;,
+   &quot;version&quot;: &quot;0.0.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;body-parser&quot;,
+   &quot;version&quot;: &quot;1.18.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;consolidate&quot;,
+   &quot;version&quot;: &quot;0.14.5&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;csurf&quot;,
+   &quot;version&quot;: &quot;1.9.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;dont-sniff-mimetype&quot;,
+   &quot;version&quot;: &quot;1.0.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;express&quot;,
+   &quot;version&quot;: &quot;4.16.4&quot;
+  },
+  {
+   ...</pre></details></td></tr>
+<tr><td class="id">maven-java-goof-log4shell</td><td><span class="pill">maven</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/maven-java-goof-log4shell_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/maven-java-goof-log4shell_rep0.json">rep0</a> <a href="v1/traces/maven-java-goof-log4shell_rep2.json">rep2</a> <a href="v1/traces/maven-java-goof-log4shell_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/maven-java-goof-log4shell_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/maven-java-goof-log4shell_rep0.json">rep0</a> <a href="v3/traces/maven-java-goof-log4shell_rep2.json">rep2</a> <a href="v3/traces/maven-java-goof-log4shell_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/maven-java-goof-log4shell_rep0.json">rep0</a> <a href="v4/traces/maven-java-goof-log4shell_rep2.json">rep2</a> <a href="v4/traces/maven-java-goof-log4shell_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;pom.xml&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.apache.logging.log4j:log4j-core&quot;,
+   &quot;version&quot;: &quot;2.15.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;com.unboundid:unboundid-ldapsdk&quot;,
+   &quot;version&quot;: &quot;3.1.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;io.undertow:undertow-core&quot;,
+   &quot;version&quot;: &quot;2.2.13.Final&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;commons-collections:commons-collections&quot;,
+   &quot;version&quot;: &quot;3.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.apache.commons:commons-lang3&quot;,
+  ...</pre></details></td></tr>
+<tr><td class="id">npm-vulnerable-node-lock</td><td><span class="pill">npm</span> <span class="pill">lockfile</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/npm-vulnerable-node-lock_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/npm-vulnerable-node-lock_rep0.json">rep0</a> <a href="v1/traces/npm-vulnerable-node-lock_rep2.json">rep2</a> <a href="v1/traces/npm-vulnerable-node-lock_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/npm-vulnerable-node-lock_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/npm-vulnerable-node-lock_rep1.json">rep1</a> <a href="v3/traces/npm-vulnerable-node-lock_rep0.json">rep0</a> <a href="v3/traces/npm-vulnerable-node-lock_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/npm-vulnerable-node-lock_rep1.json">rep1</a> <a href="v4/traces/npm-vulnerable-node-lock_rep0.json">rep0</a> <a href="v4/traces/npm-vulnerable-node-lock_rep2.json">rep2</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;package-lock.json&quot;,
+ &quot;ecosystem&quot;: &quot;npm&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;cookie-parser&quot;,
+   &quot;version&quot;: &quot;1.4.7&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;ejs&quot;,
+   &quot;version&quot;: &quot;3.1.10&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;express&quot;,
+   &quot;version&quot;: &quot;4.22.2&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;express-session&quot;,
+   &quot;version&quot;: &quot;1.19.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;jsonwebtoken&quot;,
+   &quot;version&quot;: &quot;9.0.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;mongodb&quot;,
+   &quot;version&quot;: &quot;6.21.0&quot;
+  },
+  {
+   &quot;ecosyst...</pre></details></td></tr>
+<tr><td class="id">pypi-django-nv</td><td><span class="pill">pypi</span> <span class="pill">pinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-django-nv_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/pypi-django-nv_rep0.json">rep0</a> <a href="v1/traces/pypi-django-nv_rep1.json">rep1</a> <a href="v1/traces/pypi-django-nv_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-django-nv_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-django-nv_rep2.json">rep2</a> <a href="v3/traces/pypi-django-nv_rep0.json">rep0</a> <a href="v3/traces/pypi-django-nv_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-django-nv_rep2.json">rep2</a> <a href="v4/traces/pypi-django-nv_rep0.json">rep0</a> <a href="v4/traces/pypi-django-nv_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;Django&quot;,
+   &quot;version&quot;: &quot;1.8.3&quot;
+  }
+ ],
+ &quot;unchecked&quot;: [],
+ &quot;parser_notes&quot;: []
+}
+```</pre></details></td></tr>
+<tr><td class="id">pypi-dvpwa</td><td><span class="pill">pypi</span> <span class="pill">pinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-dvpwa_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/pypi-dvpwa_rep0.json">rep0</a> <a href="v1/traces/pypi-dvpwa_rep2.json">rep2</a> <a href="v1/traces/pypi-dvpwa_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-dvpwa_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-dvpwa_rep2.json">rep2</a> <a href="v3/traces/pypi-dvpwa_rep0.json">rep0</a> <a href="v3/traces/pypi-dvpwa_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-dvpwa_rep2.json">rep2</a> <a href="v4/traces/pypi-dvpwa_rep0.json">rep0</a> <a href="v4/traces/pypi-dvpwa_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;aiohappyeyeballs&quot;,
+   &quot;version&quot;: &quot;2.7.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;aiohttp&quot;,
+   &quot;version&quot;: &quot;3.14.5&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;aiohttp-jinja2&quot;,
+   &quot;version&quot;: &quot;1.6&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;aiohttp-session&quot;,
+   &quot;version&quot;: &quot;2.12.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;aiopg&quot;,
+   &quot;version&quot;: &quot;1.4.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;aiosignal&quot;,
+   &quot;version&quot;: &quot;1.4.0&quot;
+  },
+  {
+...</pre></details></td></tr>
+<tr><td class="id">pypi-tiredful-api</td><td><span class="pill">pypi</span> <span class="pill">pinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-tiredful-api_rep0.json">rep0</a></div></td><td class="num" data-v="0.667">0.667<div class="links"><a href="v1/traces/pypi-tiredful-api_rep0.json">rep0</a> <a href="v1/traces/pypi-tiredful-api_rep2.json">rep2</a> <a href="v1/traces/pypi-tiredful-api_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-tiredful-api_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-tiredful-api_rep1.json">rep1</a> <a href="v3/traces/pypi-tiredful-api_rep2.json">rep2</a> <a href="v3/traces/pypi-tiredful-api_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-tiredful-api_rep1.json">rep1</a> <a href="v4/traces/pypi-tiredful-api_rep2.json">rep2</a> <a href="v4/traces/pypi-tiredful-api_rep0.json">rep0</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;Django&quot;,
+   &quot;version&quot;: &quot;1.11.7&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;django-oauth-toolkit&quot;,
+   &quot;version&quot;: &quot;1.0.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;djangorestframework&quot;,
+   &quot;version&quot;: &quot;3.7.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;oauth&quot;,
+   &quot;version&quot;: &quot;1.0.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;oauthlib&quot;,
+   &quot;version&quot;: &quot;2.0.6&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;python-oauth2&quot;,
+   &quot;version&quot;: &quot;1.0.1&quot;
+  }...</pre></details></td></tr>
+<tr><td class="id">npm-dvna-manifest</td><td><span class="pill">npm</span> <span class="pill">ranges</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/npm-dvna-manifest_rep0.json">rep0</a></div></td><td class="num" data-v="0.667">0.667<div class="links"><a href="v1/traces/npm-dvna-manifest_rep0.json">rep0</a> <a href="v1/traces/npm-dvna-manifest_rep1.json">rep1</a> <a href="v1/traces/npm-dvna-manifest_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/npm-dvna-manifest_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/npm-dvna-manifest_rep2.json">rep2</a> <a href="v3/traces/npm-dvna-manifest_rep0.json">rep0</a> <a href="v3/traces/npm-dvna-manifest_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/npm-dvna-manifest_rep2.json">rep2</a> <a href="v4/traces/npm-dvna-manifest_rep0.json">rep0</a> <a href="v4/traces/npm-dvna-manifest_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;package.json&quot;,
+ &quot;ecosystem&quot;: &quot;npm&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;express-flash&quot;,
+   &quot;version&quot;: &quot;0.0.2&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;mathjs&quot;,
+   &quot;version&quot;: &quot;3.10.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;node-serialize&quot;,
+   &quot;version&quot;: &quot;0.0.4&quot;
+  }
+ ],
+ &quot;unchecked&quot;: [
+  {
+   &quot;spec&quot;: &quot;bcrypt@^1.0.3&quot;,
+   &quot;reason&quot;: &quot;version range &#39;^1.0.3&#39; and no lockfile to resolve it&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;csurf@^1.9.0&quot;,
+   &quot;reason&quot;: &quot;version range &#39;^1.9.0&#39; and no lockfile to resolve it&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;ejs@^2.5.7...</pre></details></td></tr>
+<tr><td class="id">npm-juice-shop-manifest</td><td><span class="pill">npm</span> <span class="pill">ranges</span> <span class="pill">large</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/npm-juice-shop-manifest_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/npm-juice-shop-manifest_rep0.json">rep0</a> <a href="v1/traces/npm-juice-shop-manifest_rep1.json">rep1</a> <a href="v1/traces/npm-juice-shop-manifest_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/npm-juice-shop-manifest_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/npm-juice-shop-manifest_rep0.json">rep0</a> <a href="v3/traces/npm-juice-shop-manifest_rep2.json">rep2</a> <a href="v3/traces/npm-juice-shop-manifest_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/npm-juice-shop-manifest_rep0.json">rep0</a> <a href="v4/traces/npm-juice-shop-manifest_rep2.json">rep2</a> <a href="v4/traces/npm-juice-shop-manifest_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;package.json&quot;,
+ &quot;ecosystem&quot;: &quot;npm&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;express-jwt&quot;,
+   &quot;version&quot;: &quot;0.1.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;jsonwebtoken&quot;,
+   &quot;version&quot;: &quot;0.4.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;sanitize-html&quot;,
+   &quot;version&quot;: &quot;1.4.2&quot;
+  }
+ ],
+ &quot;unchecked&quot;: [
+  {
+   &quot;spec&quot;: &quot;@ai-sdk/openai-compatible@^2.0.35&quot;,
+   &quot;reason&quot;: &quot;version range &#39;^2.0.35&#39; and no lockfile to resolve it&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;@fontsource/roboto@^5.2.9&quot;,
+   &quot;reason&quot;: &quot;version range &#39;^5.2.9&#39; and no lockfile to resolve...</pre></details></td></tr>
+<tr><td class="id">maven-java-goof-core</td><td><span class="pill">maven</span> <span class="pill">parent-provided</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/maven-java-goof-core_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/maven-java-goof-core_rep0.json">rep0</a> <a href="v1/traces/maven-java-goof-core_rep2.json">rep2</a> <a href="v1/traces/maven-java-goof-core_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/maven-java-goof-core_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/maven-java-goof-core_rep2.json">rep2</a> <a href="v3/traces/maven-java-goof-core_rep1.json">rep1</a> <a href="v3/traces/maven-java-goof-core_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/maven-java-goof-core_rep2.json">rep2</a> <a href="v4/traces/maven-java-goof-core_rep1.json">rep1</a> <a href="v4/traces/maven-java-goof-core_rep0.json">rep0</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;pom.xml&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework:spring-context&quot;,
+   &quot;version&quot;: &quot;3.2.6.RELEASE&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework:spring-orm&quot;,
+   &quot;version&quot;: &quot;3.2.6.RELEASE&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework:spring-aspects&quot;,
+   &quot;version&quot;: &quot;3.2.6.RELEASE&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;cglib:cglib&quot;,
+   &quot;version&quot;: &quot;2.2.2&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.aspectj:aspectjweaver&quot;,
+   &quot;version&quot;...</pre></details></td></tr>
+<tr><td class="id">npm-nodejs-goof-lock</td><td><span class="pill">npm</span> <span class="pill">lockfile</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/npm-nodejs-goof-lock_rep0.json">rep0</a></div></td><td class="num" data-v="0.667">0.667<div class="links"><a href="v1/traces/npm-nodejs-goof-lock_rep0.json">rep0</a> <a href="v1/traces/npm-nodejs-goof-lock_rep2.json">rep2</a> <a href="v1/traces/npm-nodejs-goof-lock_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/npm-nodejs-goof-lock_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/npm-nodejs-goof-lock_rep2.json">rep2</a> <a href="v3/traces/npm-nodejs-goof-lock_rep1.json">rep1</a> <a href="v3/traces/npm-nodejs-goof-lock_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/npm-nodejs-goof-lock_rep2.json">rep2</a> <a href="v4/traces/npm-nodejs-goof-lock_rep1.json">rep1</a> <a href="v4/traces/npm-nodejs-goof-lock_rep0.json">rep0</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;package-lock.json&quot;,
+ &quot;ecosystem&quot;: &quot;npm&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;adm-zip&quot;,
+   &quot;version&quot;: &quot;0.4.7&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;body-parser&quot;,
+   &quot;version&quot;: &quot;1.9.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;cfenv&quot;,
+   &quot;version&quot;: &quot;1.2.2&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;consolidate&quot;,
+   &quot;version&quot;: &quot;0.14.5&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;dustjs-helpers&quot;,
+   &quot;version&quot;: &quot;1.5.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;dustjs-linkedin&quot;,
+   &quot;version&quot;: &quot;2.5.0&quot;
+  },
+  {
+   &quot;ecos...</pre></details></td></tr>
+<tr><td class="id">pypi-vulpy</td><td><span class="pill">pypi</span> <span class="pill">unpinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-vulpy_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/pypi-vulpy_rep0.json">rep0</a> <a href="v1/traces/pypi-vulpy_rep1.json">rep1</a> <a href="v1/traces/pypi-vulpy_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-vulpy_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-vulpy_rep1.json">rep1</a> <a href="v3/traces/pypi-vulpy_rep0.json">rep0</a> <a href="v3/traces/pypi-vulpy_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-vulpy_rep1.json">rep1</a> <a href="v4/traces/pypi-vulpy_rep0.json">rep0</a> <a href="v4/traces/pypi-vulpy_rep2.json">rep2</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [],
+ &quot;unchecked&quot;: [
+  {
+   &quot;spec&quot;: &quot;click&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;cryptography&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;Flask&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;geoip2&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;jsonschema&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;PyJWT&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  ...</pre></details></td></tr>
+<tr><td class="id">gradle-log4shell-app</td><td><span class="pill">maven</span> <span class="pill">gradle</span> <span class="pill">transitive-blind-spot</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/gradle-log4shell-app_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/gradle-log4shell-app_rep0.json">rep0</a> <a href="v1/traces/gradle-log4shell-app_rep1.json">rep1</a> <a href="v1/traces/gradle-log4shell-app_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/gradle-log4shell-app_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/gradle-log4shell-app_rep2.json">rep2</a> <a href="v3/traces/gradle-log4shell-app_rep0.json">rep0</a> <a href="v3/traces/gradle-log4shell-app_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/gradle-log4shell-app_rep2.json">rep2</a> <a href="v4/traces/gradle-log4shell-app_rep0.json">rep0</a> <a href="v4/traces/gradle-log4shell-app_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;build.gradle&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;org.springframework.boot:spring-boot-starter-log4j2&quot;,
+   &quot;version&quot;: &quot;2.6.1&quot;
+  }
+ ],
+ &quot;unchecked&quot;: [
+  {
+   &quot;spec&quot;: &quot;org.springframework.boot:spring-boot-starter-web&quot;,
+   &quot;reason&quot;: &quot;no version: managed by a BOM or the Spring dependency-management plugin&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;org.springframework.boot:spring-boot-starter-test&quot;,
+   &quot;reason&quot;: &quot;no version: managed by a BOM or the Spring dependency-management plugin&quot;
+  }
+ ],
+ &quot;parser_notes&quot;: [
+  &quot;Spring B...</pre></details></td></tr>
+<tr><td class="id">pypi-log4j-shell-poc</td><td><span class="pill">pypi</span> <span class="pill">unpinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-log4j-shell-poc_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/pypi-log4j-shell-poc_rep0.json">rep0</a> <a href="v1/traces/pypi-log4j-shell-poc_rep1.json">rep1</a> <a href="v1/traces/pypi-log4j-shell-poc_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-log4j-shell-poc_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-log4j-shell-poc_rep0.json">rep0</a> <a href="v3/traces/pypi-log4j-shell-poc_rep2.json">rep2</a> <a href="v3/traces/pypi-log4j-shell-poc_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-log4j-shell-poc_rep0.json">rep0</a> <a href="v4/traces/pypi-log4j-shell-poc_rep2.json">rep2</a> <a href="v4/traces/pypi-log4j-shell-poc_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [],
+ &quot;unchecked&quot;: [
+  {
+   &quot;spec&quot;: &quot;colorama&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  },
+  {
+   &quot;spec&quot;: &quot;argparse&quot;,
+   &quot;reason&quot;: &quot;not pinned: no version specified&quot;
+  }
+ ],
+ &quot;parser_notes&quot;: []
+}
+```</pre></details></td></tr>
+<tr><td class="id">npm-nodegoat-manifest</td><td><span class="pill">npm</span> <span class="pill">ranges</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/npm-nodegoat-manifest_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/npm-nodegoat-manifest_rep0.json">rep0</a> <a href="v1/traces/npm-nodegoat-manifest_rep2.json">rep2</a> <a href="v1/traces/npm-nodegoat-manifest_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/npm-nodegoat-manifest_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/npm-nodegoat-manifest_rep0.json">rep0</a> <a href="v3/traces/npm-nodegoat-manifest_rep2.json">rep2</a> <a href="v3/traces/npm-nodegoat-manifest_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/npm-nodegoat-manifest_rep0.json">rep0</a> <a href="v4/traces/npm-nodegoat-manifest_rep2.json">rep2</a> <a href="v4/traces/npm-nodegoat-manifest_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;package.json&quot;,
+ &quot;ecosystem&quot;: &quot;npm&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;bcrypt-nodejs&quot;,
+   &quot;version&quot;: &quot;0.0.3&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;marked&quot;,
+   &quot;version&quot;: &quot;0.3.5&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;needle&quot;,
+   &quot;version&quot;: &quot;2.2.4&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;node-esapi&quot;,
+   &quot;version&quot;: &quot;0.0.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;npm&quot;,
+   &quot;name&quot;: &quot;jshint&quot;,
+   &quot;version&quot;: &quot;2.12.0&quot;,
+   &quot;scope&quot;: &quot;dev&quot;
+  }
+ ],
+ &quot;unchecked&quot;: [
+  {
+   &quot;spec&quot;: &quot;body-parser@^1.15.1&quot;,
+   &quot;reason&quot;: &quot;version range &#39;^1....</pre></details></td></tr>
+<tr><td class="id">maven-benchmark-java</td><td><span class="pill">maven</span> <span class="pill">large</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/maven-benchmark-java_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/maven-benchmark-java_rep0.json">rep0</a> <a href="v1/traces/maven-benchmark-java_rep1.json">rep1</a> <a href="v1/traces/maven-benchmark-java_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/maven-benchmark-java_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/maven-benchmark-java_rep1.json">rep1</a> <a href="v3/traces/maven-benchmark-java_rep2.json">rep2</a> <a href="v3/traces/maven-benchmark-java_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/maven-benchmark-java_rep1.json">rep1</a> <a href="v4/traces/maven-benchmark-java_rep2.json">rep2</a> <a href="v4/traces/maven-benchmark-java_rep0.json">rep0</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;pom.xml&quot;,
+ &quot;ecosystem&quot;: &quot;Maven&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;javax:javaee-api&quot;,
+   &quot;version&quot;: &quot;8.0.1&quot;,
+   &quot;scope&quot;: &quot;provided&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;javax.xml.bind:jaxb-api&quot;,
+   &quot;version&quot;: &quot;2.3.1&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;com.sun.xml.bind:jaxb-impl&quot;,
+   &quot;version&quot;: &quot;2.3.9&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;com.sun.jersey:jersey-servlet&quot;,
+   &quot;version&quot;: &quot;1.19.4&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;Maven&quot;,
+   &quot;name&quot;: &quot;commons-codec:commons-codec&quot;,
+   &quot;version&quot;: &quot;1.23.0&quot;
+ ...</pre></details></td></tr>
+<tr><td class="id">pypi-pygoat</td><td><span class="pill">pypi</span> <span class="pill">pinned</span></td><td class="num" data-v="1.000">1.000<div class="links"><a href="baseline/traces/pypi-pygoat_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v1/traces/pypi-pygoat_rep0.json">rep0</a> <a href="v1/traces/pypi-pygoat_rep1.json">rep1</a> <a href="v1/traces/pypi-pygoat_rep2.json">rep2</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v2/traces/pypi-pygoat_rep0.json">rep0</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v3/traces/pypi-pygoat_rep2.json">rep2</a> <a href="v3/traces/pypi-pygoat_rep0.json">rep0</a> <a href="v3/traces/pypi-pygoat_rep1.json">rep1</a></div></td><td class="num" data-v="1.000">1.000<div class="links"><a href="v4/traces/pypi-pygoat_rep2.json">rep2</a> <a href="v4/traces/pypi-pygoat_rep0.json">rep0</a> <a href="v4/traces/pypi-pygoat_rep1.json">rep1</a></div></td><td class="prompt"><details><summary>Triage this dependency file.</summary><pre>Triage this dependency file.
+
+```json
+{
+ &quot;file&quot;: &quot;requirements.txt&quot;,
+ &quot;ecosystem&quot;: &quot;PyPI&quot;,
+ &quot;dependencies&quot;: [
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;argon2-cffi&quot;,
+   &quot;version&quot;: &quot;21.3.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;argon2-cffi-bindings&quot;,
+   &quot;version&quot;: &quot;21.2.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;asgiref&quot;,
+   &quot;version&quot;: &quot;3.6.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;black&quot;,
+   &quot;version&quot;: &quot;26.1.0&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;certifi&quot;,
+   &quot;version&quot;: &quot;2022.12.7&quot;
+  },
+  {
+   &quot;ecosystem&quot;: &quot;PyPI&quot;,
+   &quot;name&quot;: &quot;cffi&quot;,
+   &quot;version&quot;: &quot;2.0.0&quot;
+  },
+  {
+   &quot;e...</pre></details></td></tr></tbody></table></section><script>document.querySelectorAll("th[data-k]").forEach(function(th){th.addEventListener("click",function(){var t=th.closest("table"),tb=t.tBodies[0],i=Array.prototype.indexOf.call(th.parentNode.children,th);var asc=!th.classList.contains("asc");t.querySelectorAll("th").forEach(function(h){h.classList.remove("asc","desc")});th.classList.add(asc?"asc":"desc");var num=th.dataset.k==="n";var rows=Array.prototype.slice.call(tb.rows);rows.sort(function(a,b){var x=a.cells[i],y=b.cells[i];var u=num?parseFloat("v" in x.dataset?x.dataset.v:x.textContent):x.textContent.trim().toLowerCase();var w=num?parseFloat("v" in y.dataset?y.dataset.v:y.textContent):y.textContent.trim().toLowerCase();if(num){if(isNaN(u))u=-Infinity;if(isNaN(w))w=-Infinity}return (u<w?-1:u>w?1:0)*(asc?1:-1)});rows.forEach(function(r){tb.appendChild(r)})})});</script></body></html>

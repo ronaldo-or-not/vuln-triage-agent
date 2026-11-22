@@ -1,0 +1,3 @@
+Haiku 5.5 + validation loop + deterministic tool hints (--validate --tool-hints)
+
+v3 plus: check_packages returns safe_upgrade per package and policy_rank per vulnerability, computed in code (same min_safe_upgrade function as the gold builder, verified identical on all 76 gold packages). Week-3 analysis: the model spent thinking tokens sorting up to 190 items by hand and still slipped (order_tau < 1 in 12/60 v1 runs). Expect lower output tokens / latency; note that upgrade_ok and order now largely measure copying fidelity, since the algorithm is shared with gold (its correctness is covered by unit tests with known log4j answers).

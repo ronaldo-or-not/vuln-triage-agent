@@ -1,0 +1,215 @@
+{
+ "id": "npm-dvna-manifest",
+ "ecosystem": "npm",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 3,
+ "unchecked": [
+  "bcrypt@^1.0.3",
+  "csurf@^1.9.0",
+  "ejs@^2.5.7",
+  "express@^4.16.2",
+  "express-fileupload@^0.4.0",
+  "express-session@^1.15.6",
+  "flash@^1.1.0",
+  "libxmljs@^0.19.1",
+  "md5@^2.2.1",
+  "morgan@^1.9.0",
+  "mysql2@^1.4.2",
+  "passport@^0.4.0",
+  "passport-local@^1.0.0",
+  "sequelize@^4.13.10",
+  "winston@^3.0.0",
+  "x-xss-protection@^1.1.0"
+ ],
+ "vulns": [
+  {
+   "id": "CVE-2017-1001002",
+   "aliases": [
+    "CVE-2017-1001002",
+    "GHSA-vx5c-87qx-cv6c"
+   ],
+   "package": "npm/mathjs@3.10.1",
+   "kev": false,
+   "epss": 0.02357,
+   "fix_status": "fixed",
+   "fixed_version": "3.17.0"
+  },
+  {
+   "id": "CVE-2017-1001003",
+   "aliases": [
+    "CVE-2017-1001003",
+    "GHSA-pv8x-p9hq-j328"
+   ],
+   "package": "npm/mathjs@3.10.1",
+   "kev": false,
+   "epss": 0.01689,
+   "fix_status": "fixed",
+   "fixed_version": "3.17.0"
+  },
+  {
+   "id": "CVE-2020-7743",
+   "aliases": [
+    "CVE-2020-7743",
+    "GHSA-x2fc-mxcx-w4mf"
+   ],
+   "package": "npm/mathjs@3.10.1",
+   "kev": false,
+   "epss": 0.03924,
+   "fix_status": "fixed",
+   "fixed_version": "7.5.1"
+  },
+  {
+   "id": "CVE-2017-5941",
+   "aliases": [
+    "CVE-2017-5941",
+    "GHSA-q4v7-4rhw-9hqm"
+   ],
+   "package": "npm/node-serialize@0.0.4",
+   "kev": false,
+   "epss": 0.61285,
+   "fix_status": "no_fix",
+   "fixed_version": null
+  }
+ ],
+ "packages": [
+  {
+   "package": "npm/mathjs@3.10.1",
+   "ecosystem": "npm",
+   "name": "mathjs",
+   "installed": "3.10.1",
+   "min_safe_upgrade": "7.5.1",
+   "records": [
+    {
+     "id": "GHSA-vx5c-87qx-cv6c",
+     "affected": [
+      {
+       "package": {
+        "name": "mathjs",
+        "purl": "pkg:npm/mathjs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "3.17.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-pv8x-p9hq-j328",
+     "affected": [
+      {
+       "package": {
+        "name": "mathjs",
+        "purl": "pkg:npm/mathjs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "3.17.0"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    },
+    {
+     "id": "GHSA-x2fc-mxcx-w4mf",
+     "affected": [
+      {
+       "package": {
+        "name": "mathjs",
+        "purl": "pkg:npm/mathjs",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "7.5.1"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "package": "npm/node-serialize@0.0.4",
+   "ecosystem": "npm",
+   "name": "node-serialize",
+   "installed": "0.0.4",
+   "min_safe_upgrade": null,
+   "records": [
+    {
+     "id": "GHSA-q4v7-4rhw-9hqm",
+     "affected": [
+      {
+       "package": {
+        "name": "node-serialize",
+        "purl": "pkg:npm/node-serialize",
+        "ecosystem": "npm"
+       },
+       "ranges": [
+        {
+         "type": "SEMVER",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "last_affected": "0.0.4"
+          }
+         ]
+        }
+       ],
+       "versions": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "expected_order": [
+  "CVE-2017-5941",
+  "CVE-2020-7743",
+  "CVE-2017-1001002",
+  "CVE-2017-1001003"
+ ],
+ "source": {
+  "repo": "appsecco/dvna",
+  "commit": "9ba473add536f66ac9007966acb2a775dd31277a",
+  "path": "package.json",
+  "companion": null
+ }
+}

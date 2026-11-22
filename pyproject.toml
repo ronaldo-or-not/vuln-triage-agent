@@ -1,0 +1,36 @@
+[project]
+name = "vulnagent"
+version = "0.1.0"
+description = "Vulnerability triage agent - week 1: data layer (OSV, NVD, CISA KEV, EPSS) + vuln-data MCP server"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "psycopg[binary]>=3.2",
+    "mcp>=2.3,<3",
+    "packaging>=24",
+    "anthropic>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+# 4주차 CWE 검색. CPU 전용 torch 권장: uv pip install torch --index-url https://download.pytorch.org/whl/cpu
+kb = ["sentence-transformers>=3"]
+
+[project.scripts]
+vulnagent = "vulnagent.cli:main"
+vulnagent-mcp = "vulnagent.mcp_server:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vulnagent = ["schema.sql"]
+"vulnagent.kb" = ["schema_kb.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: hits real external APIs (opt-in with VULNAGENT_LIVE=1)"]

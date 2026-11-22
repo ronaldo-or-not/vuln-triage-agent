@@ -1,0 +1,16 @@
+{
+ "doc": "npm-vulnerable-node-lock__pdf_scan.pdf",
+ "case": "npm-vulnerable-node-lock",
+ "layout": "pdf_scan",
+ "findings": [
+  {
+   "ecosystem": "npm",
+   "package": "morgan",
+   "version": "1.12.0",
+   "ids": [
+    "CVE-2026-87859"
+   ]
+  }
+ ],
+ "distractors": []
+}

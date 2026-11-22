@@ -1,0 +1,21 @@
+{
+ "id": "pypi-dvpwa",
+ "ecosystem": "PyPI",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 20,
+ "unchecked": [],
+ "vulns": [],
+ "packages": [],
+ "expected_order": [],
+ "source": {
+  "repo": "anxolerd/dvpwa",
+  "commit": "4a8f4a43fafcc1b304f1b97d0f0a8dea755a7756",
+  "path": "requirements.txt",
+  "companion": null
+ }
+}

@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: vulnagent_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql://ci:ci@localhost:5432/vulnagent_test
+      CI_DATABASE_URL: postgresql://ci:ci@localhost:5432/vulnagent_ci
+      PYTHON: python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        # 문서 라이브러리는 서버에서 검증한 판으로 고정 (PyMuPDF 판 차이로 표 추출이 깨진 적이 있다)
+        run: pip install -e ".[dev]" pymupdf==2.1 python-docx==1.2.0 openpyxl==3.1.5 pillow==13.0.0
+      - name: Create reproducibility database
+        run: PGPASSWORD=ci psql -h localhost -U ci -d vulnagent_test -c "CREATE DATABASE vulnagent_ci"
+      - name: Tests and evaluation regression checks (no API calls)
+        run: scripts/ci.sh

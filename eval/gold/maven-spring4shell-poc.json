@@ -1,0 +1,248 @@
+{
+ "id": "maven-spring4shell-poc",
+ "ecosystem": "Maven",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 4,
+ "unchecked": [],
+ "vulns": [
+  {
+   "id": "CVE-2022-22965",
+   "aliases": [
+    "CVE-2022-22965",
+    "GHSA-36p3-wjmg-h94x"
+   ],
+   "package": "Maven/org.springframework.boot:spring-boot-starter-web@2.6.3",
+   "kev": true,
+   "epss": 0.99638,
+   "fix_status": "fixed",
+   "fixed_version": "2.6.6"
+  }
+ ],
+ "packages": [
+  {
+   "package": "Maven/org.springframework.boot:spring-boot-starter-web@2.6.3",
+   "ecosystem": "Maven",
+   "name": "org.springframework.boot:spring-boot-starter-web",
+   "installed": "2.6.3",
+   "min_safe_upgrade": "2.6.6",
+   "records": [
+    {
+     "id": "GHSA-36p3-wjmg-h94x",
+     "affected": [
+      {
+       "package": {
+        "name": "org.springframework.boot:spring-boot-starter-web",
+        "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-web",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "0"
+          },
+          {
+           "fixed": "2.5.12"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "1.0.0.RELEASE",
+        "1.0.1.RELEASE",
+        "1.0.2.RELEASE",
+        "1.1.0.RELEASE",
+        "1.1.1.RELEASE",
+        "1.1.10.RELEASE",
+        "1.1.11.RELEASE",
+        "1.1.12.RELEASE",
+        "1.1.2.RELEASE",
+        "1.1.3.RELEASE",
+        "1.1.4.RELEASE",
+        "1.1.5.RELEASE",
+        "1.1.6.RELEASE",
+        "1.1.7.RELEASE",
+        "1.1.8.RELEASE",
+        "1.1.9.RELEASE",
+        "1.2.0.RELEASE",
+        "1.2.1.RELEASE",
+        "1.2.2.RELEASE",
+        "1.2.3.RELEASE",
+        "1.2.4.RELEASE",
+        "1.2.5.RELEASE",
+        "1.2.6.RELEASE",
+        "1.2.7.RELEASE",
+        "1.2.8.RELEASE",
+        "1.3.0.RELEASE",
+        "1.3.1.RELEASE",
+        "1.3.2.RELEASE",
+        "1.3.3.RELEASE",
+        "1.3.4.RELEASE",
+        "1.3.5.RELEASE",
+        "1.3.6.RELEASE",
+        "1.3.7.RELEASE",
+        "1.3.8.RELEASE",
+        "1.4.0.RELEASE",
+        "1.4.1.RELEASE",
+        "1.4.2.RELEASE",
+        "1.4.3.RELEASE",
+        "1.4.4.RELEASE",
+        "1.4.5.RELEASE",
+        "1.4.6.RELEASE",
+        "1.4.7.RELEASE",
+        "1.5.0.RELEASE",
+        "1.5.1.RELEASE",
+        "1.5.10.RELEASE",
+        "1.5.11.RELEASE",
+        "1.5.12.RELEASE",
+        "1.5.13.RELEASE",
+        "1.5.14.RELEASE",
+        "1.5.15.RELEASE",
+        "1.5.16.RELEASE",
+        "1.5.17.RELEASE",
+        "1.5.18.RELEASE",
+        "1.5.19.RELEASE",
+        "1.5.2.RELEASE",
+        "1.5.20.RELEASE",
+        "1.5.21.RELEASE",
+        "1.5.22.RELEASE",
+        "1.5.3.RELEASE",
+        "1.5.4.RELEASE",
+        "1.5.5.RELEASE",
+        "1.5.6.RELEASE",
+        "1.5.7.RELEASE",
+        "1.5.8.RELEASE",
+        "1.5.9.RELEASE",
+        "2.0.0.RELEASE",
+        "2.0.1.RELEASE",
+        "2.0.2.RELEASE",
+        "2.0.3.RELEASE",
+        "2.0.4.RELEASE",
+        "2.0.5.RELEASE",
+        "2.0.6.RELEASE",
+        "2.0.7.RELEASE",
+        "2.0.8.RELEASE",
+        "2.0.9.RELEASE",
+        "2.1.0.RELEASE",
+        "2.1.1.RELEASE",
+        "2.1.10.RELEASE",
+        "2.1.11.RELEASE",
+        "2.1.12.RELEASE",
+        "2.1.13.RELEASE",
+        "2.1.14.RELEASE",
+        "2.1.15.RELEASE",
+        "2.1.16.RELEASE",
+        "2.1.17.RELEASE",
+        "2.1.18.RELEASE",
+        "2.1.2.RELEASE",
+        "2.1.3.RELEASE",
+        "2.1.4.RELEASE",
+        "2.1.5.RELEASE",
+        "2.1.6.RELEASE",
+        "2.1.7.RELEASE",
+        "2.1.8.RELEASE",
+        "2.1.9.RELEASE",
+        "2.2.0.RELEASE",
+        "2.2.1.RELEASE",
+        "2.2.10.RELEASE",
+        "2.2.11.RELEASE",
+        "2.2.12.RELEASE",
+        "2.2.13.RELEASE",
+        "2.2.2.RELEASE",
+        "2.2.3.RELEASE",
+        "2.2.4.RELEASE",
+        "2.2.5.RELEASE",
+        "2.2.6.RELEASE",
+        "2.2.7.RELEASE",
+        "2.2.8.RELEASE",
+        "2.2.9.RELEASE",
+        "2.3.0.RELEASE",
+        "2.3.1.RELEASE",
+        "2.3.10.RELEASE",
+        "2.3.11.RELEASE",
+        "2.3.12.RELEASE",
+        "2.3.2.RELEASE",
+        "2.3.3.RELEASE",
+        "2.3.4.RELEASE",
+        "2.3.5.RELEASE",
+        "2.3.6.RELEASE",
+        "2.3.7.RELEASE",
+        "2.3.8.RELEASE",
+        "2.3.9.RELEASE",
+        "2.4.0",
+        "2.4.1",
+        "2.4.10",
+        "2.4.11",
+        "2.4.12",
+        "2.4.13",
+        "2.4.2",
+        "2.4.3",
+        "2.4.4",
+        "2.4.5",
+        "2.4.6",
+        "2.4.7",
+        "2.4.8",
+        "2.4.9",
+        "2.5.0",
+        "2.5.1",
+        "2.5.10",
+        "2.5.11",
+        "2.5.2",
+        "2.5.3",
+        "2.5.4",
+        "2.5.5",
+        "2.5.6",
+        "2.5.7",
+        "2.5.8",
+        "2.5.9"
+       ]
+      },
+      {
+       "package": {
+        "name": "org.springframework.boot:spring-boot-starter-web",
+        "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-web",
+        "ecosystem": "Maven"
+       },
+       "ranges": [
+        {
+         "type": "ECOSYSTEM",
+         "events": [
+          {
+           "introduced": "2.6.0"
+          },
+          {
+           "fixed": "2.6.6"
+          }
+         ]
+        }
+       ],
+       "versions": [
+        "2.6.0",
+        "2.6.1",
+        "2.6.2",
+        "2.6.3",
+        "2.6.4",
+        "2.6.5"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "expected_order": [
+  "CVE-2022-22965"
+ ],
+ "source": {
+  "repo": "reznok/Spring4Shell-POC",
+  "commit": "cee9a2162fde4e48afe0308cee483d923efd15c1",
+  "path": "pom.xml",
+  "companion": null
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "summary": {
+  "base": {
+   "asr": 0.2,
+   "n_attacked": 90,
+   "recall_rest": 1.0,
+   "detect": 0.0,
+   "clean_recall": 1.0,
+   "clean_precision": 1.0,
+   "false_alarm": 0.0,
+   "n_clean": 50
+  },
+  "hardened": {
+   "asr": 0.0,
+   "n_attacked": 90,
+   "recall_rest": 1.0,
+   "detect": 0.8777777777777778,
+   "clean_recall": 1.0,
+   "clean_precision": 1.0,
+   "false_alarm": 0.02,
+   "n_clean": 50
+  },
+  "base+cc": {
+   "asr": 0.0,
+   "n_attacked": 90,
+   "recall_rest": 1.0,
+   "detect": 0.2,
+   "clean_recall": 1.0,
+   "clean_precision": 1.0,
+   "false_alarm": 0.0,
+   "n_clean": 50
+  },
+  "hardened+cc": {
+   "asr": 0.0,
+   "n_attacked": 90,
+   "recall_rest": 1.0,
+   "detect": 0.8777777777777778,
+   "clean_recall": 1.0,
+   "clean_precision": 1.0,
+   "false_alarm": 0.02,
+   "n_clean": 50
+  }
+ },
+ "spent_usd": 0.18708050000000012
+}

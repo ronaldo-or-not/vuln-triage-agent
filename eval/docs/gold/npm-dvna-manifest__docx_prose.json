@@ -1,0 +1,28 @@
+{
+ "doc": "npm-dvna-manifest__docx_prose.docx",
+ "case": "npm-dvna-manifest",
+ "layout": "docx_prose",
+ "findings": [
+  {
+   "ecosystem": "npm",
+   "package": "mathjs",
+   "version": "3.10.1",
+   "ids": [
+    "CVE-2017-1001002",
+    "CVE-2017-1001003",
+    "CVE-2020-7743"
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "package": "node-serialize",
+   "version": "0.0.4",
+   "ids": [
+    "CVE-2017-5941"
+   ]
+  }
+ ],
+ "distractors": [
+  "CVE-2021-44228"
+ ]
+}

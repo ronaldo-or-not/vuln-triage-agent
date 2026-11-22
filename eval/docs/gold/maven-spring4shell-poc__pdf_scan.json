@@ -1,0 +1,16 @@
+{
+ "doc": "maven-spring4shell-poc__pdf_scan.pdf",
+ "case": "maven-spring4shell-poc",
+ "layout": "pdf_scan",
+ "findings": [
+  {
+   "ecosystem": "Maven",
+   "package": "org.springframework.boot:spring-boot-starter-web",
+   "version": "2.6.3",
+   "ids": [
+    "CVE-2022-22965"
+   ]
+  }
+ ],
+ "distractors": []
+}

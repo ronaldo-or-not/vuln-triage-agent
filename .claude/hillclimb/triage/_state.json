@@ -1,0 +1,95 @@
+{
+ "flow": "triage",
+ "description": "Dependency-file triage agent: grounded findings, KEV-first ranking, safe upgrades, unchecked reporting",
+ "metrics": [
+  {
+   "id": "pass",
+   "label": "pass",
+   "kind": "binary"
+  },
+  {
+   "id": "recall",
+   "label": "recall",
+   "kind": "float",
+   "scale": 1
+  },
+  {
+   "id": "no_halluc",
+   "label": "no halluc",
+   "kind": "binary"
+  },
+  {
+   "id": "kev_order",
+   "label": "KEV first",
+   "kind": "binary"
+  },
+  {
+   "id": "kev_facts",
+   "label": "KEV facts",
+   "kind": "binary"
+  },
+  {
+   "id": "upgrade_ok",
+   "label": "upgrade ok",
+   "kind": "float",
+   "scale": 1
+  },
+  {
+   "id": "unchecked_ok",
+   "label": "unchecked ok",
+   "kind": "binary"
+  },
+  {
+   "id": "order_tau",
+   "label": "order tau",
+   "kind": "float",
+   "scale": 1
+  }
+ ],
+ "perf_fields": [
+  {
+   "id": "cost_usd",
+   "label": "cost",
+   "unit": "$"
+  },
+  {
+   "id": "in_tokens",
+   "label": "in tok"
+  },
+  {
+   "id": "out_tokens",
+   "label": "out tok"
+  },
+  {
+   "id": "tool_calls",
+   "label": "tools"
+  },
+  {
+   "id": "latency_s",
+   "label": "latency",
+   "unit": "s"
+  }
+ ],
+ "prices": {
+  "claude-opus-5-5": {
+   "in": 4.0,
+   "out": 20.0
+  },
+  "claude-sonnet-5-5": {
+   "in": 2.0,
+   "out": 10.0
+  },
+  "claude-haiku-5-5": {
+   "in": 0.1,
+   "out": 0.5
+  }
+ },
+ "harness_paths": [
+  "src/vulnagent",
+  "eval/grade.py",
+  "eval/casefiles.py",
+  "eval/cases.json",
+  "eval/cases",
+  "eval/gold"
+ ]
+}

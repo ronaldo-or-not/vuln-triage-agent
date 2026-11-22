@@ -1,0 +1,18 @@
+{
+ "doc": "npm-vulnerable-node-lock__xlsx.xlsx",
+ "case": "npm-vulnerable-node-lock",
+ "layout": "xlsx",
+ "findings": [
+  {
+   "ecosystem": "npm",
+   "package": "morgan",
+   "version": "1.12.0",
+   "ids": [
+    "CVE-2026-87859"
+   ]
+  }
+ ],
+ "distractors": [
+  "CVE-2021-44228"
+ ]
+}

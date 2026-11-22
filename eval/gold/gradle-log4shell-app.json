@@ -1,0 +1,24 @@
+{
+ "id": "gradle-log4shell-app",
+ "ecosystem": "Maven",
+ "as_of": {
+  "kev_catalog": "2026.11.20",
+  "kev_released": "2026-11-21T02:48:39.151600+09:00",
+  "epss_date": "2026-11-20",
+  "epss_model": "v2026.06.15"
+ },
+ "dependencies_checked": 1,
+ "unchecked": [
+  "org.springframework.boot:spring-boot-starter-web",
+  "org.springframework.boot:spring-boot-starter-test"
+ ],
+ "vulns": [],
+ "packages": [],
+ "expected_order": [],
+ "source": {
+  "repo": "christophetd/log4shell-vulnerable-app",
+  "commit": "c962aabb31a6af0a77f0e9bbc7100e175c7c04e1",
+  "path": "build.gradle",
+  "companion": null
+ }
+}

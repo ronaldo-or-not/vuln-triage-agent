@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.env
+# 서버에서 사용자 권한으로 설치하는 PostgreSQL과 데이터
+.tools/
+.pgdata/
+.pgsock/
+*.log
+logs/
+data/
+# 채점기 자체 점검 출력 (eval/ci_checks.py가 매번 다시 만든다)
+eval/selfcheck/
