@@ -105,6 +105,8 @@ def claim_category(summary: str, start: int, end: int) -> str:
     before = summary[max(0, start - 12):start]
     if (unit and unit.group(2) == "건") or VULN_BEFORE.search(before):
         return "vuln"
+    if re.search(r"나머지\s*(약\s*)?$", before):  # "나머지 9개 패키지에서는 (취약점이 없었다)" -> 취약 패키지가 아님
+        return "pkg"
     if VULNERABLE_PKG_AFTER.match(rest):
         return "vulnerable_pkg"
     if PKG_AFTER.match(rest):

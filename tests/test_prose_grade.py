@@ -138,3 +138,9 @@ def test_unique_vulnerability_count_is_allowed():
         report = {"summary": summary, "packages": [], "unchecked": [], "notes": []}
         scores, why = grade_prose(payload, check, report)
         assert scores["counts_ok"] == 1, why
+
+
+def test_remaining_packages_are_not_vulnerable_packages():
+    # v5 파일럿에서 나온 오탐: "나머지 3개 패키지에서는 알려진 취약점이 없었습니다" (3 = 취약점 없는 패키지 수)
+    scores, why = grade_with(summary=REPORT["summary"] + " 나머지 3개 패키지에서는 알려진 취약점이 없었습니다.")
+    assert scores["counts_ok"] == 1, why
