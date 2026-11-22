@@ -62,6 +62,8 @@ def facts(payload: dict, check: dict, report: dict) -> dict:
         "unique_vulnerabilities": len({v["id"] for _, v in vulns}),
         "unique_kev_vulnerabilities": len({v["id"] for _, v in vulns if v.get("kev")}),
         "per_package": {r["package"]: len(r["vulnerabilities"]) for r in vulnerable},
+        # "log4j-core: 9개 취약점, KEV 2건"처럼 패키지별 KEV 개수도 쓴다 (v5에서 오탐으로 발견)
+        "per_package_kev": {r["package"]: sum(1 for v in r["vulnerabilities"] if v.get("kev")) for r in vulnerable},
         "report_packages": len(report["packages"]),
         "report_vulnerabilities": sum(len(p["vulnerabilities"]) for p in report["packages"]),
         # "1479 packages in total" 같은 패키지 수만. 버전 문자열(2.6.3)의 숫자까지 넣으면 작은 수가 모두 통과한다
@@ -72,13 +74,13 @@ def facts(payload: dict, check: dict, report: dict) -> dict:
 
 def _allowed_numbers(f: dict) -> set[int]:
     nums = {v for k, v in f.items() if isinstance(v, int)}
-    return nums | set(f["per_package"].values()) | set(f["parser_note_numbers"])
+    return nums | set(f["per_package"].values()) | set(f["per_package_kev"].values()) | set(f["parser_note_numbers"])
 
 
 def _allowed_by_category(f: dict) -> dict[str, set[int]]:
     """숫자가 가리키는 대상별 허용 값. 대상을 알 수 없으면 전체(any)와 비교한다."""
     vuln = {f["vulnerabilities"], f["report_vulnerabilities"], f["kev_vulnerabilities"], f["unique_vulnerabilities"],
-            f["unique_kev_vulnerabilities"], *f["per_package"].values()}
+            f["unique_kev_vulnerabilities"], *f["per_package"].values(), *f["per_package_kev"].values()}
     pkg = {f[k] for k in ("dependencies", "unchecked", "dependencies_plus_unchecked", "vulnerable_packages",
                           "no_known_vuln_packages", "report_packages")} | set(f["parser_note_numbers"])
     vulnerable = {f["vulnerable_packages"], f["report_packages"]}
@@ -91,6 +93,7 @@ VULNERABLE_PKG_AFTER = re.compile(r"\s*(의\s*)?(패키지\s*)?에서")
 PKG_AFTER = re.compile(r"\s*(중|의\s*(직접\s*)?(패키지|의존성|항목)|(직접\s*)?(패키지|의존성|항목|라이브러리|dependenc|direct))")
 VULN_AFTER = re.compile(r"\s*(의\s*)?(고유\s*)?취약점")
 VULN_BEFORE = re.compile(r"취약점\s*(총\s*)?(약\s*)?$")
+UNCHECKED_BEFORE = re.compile(r"(검사\s*불가|검사하지\s*못한|확인하지\s*못한|확인\s*불가|미확인)[^.。]{0,10}$")
 PKG_BEFORE = re.compile(r"(의존성|패키지|dependency|dependencies|항목)\s*(총\s*)?(약\s*)?$")
 
 
@@ -103,6 +106,8 @@ def claim_category(summary: str, start: int, end: int) -> str:
     unit = re.match(r"\s*(여\s*)?(개|건)", tail)
     rest = re.sub(r"^\s*(이상|가량|정도)", "", tail[unit.end():]) if unit else tail
     before = summary[max(0, start - 12):start]
+    if UNCHECKED_BEFORE.search(before):  # "검사하지 못한 항목은 95건" -> 검사 못 한 항목 수 (v5에서 오탐으로 발견)
+        return "pkg"
     if (unit and unit.group(2) == "건") or VULN_BEFORE.search(before):
         return "vuln"
     if re.search(r"나머지\s*(약\s*)?$", before):  # "나머지 9개 패키지에서는 (취약점이 없었다)" -> 취약 패키지가 아님
@@ -171,7 +176,9 @@ def grade_prose(payload: dict, check: dict, report: dict) -> tuple[dict, dict]:
         short = top["package"].split("/", 1)[1].rsplit("@", 1)[0].split(":")[-1]
         names = {top["id"]} | {v for r in check["results"] for x in r.get("vulnerabilities", []) if x["id"] == top["id"]
                                 for v in [*x.get("cve_ids", []), *x.get("osv_ids", [])]}
-        if not any(n in summary for n in names) and short.lower() not in summary.lower():
+        # "Apache Struts2 2.3.20"도 struts2-core를 가리킨다: -core / -api 같은 접미사를 뗀 이름도 인정 (v5에서 오탐으로 발견)
+        stem = re.sub(r"-(core|api|common|starter|lib|java)$", "", short.lower())
+        if not any(n in summary for n in names) and short.lower() not in summary.lower() and stem not in summary.lower():
             why["top1_named"] = f"summary does not mention rank-1 {top['id']} ({short})"
 
     foreign = FOREIGN_RE.findall(everything)

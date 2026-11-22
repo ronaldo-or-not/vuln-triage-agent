@@ -144,3 +144,20 @@ def test_remaining_packages_are_not_vulnerable_packages():
     # v5 파일럿에서 나온 오탐: "나머지 3개 패키지에서는 알려진 취약점이 없었습니다" (3 = 취약점 없는 패키지 수)
     scores, why = grade_with(summary=REPORT["summary"] + " 나머지 3개 패키지에서는 알려진 취약점이 없었습니다.")
     assert scores["counts_ok"] == 1, why
+
+
+def test_per_package_kev_counts_and_unchecked_items_with_geon():
+    # v5 실행에서 나온 오탐 두 가지 (둘 다 맞는 서술)
+    packages = copy.deepcopy(REPORT["packages"])
+    scores, why = grade_with(summary=REPORT["summary"] + " log4j-core는 3건 중 KEV가 2건입니다. 검사하지 못한 항목은 1건입니다.")
+    assert scores["counts_ok"] == 1, why
+    payload = copy.deepcopy(PAYLOAD); payload["unchecked"] = [{"spec": f"x{i}", "reason": "range"} for i in range(95)]
+    report = copy.deepcopy(REPORT); report["summary"] += " 검사하지 못한 항목은 95건이며 모두 버전 범위입니다."
+    assert grade_prose(payload, CHECK, report)[0]["counts_ok"] == 1
+    assert packages  # 원본 불변
+
+
+def test_top1_package_named_without_suffix():
+    # "Log4j 2.14.1"도 log4j-core를 가리킨다. 반대로 다른 패키지만 언급하면 실패
+    assert grade_with(summary="직접 의존성 5개 중 2개 패키지에서 취약점 4건. 가장 시급한 것은 Log4j 2.14.1입니다.")[0]["top1_named"] == 1
+    assert grade_with(summary="직접 의존성 5개 중 2개 패키지에서 취약점 4건. 가장 시급한 것은 snakeyaml입니다.")[0]["top1_named"] == 0
