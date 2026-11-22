@@ -73,7 +73,9 @@ HINTS_ADDENDUM = """
 Computed fields: check_packages also returns `safe_upgrade` for each vulnerable package and `policy_rank` for \
 each vulnerability. Code computes them with the same rules as above (lowest fixed version not affected by any of \
 the package's vulnerabilities; KEV first, then EPSS). Use `safe_upgrade` as upgrade_to and `policy_rank` as rank. \
-Do not recompute them; spend your effort on the summary, reasons and notes."""
+Do not recompute them; spend your effort on the summary, reasons and notes.
+
+Counts: check_packages also returns `counts` (packages_checked, vulnerable_packages, no_known_vulns_packages, vulnerabilities, unique_vulnerabilities, kev_listed) and `vulnerability_count` for each vulnerable package; the input carries `counts` for dependencies and unchecked entries. Every number you write in summary, reason or notes must be copied from one of these fields. Never count or add up by hand. `vulnerabilities` counts one per package, so an id listed under two packages counts twice; use unique_vulnerabilities when you mean distinct vulnerabilities."""
 
 REPORT_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -141,7 +143,7 @@ class TriageRun:
         return {k: sum(c["usage"].get(k) or 0 for c in self.calls) for k in keys}
 
 
-def build_user_message(parsed: ParseResult, file_label: str, context: str | None = None) -> str:
+def build_user_message(parsed: ParseResult, file_label: str, context: str | None = None, counts: bool = False) -> str:
     payload = {
         "file": file_label,
         "ecosystem": parsed.ecosystem,
@@ -152,6 +154,9 @@ def build_user_message(parsed: ParseResult, file_label: str, context: str | None
         "unchecked": [{"spec": u.spec, "reason": u.reason} for u in parsed.unchecked],
         "parser_notes": parsed.notes,
     }
+    if counts:  # v5: 입력 쪽 개수도 미리 세어 준다 (검사하지 못한 항목 수는 도구가 모른다)
+        payload["counts"] = {"dependencies": len(parsed.dependencies), "unchecked": len(parsed.unchecked),
+                             "total_entries": len(parsed.dependencies) + len(parsed.unchecked)}
     text = "Triage this dependency file.\n\n```json\n" + json.dumps(payload, indent=1, ensure_ascii=False) + "\n```"
     if context:
         text += f"\n\nDeployment context from the user: {context}"
@@ -202,10 +207,11 @@ async def run_triage(
 ) -> TriageRun:
     """validate=True (v3): 최종 보고서를 이번 실행의 check_packages 결과와 코드로 대조하고,
     문제가 있으면 목록을 알려 주며 최대 MAX_CORRECTIONS번 다시 쓰게 한다.
-    tool_hints=True (v4): 도구가 safe_upgrade / policy_rank를 계산해 주고, 모델은 그 값을 쓴다."""
+    tool_hints=True (v4): 도구가 safe_upgrade / policy_rank를 계산해 주고, 모델은 그 값을 쓴다.
+    v5부터는 개수(counts)도 도구와 입력에 미리 계산해 넣는다 (요약문 개수 오류 대응)."""
     client = client or anthropic.AsyncAnthropic()
     check_outputs: list[dict] = []
-    user_message = build_user_message(parsed, file_label, context)
+    user_message = build_user_message(parsed, file_label, context, counts=tool_hints)
     run = TriageRun(status="max_turns", report=None, model_requested=model)
     system = SYSTEM_PROMPT + (HINTS_ADDENDUM if tool_hints else "")
     mcp_env = {**(mcp_env or {}), **({"VULNAGENT_TOOL_HINTS": "1"} if tool_hints else {})}

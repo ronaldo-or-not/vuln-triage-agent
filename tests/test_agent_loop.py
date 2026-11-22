@@ -111,3 +111,17 @@ def test_agent_loop_calls_mcp_tool_and_returns_structured_report(seeded_db):
     assert roles == ["system", "user", "tool_call", "tool_result", "assistant"]
     assert run.trace[2]["thinking"] == "check all packages first"
     assert run.usage_total()["input_tokens"] == 200
+
+
+def test_user_message_carries_input_counts_only_with_hints():
+    import json as _json
+
+    from vulnagent.agent import build_user_message
+    from vulnagent.depfiles import Dependency, ParseResult, Unchecked
+
+    parsed = ParseResult("requirements.txt", "PyPI", [Dependency("PyPI", "flask", "2.0.0")],
+                         [Unchecked("requests", "not pinned"), Unchecked("click", "not pinned")])
+    payload = lambda text: _json.loads(text.split("```json\n", 1)[1].split("\n```", 1)[0])  # noqa: E731
+    assert "counts" not in payload(build_user_message(parsed, "requirements.txt"))
+    assert payload(build_user_message(parsed, "requirements.txt", counts=True))["counts"] == \
+        {"dependencies": 1, "unchecked": 2, "total_entries": 3}

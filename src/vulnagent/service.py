@@ -214,10 +214,29 @@ class VulnService:
             for v in r.get("vulnerabilities", []):
                 primary = v["cve_ids"][0] if v["cve_ids"] else None
                 v.update(enrichment.get(primary, {"kev": None, "epss": None, "cvss": None}))
+        out = {"as_of": {**snaps, "epss_date": _iso(snaps["epss_date"])}, "results": results, "warnings": warnings}
         if self.settings.tool_hints:
             self._add_tool_hints(results, keys, found)
+            out["counts"] = self._result_counts(results)
+        return out
 
-        return {"as_of": {**snaps, "epss_date": _iso(snaps["epss_date"])}, "results": results, "warnings": warnings}
+    @staticmethod
+    def _result_counts(results: list[dict]) -> dict:
+        """v5: 요약에 쓸 개수를 코드로 센다. 7주차 분석에서 요약문 3분의 1의 개수가 틀렸다 (취약 패키지가 여럿이라
+        손으로 더할 때). 같은 취약점이 두 패키지에 걸리면 합계(vulnerabilities)와 고유 개수가 다르므로 둘 다 준다."""
+        vulnerable = [r for r in results if r.get("status") == "vulnerable"]
+        for r in vulnerable:
+            r["vulnerability_count"] = len(r["vulnerabilities"])
+        vulns = [v for r in vulnerable for v in r["vulnerabilities"]]
+        return {
+            "packages_checked": len(results),
+            "vulnerable_packages": len(vulnerable),
+            "no_known_vulns_packages": sum(1 for r in results if r.get("status") == "no_known_vulns"),
+            "not_checked_packages": sum(1 for r in results if r.get("status") not in ("vulnerable", "no_known_vulns")),
+            "vulnerabilities": len(vulns),
+            "unique_vulnerabilities": len({v["id"] for v in vulns}),
+            "kev_listed": len({v["id"] for v in vulns if v.get("kev")}),
+        }
 
     @staticmethod
     def _add_tool_hints(results: list[dict], keys: list[osv.PackageKey], found: dict) -> None:

@@ -84,6 +84,9 @@ def check_packages(packages: list[PackageRef], as_of: str | None = None) -> dict
     When present, safe_upgrade (per package) is the lowest fixed version not affected by any of
     that package's vulnerabilities (null if none exists), and policy_rank (per vulnerability)
     orders every vulnerability in the response by KEV status, then EPSS. Both are computed in code.
+    Also when present: `counts` at the top level (packages_checked, vulnerable_packages,
+    no_known_vulns_packages, vulnerabilities, unique_vulnerabilities, kev_listed) and
+    vulnerability_count per vulnerable package. Copy numbers from these instead of counting.
     - "no_known_vulns": OSV knows no vulnerability. NOT proof of safety: a misspelled package
       name gives the same answer.
     Results are not sorted by priority. `as_of` (YYYY-MM-DD) replays older KEV/EPSS snapshots.

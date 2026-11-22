@@ -5,6 +5,8 @@
 ("의존성 44개" → 실제 43개, "12개 패키지 20건" → 실제 8개 19건).
 
 입력: 최종 보고서, 그 실행에서 받은 check_packages 결과, 에이전트에 준 입력(payload). 정답 파일은 쓰지 않는다.
+개수는 언제나 results에서 직접 센다. v5부터 도구가 주는 `counts` 필드는 읽지 않는다 (채점기가 도구를 믿으면
+도구의 개수 버그를 못 잡는다).
 지표 (모두 0/1, 첫 번째가 대표 지표):
   prose_ok        아래 다섯이 모두 1
   counts_ok       요약의 개수 표현(N개 / N건)이 이번 실행의 사실 중 하나와 맞다.
@@ -56,6 +58,9 @@ def facts(payload: dict, check: dict, report: dict) -> dict:
         "no_known_vuln_packages": len(check["results"]) - len(vulnerable),
         "vulnerabilities": len(vulns),
         "kev_vulnerabilities": sum(1 for _, v in vulns if v.get("kev")),
+        # 같은 취약점이 두 패키지에 걸리면 고유 개수가 합계보다 작다 (benchmark-java: 28건, 고유 27건)
+        "unique_vulnerabilities": len({v["id"] for _, v in vulns}),
+        "unique_kev_vulnerabilities": len({v["id"] for _, v in vulns if v.get("kev")}),
         "per_package": {r["package"]: len(r["vulnerabilities"]) for r in vulnerable},
         "report_packages": len(report["packages"]),
         "report_vulnerabilities": sum(len(p["vulnerabilities"]) for p in report["packages"]),
@@ -72,7 +77,8 @@ def _allowed_numbers(f: dict) -> set[int]:
 
 def _allowed_by_category(f: dict) -> dict[str, set[int]]:
     """숫자가 가리키는 대상별 허용 값. 대상을 알 수 없으면 전체(any)와 비교한다."""
-    vuln = {f["vulnerabilities"], f["report_vulnerabilities"], f["kev_vulnerabilities"], *f["per_package"].values()}
+    vuln = {f["vulnerabilities"], f["report_vulnerabilities"], f["kev_vulnerabilities"], f["unique_vulnerabilities"],
+            f["unique_kev_vulnerabilities"], *f["per_package"].values()}
     pkg = {f[k] for k in ("dependencies", "unchecked", "dependencies_plus_unchecked", "vulnerable_packages",
                           "no_known_vuln_packages", "report_packages")} | set(f["parser_note_numbers"])
     vulnerable = {f["vulnerable_packages"], f["report_packages"]}

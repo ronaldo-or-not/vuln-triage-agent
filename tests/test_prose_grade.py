@@ -124,3 +124,17 @@ def test_total_vulnerabilities_with_jung_is_a_vulnerability_count():
 def test_thousands_separator_is_one_number():
     scores, why = grade_with(summary=REPORT["summary"] + " lockfile의 1,274개 패키지 중 직접 의존성만 봤습니다.")
     assert scores["counts_ok"] == 1, why
+
+
+def test_unique_vulnerability_count_is_allowed():
+    # 같은 ID가 두 패키지에 걸린 경우: 합계 2건, 고유 1건. "고유 취약점 1건"도, "취약점 2건"도 맞다
+    check = {"results": [
+        {"package": "Maven/org.springframework:spring-web@5.3.0", "status": "vulnerable",
+         "vulnerabilities": [{"id": "CVE-2024-38820", "kev": False, "policy_rank": 1}]},
+        {"package": "Maven/org.springframework:spring-context@5.3.0", "status": "vulnerable",
+         "vulnerabilities": [{"id": "CVE-2024-38820", "kev": False, "policy_rank": 2}]}]}
+    payload = {"dependencies": [{}, {}, {}], "unchecked": [], "parser_notes": []}
+    for summary in ("직접 의존성 3개 중 2개 패키지에서 취약점 2건(고유 1건)이 확인되었습니다. spring-web을 먼저 올리세요.",):
+        report = {"summary": summary, "packages": [], "unchecked": [], "notes": []}
+        scores, why = grade_prose(payload, check, report)
+        assert scores["counts_ok"] == 1, why

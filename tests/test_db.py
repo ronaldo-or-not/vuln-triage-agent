@@ -93,6 +93,12 @@ def test_tool_hints_compute_safe_upgrade_and_policy_rank(seeded_db, offline_sett
     ranks = sorted((v["policy_rank"], v["epss"]["epss"]) for v in result["vulnerabilities"])
     assert [r for r, _ in ranks] == list(range(1, 7))
     assert [e for _, e in ranks] == sorted((e for _, e in ranks), reverse=True)  # KEV 없음 -> EPSS 내림차순
+    # v5: 요약에 쓸 개수를 코드로 세어 준다
+    assert result["vulnerability_count"] == 6
+    assert hinted["counts"] == {"packages_checked": 1, "vulnerable_packages": 1, "no_known_vulns_packages": 0,
+                                "not_checked_packages": 0, "vulnerabilities": 6, "unique_vulnerabilities": 6,
+                                "kev_listed": 0}
+    assert "counts" not in plain
 
 
 def test_kev_unknown_is_null_not_false(db, offline_settings):
