@@ -8,7 +8,7 @@
 - cwe_valid     : 채운 cwe가 CWE-<숫자> 형식이고 카탈로그에 있음 (없는 번호를 지어내지 않음)
 - cwe_grounded  : 채운 cwe가 이번 실행의 도구 결과 어딘가에 나왔음 (기억에서 꺼낸 것인지 구분)
 
-패키지 단위 (업그레이드로 다 못 고치는 패키지만: 안전한 단일 업그레이드가 없거나 수정 버전 없는 취약점이 있음)
+패키지 단위 (업그레이드로 다 못 고치는 패키지만: 모든 취약점을 벗어나는 단일 업그레이드가 없음)
 - wa_present    : workaround를 썼음
 - wa_relevant   : workaround가 인용한 CWE 중 하나가 그 패키지 취약점들의 정답 라벨에 있음
 - wa_grounded   : workaround가 인용한 CWE 중 하나를 이번 실행에서 get_weakness로 조회했음 (지식베이스 근거)
@@ -58,10 +58,14 @@ def tool_evidence(trace: list[dict]) -> tuple[set[str], set[str]]:
 
 
 def needs_workaround(gold: dict) -> set[str]:
+    """업그레이드 하나로 모든 취약점을 벗어날 수 없는 패키지 (정답의 min_safe_upgrade가 없음).
+
+    처음에는 '수정 버전 없는 취약점이 있는 패키지'도 넣었는데(14개), 파일럿에서 틀린 정의로 드러났다.
+    spring-context 3.2.6의 CVE-2024-38820은 5.3.x 줄에 수정이 없을 뿐이고(last_affected 5.3.40),
+    6.1.20으로 올리면 벗어난다. 에이전트가 workaround를 쓰지 않은 것이 맞았다. 지금 정의로는 7개.
+    """
     eco = gold["ecosystem"]
-    no_fix = {_pkg_name(v["package"], eco) for v in gold["vulns"] if v["fix_status"] != "fixed"}
-    return {_pkg_name(p["package"], eco) for p in gold["packages"]
-            if p["min_safe_upgrade"] is None or _pkg_name(p["package"], eco) in no_fix}
+    return {_pkg_name(p["package"], eco) for p in gold["packages"] if p["min_safe_upgrade"] is None}
 
 
 def grade_cwe(report: dict, trace: list[dict], gold: dict, labels: dict[str, set[str]], catalog: dict) -> dict:

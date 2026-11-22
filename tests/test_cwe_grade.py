@@ -20,10 +20,13 @@ GOLD = {
     "packages": [
         {"package": "npm/node-serialize@0.0.4", "min_safe_upgrade": None},
         {"package": "npm/lodash@4.17.15", "min_safe_upgrade": "4.17.21"},
+        # 이 줄에는 수정이 없지만(no_fix) 더 높은 버전으로 올리면 벗어난다 -> 완화책 불필요 (파일럿에서 찾은 정의 오류)
+        {"package": "npm/qs@6.5.0", "min_safe_upgrade": "6.14.1"},
     ],
 }
+GOLD["vulns"].append({"id": "CVE-2025-15284", "aliases": ["CVE-2025-15284"], "package": "npm/qs@6.5.0", "fix_status": "no_fix"})
 LABELS = {"CVE-2017-5941": {"CWE-502"}, "CVE-2021-23337": {"CWE-94", "CWE-77"}, "CVE-2020-8203": {"CWE-1321"},
-          "GHSA-xxxx-yyyy-zzzz": set()}  # 마지막은 라벨 없음 -> 정답률 분모에서 빠진다
+          "GHSA-xxxx-yyyy-zzzz": set(), "CVE-2025-15284": set()}  # 라벨 없음 -> 정답률 분모에서 빠진다
 CATALOG = {c: c for c in ("CWE-502", "CWE-94", "CWE-77", "CWE-1321", "CWE-79", "CWE-790")}
 
 
@@ -98,3 +101,9 @@ def test_workaround_relevance_and_extra():
     assert c["wa_present"] == 1 and c["wa_relevant"] == 0 and c["wa_grounded"] == 0
     assert c["wa_extra"] == 1  # lodash는 안전한 업그레이드가 있어 완화책이 필요 없다
     assert any("CWE-20" in m for m in g["wa_misses"])
+
+
+def test_package_whose_no_fix_line_can_be_escaped_needs_no_workaround():
+    rep = report({}, {"npm/qs@6.5.0": "입력 크기를 제한한다 (CWE-20)"})
+    c = grade_cwe(rep, [], GOLD, LABELS, CATALOG)["counts"]
+    assert c["wa_needed"] == 1 and c["wa_extra"] == 1  # node-serialize만 필요, qs에 쓴 것은 참고용으로만 센다
