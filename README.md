@@ -1,5 +1,7 @@
 # vuln-triage-agent
 
+[![ci](https://github.com/ronaldo-or-not/vuln-triage-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/ronaldo-or-not/vuln-triage-agent/actions/workflows/ci.yml)
+
 의존성 파일이나 보안 진단 보고서를 받아 **"무엇을, 어떤 순서로, 몇 버전으로 고쳐야 하는지"** 보고서를 쓰는 LLM 에이전트.
 에이전트 자체보다 **평가로 개선을 증명하는 것**에 무게를 둔 6주 프로젝트다.
 
