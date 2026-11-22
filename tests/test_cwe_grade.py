@@ -107,3 +107,18 @@ def test_package_whose_no_fix_line_can_be_escaped_needs_no_workaround():
     rep = report({}, {"npm/qs@6.5.0": "입력 크기를 제한한다 (CWE-20)"})
     c = grade_cwe(rep, [], GOLD, LABELS, CATALOG)["counts"]
     assert c["wa_needed"] == 1 and c["wa_extra"] == 1  # node-serialize만 필요, qs에 쓴 것은 참고용으로만 센다
+
+
+def test_search_diagnostics_split_retrieval_and_selection_errors():
+    from cwe_grade import search_diagnostics
+
+    results = {"results": [
+        {"key": "CVE-2017-5941", "candidates": [{"cwe_id": "CWE-502"}, {"cwe_id": "CWE-94"}]},       # 1위가 정답, 1위를 고름
+        {"key": "CVE-2021-23337", "candidates": [{"cwe_id": "CWE-79"}, {"cwe_id": "CWE-94"}]},       # 2위가 정답, 2위를 고름 (재순위)
+        {"key": "cve-2020-8203", "candidates": [{"cwe_id": "CWE-79"}, {"cwe_id": "CWE-20"}]},        # 후보에 정답 없음
+    ]}
+    trace = call("search_weaknesses_many", {"queries": []}, results)
+    rep = report({"CVE-2017-5941": "CWE-502", "CVE-2021-23337": "CWE-94", "CVE-2020-8203": "CWE-79"}, {})
+    d = search_diagnostics(rep, trace, GOLD, LABELS)
+    assert d["searched"] == 3 and d["label_in_candidates"] == 2 and d["label_top1"] == 1
+    assert d["hit_from_candidates"] == 2 and d["miss_label_not_in_candidates"] == 1 and d["chosen_top1"] == 2

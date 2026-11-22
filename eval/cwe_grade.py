@@ -146,3 +146,56 @@ def oracle_cwe_report(gold: dict, labels: dict[str, set[str]]) -> tuple[dict, li
         trace += [{"role": "tool_call", "name": "get_weakness", "content": json.dumps({"cwe_id": cwe})},
                   {"role": "tool_result", "content": json.dumps({"cwe_id": cwe})}]
     return {"packages": list(packages.values())}, trace
+
+
+def search_diagnostics(report: dict, trace: list[dict], gold: dict, labels: dict[str, set[str]]) -> dict:
+    """검색 실험군 분해: 틀린 이유가 검색(후보에 정답 없음)인지 선택(후보에 있는데 다른 것을 고름)인지.
+
+    search_weaknesses_many 호출의 key(에이전트가 넣은 취약점 id)로 취약점마다 후보 목록을 찾는다.
+    """
+    alias_to_id = {_canon(a): v["id"] for v in gold["vulns"] for a in [v["id"], *v["aliases"]]}
+    candidates: dict[str, list[str]] = {}
+    pending: deque[str] = deque()
+    for t in trace:
+        if t["role"] == "tool_call":
+            pending.append(t["name"])
+        elif t["role"] == "tool_result":
+            if (pending.popleft() if pending else "") != "search_weaknesses_many":
+                continue
+            try:
+                for r in json.loads(t["content"])["results"]:
+                    vid = alias_to_id.get(_canon(str(r["key"])))
+                    if vid:
+                        candidates[vid] = [c["cwe_id"] for c in r["candidates"]]
+            except (json.JSONDecodeError, KeyError, TypeError):
+                pass
+    chosen = {}
+    for pkg in report.get("packages", []):
+        for v in pkg.get("vulnerabilities", []):
+            vid = alias_to_id.get(_canon(v.get("id", "")))
+            if vid and vid not in chosen:
+                cwe = v.get("cwe")
+                chosen[vid] = cwe.strip().upper() if isinstance(cwe, str) and cwe.strip() else None
+    d = {k: 0 for k in ("labeled", "searched", "label_in_candidates", "label_top1", "chosen_top1", "chosen_in_candidates",
+                        "hit_from_candidates", "hit_outside_candidates", "miss_label_in_candidates",
+                        "miss_label_not_in_candidates", "null")}
+    for vid in {v["id"] for v in gold["vulns"]}:
+        gold_cwes = labels.get(vid, set())
+        if not gold_cwes:
+            continue
+        d["labeled"] += 1
+        cands, cwe = candidates.get(vid), chosen.get(vid)
+        if cands is None:
+            continue
+        d["searched"] += 1
+        in_cands = bool(gold_cwes & set(cands))
+        d["label_in_candidates"] += in_cands
+        d["label_top1"] += bool(cands) and cands[0] in gold_cwes  # 검색기 1위만 그대로 썼을 때의 정답 (재순위 효과 비교용)
+        d["null"] += cwe is None
+        d["chosen_top1"] += bool(cands) and cwe == cands[0]
+        d["chosen_in_candidates"] += cwe in cands
+        if cwe in gold_cwes:
+            d["hit_from_candidates" if cwe in cands else "hit_outside_candidates"] += 1
+        else:
+            d["miss_label_in_candidates" if in_cands else "miss_label_not_in_candidates"] += 1
+    return d

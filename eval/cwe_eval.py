@@ -18,7 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from casefiles import load_gold  # noqa: E402
-from cwe_grade import grade_cwe, load_reference  # noqa: E402
+from cwe_grade import grade_cwe, load_reference, search_diagnostics  # noqa: E402
 from prose_grade import grade_prose, load_trace  # noqa: E402
 from run_eval import cost_usd  # noqa: E402
 
@@ -47,6 +47,7 @@ def arm(variant_dir: Path, labels, catalog) -> dict:
     total = {}
     per_vuln: dict[str, bool] = {}
     runs, misses = [], []
+    diag: dict[str, int] = {}  # 검색 실험군만: 검색 탓인지 선택 탓인지
     for row in rows:
         trace_path = variant_dir / "traces" / f"{row['prompt_id']}_rep{row['rep']}.json"
         run = {"case": row["prompt_id"], "rep": row["rep"], "status": row["status"],
@@ -63,6 +64,9 @@ def arm(variant_dir: Path, labels, catalog) -> dict:
             run["cwe_acc"] = ratio(graded["counts"]["hit"], graded["counts"]["labeled"])
             per_vuln.update({f"{row['prompt_id']}|{row['rep']}|{k}": v for k, v in graded["per_vuln"].items()})
             misses += [f"{row['prompt_id']}: {m}" for m in graded["misses"][:3] + graded["wa_misses"][:3]]
+            if (row.get("meta") or {}).get("cwe") == "search":
+                for k, v in search_diagnostics(report, trace, gold, labels).items():
+                    diag[k] = diag.get(k, 0) + v
             prose, _why = grade_prose(payload, check, report)
             run["prose_ok"], run["counts_ok"] = prose["prose_ok"], prose["counts_ok"]
         runs.append(run)
@@ -90,6 +94,7 @@ def arm(variant_dir: Path, labels, catalog) -> dict:
         "latency_median_s": statistics.median(r["latency_s"] for r in runs if r["latency_s"] is not None) if runs else None,
         "tool_calls_mean": round(statistics.mean(r["tool_calls"] or 0 for r in runs), 2) if runs else None,
         "out_tokens_mean": round(statistics.mean(r["out_tokens"] or 0 for r in runs)) if runs else None,
+        "search_diagnostics": diag or None,
         "runs_detail": runs, "per_vuln": per_vuln, "example_misses": misses[:20],
     }
 
@@ -119,6 +124,14 @@ def markdown(arms: list[dict], pairs: list[dict]) -> str:
             f"${a['cost_per_run']:.4f} | {a['latency_median_s']}s | {a['tool_calls_mean']} |")
     lines += ["", "짝지은 비교 (같은 케이스·취약점):", ""]
     lines += [f"- {p['pair']}: " + ", ".join(f"{k} {v}" for k, v in p.items() if k != "pair") for p in pairs]
+    for a in arms:
+        d = a.get("search_diagnostics")
+        if d and d.get("searched"):
+            n = d["searched"]
+            lines.append(f"- {a['variant']} 검색 분해 (검색한 취약점 {n}개): 후보 5개 안에 정답 {d['label_in_candidates']}/{n}, 검색 1위가 정답 {d['label_top1']}, "
+                         f"후보 1위를 고름 {d['chosen_top1']}, 후보 중에서 고름 {d['chosen_in_candidates']}, 비움 {d['null']} | "
+                         f"정답: 후보에서 {d['hit_from_candidates']}, 후보 밖(기억) {d['hit_outside_candidates']} | "
+                         f"오답: 정답이 후보에 있었는데 다른 것 {d['miss_label_in_candidates']}, 후보에 정답 없음 {d['miss_label_not_in_candidates']}")
     for a in arms:
         if a["not_finished"] or a["errors"]:
             lines.append(f"- {a['variant']}: 채점 못 한 실행 {a['not_finished']}, 오류 {a['errors']}건")

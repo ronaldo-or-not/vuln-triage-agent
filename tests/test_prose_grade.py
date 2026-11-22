@@ -190,3 +190,24 @@ def test_load_trace_skips_tool_errors_and_kb_search_results(tmp_path):
     path.write_text(json.dumps(trace))
     payload, check, report = load_trace(path)
     assert check["results"] == CHECK["results"] and report == REPORT
+
+
+def test_packages_without_vulnerabilities_and_dependency_counts_with_geon():
+    """8주차에서 찾은 오탐 두 가지. 맞는 문장은 통과하고, 같은 자리에 틀린 수를 넣으면 여전히 실패해야 한다."""
+    from prose_grade import claim_category
+
+    no_vuln = REPORT["summary"] + " 3개 패키지에서는 OSV가 알려진 취약점을 반환하지 않았습니다."  # 5 - 2 = 3
+    s1 = no_vuln.rindex("3개")
+    assert claim_category(no_vuln, s1, s1 + 1) == "pkg"
+    assert grade_with(summary=no_vuln)[0]["counts_ok"] == 1
+    assert grade_with(summary=no_vuln.replace("3개 패키지에서는", "7개 패키지에서는"))[0]["counts_ok"] == 0
+    vulnerable = "직접 의존성 5개 중 2개 패키지에서 취약점이 발견되었고 KEV 항목은 없습니다."
+    s2 = vulnerable.index("2개")
+    assert claim_category(vulnerable, s2, s2 + 1) == "vulnerable_pkg"  # 부정이 '에서는' 뒤에 바로 오지 않으면 그대로
+
+    deps = REPORT["summary"] + " range 지정 의존성 1건은 lockfile이 없어 검사하지 못했습니다."  # unchecked = 1
+    s3 = deps.rindex("1건")
+    assert claim_category(deps, s3, s3 + 1) == "pkg"
+    assert grade_with(summary=deps)[0]["counts_ok"] == 1
+    kev = "KEV 항목 2건"
+    assert claim_category(kev, 7, 8) == "vuln"  # '항목 N건'은 여전히 취약점 수

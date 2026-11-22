@@ -9,7 +9,7 @@
 - 공개 저장소의 실제 의존성 파일 20개와 코드로 계산한 정답으로 채점한다. LLM 채점은 쓰지 않는다
 - 오류 분석으로 가장 싼 모델(Haiku 5.5)을 Opus 5.5와 같은 품질까지 올렸다: **실행당 비용 1/46, 지연 절반**
 - PDF·DOCX·XLSX·스캔 보고서에서 발견사항을 추출하고, 문서 속 프롬프트 인젝션을 막는다
-- 6주 전체 API 비용 약 $7
+- 8주 전체 API 비용 약 $7.3
 
 한 장 요약: **[docs/PORTFOLIO.md](docs/PORTFOLIO.md)**
 
@@ -23,10 +23,9 @@
                 ▼                                                                   │ 패키지·버전만 넘김
          ┌─────────────────────────────── 트리아지 에이전트 (agent.py) ◀────────────┘
          │  직접 구현한 도구 호출 루프 · JSON 스키마 출력 · 보고서 검증 루프(validate.py, 최대 2회 교정)
-         └──MCP(stdio)──▶ vuln-data   check_packages / get_vulnerability ─▶ PostgreSQL ◀─ OSV·NVD 캐시, KEV·EPSS 스냅샷
-
- security-kb (별도 MCP 서버)  search_weaknesses / get_weakness ─▶ CWE 1,352개 (BM25 기본, 임베딩·pgvector 선택)
-   트리아지 에이전트에는 아직 연결하지 않았다. Claude Code 같은 MCP 클라이언트에 붙여 CVE 설명으로 약점 유형을 찾는 데 쓴다
+         ├──MCP(stdio)──▶ vuln-data   check_packages / get_vulnerability ─▶ PostgreSQL ◀─ OSV·NVD 캐시, KEV·EPSS 스냅샷
+         └──MCP(stdio)──▶ security-kb get_weakness / search_weaknesses(_many) ─▶ CWE 1,352개 (BM25 기본, 임베딩·pgvector 선택)
+                          (8주차 실험 --cwe: 두 서버에 동시에 붙고 도구 이름으로 라우팅. 기본 실행은 vuln-data만)
 ```
 
 ## 결과
@@ -41,6 +40,7 @@
 | 5 | 문서 속 인젝션 | 방어 없음 20% 성공 → 프롬프트 강화 0% / 결정적 교차 검증 0% (오탐 2% / 0%) | [week5_injection.md](eval/analysis/week5_injection.md) |
 | 6 | 운영 | API 비용 0인 CI 회귀 검사, 평가 데이터 스냅샷(1.2MB)으로 어디서나 재현, 실행 기록 | 아래 |
 | 7 | 서술은 맞나? | 구조화 필드 60/60인 같은 보고서에서 요약문 사실 정확성 **63%** (개수 오류 35%) → 개수도 도구가 세게 해서 **98%**, 비용·지연 그대로. 채점기는 변이 테스트로 검증 | [week7_prose.md](eval/analysis/week7_prose.md) |
+| 8 | CWE 지식베이스를 연결하면? | 실험군 셋으로 비교 (취약점 545개): 기억만 64%, **검색 후보 안에서 고르기 44%**, 이미 있는 GHSA/NVD 라벨 전달 **100%**. 에이전트의 선택은 검색기 1위(26%)보다 낫지만 검색 재현율 43%가 상한. 완화책이 맞는 CWE와 지식베이스 조회 둘 다 7/7인 것은 라벨 전달뿐 | [week8_cwe.md](eval/analysis/week8_cwe.md) |
 
 3주차 핵심 표 (같은 20 케이스, 데이터 2026-11-20 고정):
 
@@ -92,6 +92,7 @@ sudo 없는 서버에 PostgreSQL을 사용자 권한으로 올리는 방법은 [
 | 결정적 추출기는 공격 문서 80개에서 표적을 빼지 않음 | 교차 검증 방어(D2)의 전제 |
 | 스냅샷을 빈 DB에 적재 → 정답 오프라인 재계산 → 커밋된 정답과 완전 일치 | OSV/KEV/EPSS 처리, 버전 계산, 정답 생성 어디든 |
 | 서술 채점기 변이 테스트: 일부러 틀린 요약문 검출률과 맞는 요약 오탐 0 | 서술 채점기(`eval/prose_grade.py`)가 느슨해짐 |
+| CWE 채점기: 라벨을 스냅샷에서 다시 만들면 같음, 정답 라벨 보고서 545/545, 빈 보고서 0/545 | CWE 채점기(`eval/cwe_grade.py`)나 정답 라벨이 바뀜 |
 
 **평가 데이터 스냅샷** (`eval/snapshot.py`): 평가에 필요한 DB 행만(OSV 643, NVD 451, KEV·EPSS는 정답 CVE만) 1.2MB로 내보낸다.
 어떤 PostgreSQL에서도 `VULNAGENT_OFFLINE=1`로 같은 도구 결과가 나와, 외부 API 상태와 상관없이 평가를 재현한다.

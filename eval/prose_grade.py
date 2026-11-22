@@ -112,6 +112,11 @@ VULN_AFTER = re.compile(r"\s*(의\s*)?(고유\s*)?취약점")
 VULN_BEFORE = re.compile(r"취약점\s*(총\s*)?(약\s*)?$")
 UNCHECKED_BEFORE = re.compile(r"(검사\s*불가|검사하지\s*못한|확인하지\s*못한|확인\s*불가|미확인)[^.。]{0,10}$")
 PKG_BEFORE = re.compile(r"(의존성|패키지|dependency|dependencies|항목)\s*(총\s*)?(약\s*)?$")
+# "range 지정 의존성 95건은" -> '건'이어도 의존성 수 (8주차 v6b에서 오탐으로 발견). '항목'은 뺀다: "KEV 항목 2건"은 취약점 수
+DEP_BEFORE = re.compile(r"(의존성|패키지|dependency|dependencies)\s*(총\s*)?(약\s*)?$")
+# "28개 패키지에서는 OSV가 알려진 취약점을 반환하지 않았습니다" -> 취약점이 없는 패키지 수 (8주차 v6a에서 발견).
+# '에서는'(대조)으로 시작하고 같은 문장 안에서 바로 부정이 올 때만. "8개 패키지에서 취약점이 발견되었고 KEV는 없다"는 그대로 취약 패키지
+NO_VULN_AFTER = re.compile(r"\s*(패키지\s*)?에서는[^.。]{0,30}(반환하지\s*않|발견되지\s*않|확인되지\s*않|보고되지\s*않|없었|없습니다|없음)")
 
 
 def claim_category(summary: str, start: int, end: int) -> str:
@@ -123,11 +128,13 @@ def claim_category(summary: str, start: int, end: int) -> str:
     unit = re.match(r"\s*(여\s*)?(개|건)", tail)
     rest = re.sub(r"^\s*(이상|가량|정도)", "", tail[unit.end():]) if unit else tail
     before = summary[max(0, start - 12):start]
-    if UNCHECKED_BEFORE.search(before):  # "검사하지 못한 항목은 95건" -> 검사 못 한 항목 수 (v5에서 오탐으로 발견)
+    if UNCHECKED_BEFORE.search(before) or DEP_BEFORE.search(before):  # "검사하지 못한 항목은 95건", "의존성 95건"
         return "pkg"
     if (unit and unit.group(2) == "건") or VULN_BEFORE.search(before):
         return "vuln"
     if re.search(r"나머지\s*(약\s*)?$", before):  # "나머지 9개 패키지에서는 (취약점이 없었다)" -> 취약 패키지가 아님
+        return "pkg"
+    if NO_VULN_AFTER.match(summary[end + (unit.end() if unit else 0):][:60]):  # 부정은 16자 창 밖에 올 수 있다
         return "pkg"
     if VULNERABLE_PKG_AFTER.match(rest):
         return "vulnerable_pkg"

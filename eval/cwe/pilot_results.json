@@ -1,0 +1,302 @@
+{
+ "arms": [
+  {
+   "variant": "pilot-cwe-memory",
+   "arm": "memory",
+   "runs": 2,
+   "scored": 2,
+   "errors": 0,
+   "not_finished": [],
+   "counts": {
+    "vulns": 84,
+    "labeled": 83,
+    "hit": 61,
+    "answered": 83,
+    "valid": 83,
+    "grounded": 0,
+    "wa_needed": 2,
+    "wa_present": 2,
+    "wa_relevant": 2,
+    "wa_grounded": 0,
+    "wa_extra": 0
+   },
+   "cwe_acc": 0.735,
+   "cwe_acc_ci": [
+    0.631,
+    0.818
+   ],
+   "cwe_acc_macro": 0.66,
+   "answered": 0.988,
+   "valid": 1.0,
+   "grounded": 0.0,
+   "wa_present": 1.0,
+   "wa_relevant": 1.0,
+   "wa_grounded": 0.0,
+   "pass": [
+    2,
+    2
+   ],
+   "prose_ok": [
+    2,
+    2
+   ],
+   "counts_ok": [
+    2,
+    2
+   ],
+   "cost_total": 0.0136,
+   "cost_per_run": 0.0068,
+   "latency_median_s": 32.675,
+   "tool_calls_mean": 1,
+   "out_tokens_mean": 8377,
+   "search_diagnostics": null,
+   "runs_detail": [
+    {
+     "case": "maven-java-goof-core",
+     "rep": 0,
+     "status": "ok",
+     "pass": 1,
+     "cost": 0.00296392,
+     "latency_s": 18.04,
+     "tool_calls": 1,
+     "out_tokens": 3540,
+     "cwe_arm": "memory",
+     "cwe_acc": 0.571,
+     "prose_ok": 1,
+     "counts_ok": 1
+    },
+    {
+     "case": "npm-nodejs-goof-lock",
+     "rep": 0,
+     "status": "ok",
+     "pass": 1,
+     "cost": 0.010624485000000001,
+     "latency_s": 47.31,
+     "tool_calls": 1,
+     "out_tokens": 13214,
+     "cwe_arm": "memory",
+     "cwe_acc": 0.75,
+     "prose_ok": 1,
+     "counts_ok": 1
+    }
+   ],
+   "example_misses": [
+    "maven-java-goof-core: CVE-2025-22233: CWE-178 not in ['CWE-20']",
+    "maven-java-goof-core: CVE-2022-41853: CWE-502 not in ['CWE-470']",
+    "maven-java-goof-core: CVE-2020-15250: CWE-379 not in ['CWE-200', 'CWE-732']",
+    "npm-nodejs-goof-lock: CVE-2026-102282: CWE-276 not in ['CWE-732']",
+    "npm-nodejs-goof-lock: CVE-2026-39244: CWE-409 not in ['CWE-400', 'CWE-789']",
+    "npm-nodejs-goof-lock: CVE-2024-45590: CWE-400 not in ['CWE-405']"
+   ]
+  },
+  {
+   "variant": "pilot-cwe-labels",
+   "arm": "labels",
+   "runs": 2,
+   "scored": 2,
+   "errors": 0,
+   "not_finished": [],
+   "counts": {
+    "vulns": 84,
+    "labeled": 83,
+    "hit": 83,
+    "answered": 83,
+    "valid": 83,
+    "grounded": 83,
+    "wa_needed": 2,
+    "wa_present": 2,
+    "wa_relevant": 2,
+    "wa_grounded": 2,
+    "wa_extra": 0
+   },
+   "cwe_acc": 1.0,
+   "cwe_acc_ci": [
+    0.956,
+    1.0
+   ],
+   "cwe_acc_macro": 1.0,
+   "answered": 0.988,
+   "valid": 1.0,
+   "grounded": 1.0,
+   "wa_present": 1.0,
+   "wa_relevant": 1.0,
+   "wa_grounded": 1.0,
+   "pass": [
+    2,
+    2
+   ],
+   "prose_ok": [
+    2,
+    2
+   ],
+   "counts_ok": [
+    2,
+    2
+   ],
+   "cost_total": 0.0152,
+   "cost_per_run": 0.0076,
+   "latency_median_s": 34.525000000000006,
+   "tool_calls_mean": 2.5,
+   "out_tokens_mean": 8676,
+   "search_diagnostics": null,
+   "runs_detail": [
+    {
+     "case": "maven-java-goof-core",
+     "rep": 0,
+     "status": "ok",
+     "pass": 1,
+     "cost": 0.00285286,
+     "latency_s": 15.71,
+     "tool_calls": 1,
+     "out_tokens": 3102,
+     "cwe_arm": "labels",
+     "cwe_acc": 1.0,
+     "prose_ok": 1,
+     "counts_ok": 1
+    },
+    {
+     "case": "npm-nodejs-goof-lock",
+     "rep": 0,
+     "status": "ok",
+     "pass": 1,
+     "cost": 0.012395854999999999,
+     "latency_s": 53.34,
+     "tool_calls": 4,
+     "out_tokens": 14249,
+     "cwe_arm": "labels",
+     "cwe_acc": 1.0,
+     "prose_ok": 1,
+     "counts_ok": 1
+    }
+   ],
+   "example_misses": []
+  },
+  {
+   "variant": "pilot-cwe-search",
+   "arm": "search",
+   "runs": 2,
+   "scored": 2,
+   "errors": 0,
+   "not_finished": [],
+   "counts": {
+    "vulns": 84,
+    "labeled": 83,
+    "hit": 53,
+    "answered": 73,
+    "valid": 73,
+    "grounded": 73,
+    "wa_needed": 2,
+    "wa_present": 2,
+    "wa_relevant": 2,
+    "wa_grounded": 2,
+    "wa_extra": 0
+   },
+   "cwe_acc": 0.639,
+   "cwe_acc_ci": [
+    0.531,
+    0.734
+   ],
+   "cwe_acc_macro": 0.608,
+   "answered": 0.869,
+   "valid": 1.0,
+   "grounded": 1.0,
+   "wa_present": 1.0,
+   "wa_relevant": 1.0,
+   "wa_grounded": 1.0,
+   "pass": [
+    2,
+    2
+   ],
+   "prose_ok": [
+    2,
+    2
+   ],
+   "counts_ok": [
+    2,
+    2
+   ],
+   "cost_total": 0.0232,
+   "cost_per_run": 0.0116,
+   "latency_median_s": 50.935,
+   "tool_calls_mean": 3,
+   "out_tokens_mean": 13378,
+   "search_diagnostics": {
+    "labeled": 83,
+    "searched": 83,
+    "label_in_candidates": 52,
+    "label_top1": 38,
+    "chosen_top1": 51,
+    "chosen_in_candidates": 69,
+    "hit_from_candidates": 50,
+    "hit_outside_candidates": 3,
+    "miss_label_in_candidates": 2,
+    "miss_label_not_in_candidates": 28,
+    "null": 10
+   },
+   "runs_detail": [
+    {
+     "case": "maven-java-goof-core",
+     "rep": 0,
+     "status": "ok",
+     "pass": 1,
+     "cost": 0.0036825600000000005,
+     "latency_s": 20.89,
+     "tool_calls": 2,
+     "out_tokens": 4072,
+     "cwe_arm": "search",
+     "cwe_acc": 0.571,
+     "prose_ok": 1,
+     "counts_ok": 1
+    },
+    {
+     "case": "npm-nodejs-goof-lock",
+     "rep": 0,
+     "status": "ok",
+     "pass": 1,
+     "cost": 0.019553599999999997,
+     "latency_s": 80.98,
+     "tool_calls": 4,
+     "out_tokens": 22685,
+     "cwe_arm": "search",
+     "cwe_acc": 0.645,
+     "prose_ok": 1,
+     "counts_ok": 1
+    }
+   ],
+   "example_misses": [
+    "maven-java-goof-core: CVE-2025-22233: CWE-178 not in ['CWE-20']",
+    "maven-java-goof-core: CVE-2022-41853: CWE-502 not in ['CWE-470']",
+    "maven-java-goof-core: CVE-2020-15250: CWE-378 not in ['CWE-200', 'CWE-732']",
+    "npm-nodejs-goof-lock: CVE-2018-1002204: CWE-23 not in ['CWE-22']",
+    "npm-nodejs-goof-lock: CVE-2026-102282: None not in ['CWE-732']",
+    "npm-nodejs-goof-lock: CVE-2026-114102: CWE-431 not in ['CWE-248', 'CWE-400']"
+   ]
+  }
+ ],
+ "paired": [
+  {
+   "pair": "pilot-cwe-memory vs pilot-cwe-labels",
+   "n": 83,
+   "both_right": 61,
+   "only_pilot-cwe-memory": 0,
+   "only_pilot-cwe-labels": 22,
+   "both_wrong": 0
+  },
+  {
+   "pair": "pilot-cwe-memory vs pilot-cwe-search",
+   "n": 83,
+   "both_right": 51,
+   "only_pilot-cwe-memory": 10,
+   "only_pilot-cwe-search": 2,
+   "both_wrong": 20
+  },
+  {
+   "pair": "pilot-cwe-labels vs pilot-cwe-search",
+   "n": 83,
+   "both_right": 53,
+   "only_pilot-cwe-labels": 30,
+   "only_pilot-cwe-search": 0,
+   "both_wrong": 0
+  }
+ ]
+}
